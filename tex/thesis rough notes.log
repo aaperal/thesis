@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  12 OCT 2017 20:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  16 OCT 2017 15:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -451,36 +451,36 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 87.
  [2] [3] [4] [5]
-[6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+[6] [7] [8] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 411--412
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 459--460
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 469--470
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 459--460
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
 
  []
 
-[11] [12] (./thesis rough notes.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+
+ []
+
+[12] [13] (./thesis rough notes.aux) ) 
 Here is how much of TeX's memory you used:
  1055 strings out of 492995
  13007 string characters out of 6132704
- 79669 words of memory out of 5000000
+ 78669 words of memory out of 5000000
  4652 multiletter control sequences out of 15000+600000
  6102 words of font info for 22 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -500,10 +500,10 @@ fonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti10.pfb>
-Output written on "thesis rough notes.pdf" (12 pages, 200480 bytes).
+Output written on "thesis rough notes.pdf" (13 pages, 204104 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

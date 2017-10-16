@@ -349,6 +349,49 @@ IDRD problem relates not just to selection of parcels to be turned into parks, b
 %
 % 3.3
 %
+\subsection{Accessibility}
+\begin{itemize}
+\item index based on density of sidewalks and roads that make the park accessible
+\item given a park's service area, accessibility index is calculated as the total length of sidewalks and roads per square meter
+\item normalize the accessibility of a park by dividing it over accessibility index of the whole area of analysis, thus an index greater than one represents that the park is relatively more accessible than the rest
+\end{itemize}
+%
+% 3.4
+%
+\subsection{Connectivity}
+\begin{itemize}
+\item index a measure of connectedness between candidate parcel and existing nearby urban facilities
+\item facilities classified into one of two groups:
+	\begin{itemize}
+	\item facilities that could potentially harm the perceived benefits of the park (provide a negative externality) e.g., jails and morgues
+	\item facilities that could potentially increase benefits of park (provide a positive externality) e.g., schools and BRT stations
+	\end{itemize}
+\item connectivity index calculated by subtracting number of facilities with a negative externality from the number of facilities with a positive externality within the park's service area
+\item index greater than zero means park is expected to capture some extra benefits
+\item purely a count, since no primary information available to state relative importance of the externalities provided by each facility
+\item could be modified (if such info exists) by including a weight that reflects the relative importance of each positive or negative externality into a weighted aggregated index
+\end{itemize}
+%
+% 3.5
+%
+\subsection{Weighted Proximity to Externalities}
+\begin{itemize}
+\item index considers nearby facilities weighted by their proximity
+\item assumes the effect of externalities reduces as the distance from the parcel increases
+\item $r^e$ denotes the maximum radius of influence for externalities, $d$ the radial distance of the facility to the parcel
+\item facilities closer than $r^e$ have weight of $1-\frac{d}{r^e}$
+\item as with connectivity index, you subtract negative externalities from positive ones
+\item could also incorporate an importance weight
+\end{itemize}
+%
+% 3.6
+%
+\subsection{Cost}
+\begin{itemize}
+\item Total cost is parcel acquisition cost plus the construction costs of the park.
+\item first component is estimated according to real estate appraisals
+\item second component includes construction materials, amenities (swing, slides), design, operations, and administrative obligations
+\end{itemize}
 
 %
 % Section 4: Optimization Model and Solution Strategy
