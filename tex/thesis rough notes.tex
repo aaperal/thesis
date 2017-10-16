@@ -1,0 +1,497 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry {
+	left = 15mm,
+	right = 15mm,
+	top = 30mm,
+	bottom = 30mm
+}
+\begin{document}
+
+
+Notes from meeting with Shahriari (9/12/17)
+
+How do you come up with an objective function for CBOR problems? (It's harder when you have competing objectives)
+
+How do you incorporate other disciplines into CBOR? How do you combine the qualitative with the quantitative? 
+
+Not so much interested in theory of CBOR as opposed to specific examples of it in action
+
+For next time: overview of whole book
+
+For friday info thing just try to write what thesis is about, guiding questions, etc \newline \newline
+
+Notes from meeting with Shahriari (9/26/17)
+
+Might be interesting to look at supply chain - nonprofit comparison chapter, especially with respect to the differences between the two.
+
+Ideally, pick one area and bore down on it and understand it. (parks? illinois schools?)
+
+
+Notes from meeting with Shahriari (10/3/17)
+
+Course for future: become expert on multiobjective discrete facility location problems
+For next time: GET TO THE MODEL!
+
+
+Notes from meeting with Shahriari (10/10/17)
+
+Need to come up with a toy problem! \newline
+Thesis Outline \newline
+Ch 1: intro \newline
+Ch 2: toy problem \newline
+Ch 3: actual model \newline
+Ch 4: Multiobjective facility location \newline
+Ch 5: discrete facility location problems \newline
+
+
+
+{\huge OR Thesis Notes because I forgot Notebook
+
+
+OR BOOK OVERVIEW FOR 19-8}
+\begin{itemize}
+\item Divided into 4 parts
+\item Part 1 ``Models and Analytic Methods''
+	\begin{itemize}
+	\item Ch 1 and 2 seem to be intros
+    \item Ch3 is called ``Operations Management in Community-Based Nonprofit Organizations''
+    \item Ch4 is called ``Modeling Equity for Allocating Public Resources''
+	\end{itemize}
+\item Part 2 ``Facility Location and Spatial Analysis''
+	\begin{itemize}
+	\item I don't understand most of these titles
+    \item Ch5: Spatial Optimization and Geographic Uncertainty: Implications for Sex Offender Management Strategies \\ THOUGHT: I imagine this means handling where to ``place'' sex offenders (so as to reduce exposure to children???? wording could be better on this sentence tbh)
+    \item Ch6: Locating Neighborhood Parks with a Lexicographic Multiobjective Optimization Method \\ THOUGHT: what?!??! need to read intro to this or something
+    \item Ch7: Using GIS-Based Models to protect children from lead exposure \\ THOUGHTS: how? what could it mean
+    \end{itemize}
+\item Part 3: Minorities and Disadvantaged Groups \\ THOUGHTS: this seems like it could be the most problematic lol
+    \begin{itemize}
+    \item Ch8: A Model for Hair Care Flow in Salons in the Black Community
+    \item Ch9: Street Gangs: A modeling approach to evaluating ``at-risk'' youth and communities
+    \item Ch10: Fair fare policies: pricing policies that benefit transit-dependent riders
+	\end{itemize}
+\item Part 4: Service Delivery \\ THOUGHTS: sounds like a lot of overlap with ``regular'' OR
+ 	\begin{itemize}
+	\item Ch11: decision making for emergency medical services
+    \item Ch12: capacity planning for publicly funded community based long-term care services
+    \item Ch13: a DEA application measuring educational costs and efficiency of illinois elementary schools
+	\end{itemize}
+\end{itemize}
+
+\section{Introduction}
+\subsection{Motivation for This Book}
+\begin{itemize}
+\item A brief history of OR/MS is provided in Pollock and Maltz (1994)
+\item Majority of OR/MS problems solved by students when introduced to discipline are drawn from the private sector: production planning, logistics and distribution of goods, call center management, portfolio optimization, and other things. Barely any are problems that have social impacts, which is problematic considering nonprofits account for $\$ 1.6$ trillion in revenue and $\$ 3.4$ trillion in assets.
+	\begin{itemize}
+    \item THOUGHT: Why is relative importance still measured in terms of money though??
+    \end{itemize}
+\item Much of our lives defined by things provided by not-for-profit means (education, public safety, human/social services, community and economic development, environmental conservation and preservation).
+\item Importance of decentralized government resources: we want emergency medical services to respond quickly to calls from our neighborhood first, we complain about waste in nearby areas as opposed to areas we do not often visit, care about the quality of our local schools first and foremost, etc. 
+	\begin{itemize}
+    \item THOUGHT: Mentions that social movements around the world have focus on local organizing, so how can local organizing benefit from OR???
+    \end{itemize}
+\item We care more about the impact of policies on groups of people who share our values, upbringing/racial/ethnic background, or who live near us, as opposed to those who are different --- thus we need OR/MS applications that respond to public needs of a local nature (p4).
+	\begin{itemize}
+    \item BUT can't all be local because need to account for populations that have differing levels of prosperity or political and social influence (see: rich vs poor)
+    \end{itemize}
+\item "We refer to OR/MS applications that address provision of goods and services, or prescribe social policy actions, for which stakeholders are defined, in a spatial or social sense, as localized, or who are considered disadvantaged or underserved, or for which issues of equity or social influence are important considerations, as examples of community-based operations research (CBOR)" (4-5)
+	\begin{itemize}
+	\item THOUGHT: Fuck not really sure what this means
+    \item FOLLOW UP THOUGHT WITH SHAHR: Want to do problems where the stakeholders are a well defined group (neighborhood, particular group of people) who are underserved. 
+	\end{itemize}
+\item "Methods in CBOR may vary widely, from traditional instances of prescriptive math models to a combination of qualitative and quantitative methods that may have much in common with related disciplines such as community planning, public health, and criminology." (p5)
+\item "One should immediately acknowledge the large literature in related fields of OR/MS, principally that of community operational research (Midgley \& Ochoa-Arias, 2004a)"
+	\begin{itemize}
+	\item THOUGHT: Need to find the large amounts of literature 
+    \item FOLLOW UP: Maybe there are problems that deal with community, but haven't been formulated in this way of CBOR (maybe?)
+	\end{itemize}
+\item Direct motivations for this textbook (and probably for CBOR)
+	\begin{itemize}
+	\item importance of space, place and community in policy design and service delivery (this is for OR/MS in general)
+    \item a focus on disadvantaged, underrepresented, or underserved populations
+    \item international and transnational applications that go beyond the use of traditional models in non-US contexts
+	\end{itemize}
+\item CBOR benefits from multi-method, cross disciplinary, and comparative approaches and appropriate technology rooted in OR/MS
+	\begin{itemize}
+	\item THOUGHT: Ok, but what does this actually mean?!?!?!
+	\end{itemize}
+\item Analytics is of use to CBOR? (how???? "supports a notion of generalized insight into problems of operations, uses a wide variety of quant. methods, and is intended to support changes in policy and practice")
+\item "Is there a way to do OR that balances positivist and quantitative approaches that dominate US-style practice with a more critical and subjective approach to decision modeling, that accommodates a variety of qualitative and mixed-methods?" (6)
+	\begin{itemize}
+	\item THOUGHT: What does positivist mean? I need to understand this section better (or at all)
+    \item FOLLOW UP: Need to balance numbers-only approach (GDP goes up -> this is good!!!) vs more critical (Yeah GDP went up, but number of poor hasn't changed, etc)
+	\end{itemize}
+\item Is rigorous OR compatible with motivating values of social change and social justice?
+	\begin{itemize}
+	\item THOUGHT: This is an \bf{important} question. If rigorous OR doesn't work to push social change and social justice then what is CBOR? What is the point? What does it imply for the discipline?
+	\end{itemize}
+\item Can we develop a theory of CBOR that can provide guidance simultaneously to researchers who seek principles guiding diverse applications and practicioners who seek specific guidance to solve difficult real-world problems?
+	\begin{itemize}
+	\item THOUGHT: whut 
+	\end{itemize}
+\item Can CBOR yield research outputs that will find exposure in the most prestigious research journals and academic programs and thus influence the understanding of CBOR within the discipline???
+	\begin{itemize}
+	\item THOUGHTS: WHAT!?!?!?! I need to spend more time on these questions
+	\end{itemize}
+\end{itemize}
+
+\subsection{The Historical Context of CBOR and its Role Within OR/MS}
+\begin{itemize}
+\item There are three trends in OR/MS that precipitated major disagreements regarding the proper role of OR in society
+	\begin{itemize}
+	\item First trend: public service-oriented OR such as the Operations Research in Public Affairs program held at MIT in 1966, the Science and Techonlogy Task Force of 1967 that initiated quant. analysis of criminal justice problems, and the prevalence of quant. analysis used in the prosecution of the Vietnam War (?????what this mean).
+    \item Second trend: institutionalization of OR/MS within private-sector companies and the transition of OR/<S from a transformational technology to one that increasingly focused on mathematical analysis and incremental gains in efficiency (YUCK!)
+    \item Third trend: Societal disenchantment with quant. methods that promised much, but (esp. considering vietnam war and social unrest in american cities) was not delivering on promise to improve society
+	\end{itemize}
+\item classic paper in OR by Russell Ackoff (1970) describes a primarility qualitative study to improve a poor minority neighborhood in philadelphia (in collab with local residents). $\Rightarrow$ led to frustration with OR/MS discipline that placed emphasis on applied maths as against human processes, stylized quant. models vs systems-learning approach (p7)
+\item broader understanding of ``problems'' and social + political aspects of problem identification/solution, as opposed to focus on theory-building and algorithm development for stylized mathematical representations of the real world
+	\begin{itemize}
+	\item THOUGHTS: so the conflict seems to be one of theory and practice. In OR/MS there seems to be an inclination towards theory and the abstraction of problems into mathematical formulations, but this doesn't really seem to work with CBOR
+	\end{itemize}
+\item decision problems as part of a social system rather than distinct entity that could be solved directly
+\item 30 years of disagreements between US-style OR (mathematical and problem-focused approach) and UK style (critical approach that closely examines roles of power, class, and community in defining problems amenable to OR/MS models and methods)
+\item alternatives: community operational research, soft-OR (WHAT IS THIS?!) and soft systems methodologies.
+\item difference in US and UK style OR can be attributed to economic recession experienced in UK in 70s and the larger role of socialist and marxist political movements. hard-OR still dominates in applied research in the UK though.
+\item public sector OR - centered on government and large nonprofit organizations - has played a role in OR/MS since beginning of discipline. Use traditional prescriptive and quantitative decision models.
+	\begin{itemize}
+	\item text on urban OR by Larson \& Odoni focused on urban operations and logistics issues without examining social processes that make urban problems different, did not address role of social policy in urban operations modeling
+	\end{itemize}
+\item Letter to the editor of \textit{OR/MS Today} (2009) notes that ``Soft OR'' (also mentions PSM: problem structuring methods) papers are rarely published in major OR journals in US. (p8)
+	\begin{itemize}
+	\item THOUGHTS: this seems important!! I should look up this letter.
+    \item Follow up point: apparently Mingers  has some good shit on Soft-OR. Should look up : Mingers, J. (2009). Taming hard problems with soft OR. OR/MS Today, 36(2), 48-53. AND \newline 
+    Mingers, J. (2011a). Soft OR Comes of Age - But Not Everywhere! Omega 39(6): 729-741.
+	\end{itemize}
+\item along with other factors (unclear profile for OR/MS, its uncertain status in business schools, uncertain employment prospects for those trained in OR/MS), an excessive focus on mathematical theory and analytical tools threatens long-term viability of OR/MS as a discipline (p8-9)
+\item the profile of CBOR in US degree-granting programs related to OR/MS and in top-tier journals is low, but has slightly increased in professional societies (particularly INFORMS).
+\item THE MILLION DOLLAR QUESTION: ``Given the difficulty of addressing community-based problems in operations and strategy, is a rigorous mathematical basis for analysis the best or only way to do high-quality, cutting-edge research?'' (p9)
+\end{itemize}
+\subsection{Chapter Outline}
+\begin{itemize}
+\item Section 2 - detailed survey of community operational research
+\item Section 3 - presents theory of CBOR that extends traditional notion of OR/MS inquiry
+\item Section 4 - summarizes published work related to CBOR that has appeared since 2007
+	\begin{itemize}
+	\item THOUGHTS: Would be interesting to look at this
+	\end{itemize}
+\item Section 5 - updated assessment of CBOR profile within OR/MS across research, education, and practice
+\item Section 6 - contains thematic summary of 12 chapters in this textbook
+	\begin{itemize}
+	\item THOUGHTS: definitely must look at this!
+	\end{itemize}
+\item Section 7 - concludes, identifies promising next steps for research within CBOR
+	\begin{itemize}
+	\item THOUGHTS: should look at this too.
+	\end{itemize}
+\end{itemize}
+\setcounter{section}{6}
+\section{Book Chapters}
+A summary of the chapters in this textbook
+\subsection{Models and Analytic Methods}
+\begin{itemize}
+\item Textbook ``places special emphasis on research that develops new ways of abstracting real-life organizations, systems and processes into models, and designs and/or adapts novel analytic methods by which such models may yield prescriptions or policies that are relevant to practice'' (p24).
+\item ``Community-Based Operations Research" (Michael Johnson and Karen Smilowitz) - paper develops a theory of CBOR, presents a hypothetical CBOR application to urban public education, and reviews scholarly research in the field defined as CBOR starting in the early 1970s, discusess two actual CBOR applications and emphasizes linkages between applications and key elements of CBOR.
+	\begin{itemize}
+	\item First application is programming model for design of delivery routes for donated food to food pantries that balances concerns of efficiency and equity. 
+	\item Second application is a spatial decision support system providing guidance for low-income families who seek to relocate using rental housing vouchers, based on analysis of typical clients' ability to do elementary spatial analysis and analysis of decision alternatives, culminating in a prototype Web-based SDSS.
+	\end{itemize}
+\item ``Operations Management in Community-Based Nonprofit Organizations" builds theory, identifies applications and makes links to other disciplines in exploring how the supply chain can be applied to nonprofit sector.
+	\begin{itemize}
+	\item chapter divided into topics that correspond to three portions of supply chain. The first (supply/inputs) is represented by fundraising, earned income, foundation grants. The second (nonprofit production/acitivities) is organized according to objectives, coordination and centralization, and production processes by which services are provided to client populations. The last category (consumers and markets of nonprofit goods and services) looks at role of supply \& demand in decisions regarding resource acquisition, service design and collaboration and competition, and how the work of nonprofits can be quantified and evaluated using principles of performance measurement.
+	\item chapter concludes by summarizing similarities and differences between for-profit supply chains and nonprofits providing goods,services for public good. also identifies promising areas of future research, including role of risk, multiple organizational objectives, interplay between for-profit and nonprofit orgs and services
+	\end{itemize}
+\item ``Modeling Equity for Allocation in Public Resources" provides theoretical foundation for consideration of equity as co-equal criterion for allocating public resources along with traditional concerns of effectiveness and efficiency
+	\begin{itemize}
+	\item authors define equity as addressing three elements: resources to divide between recipients, sets of recipients by which resources will be divided, and time periods across which resources are provided
+	\item they define fundamental distinction between equity of resource allocation process (``\textit{ex ante} equity") and equity of outcomes produced by the process(``\textit{ex post} equity"), and show that allocations may be ex ante equtiable but may not be ex post equitable, and vice versa.
+		\begin{itemize}
+		\item concepts illustrated using example from emergency medical services: uncertainty plays a fundamental role in service delivery time and patient survival
+		\item THOUGHT: I think ex post equitable is more important
+		\end{itemize}
+	\item authors provide illustrative mathematical formulations of equity objectives and discuss issues of mathematical tractability and incorporation into multi-objective mathematical programs. 
+		\begin{itemize}
+		\item They recommend other researchers extend work through systematic analysis of equity objectives, investigation of the implications of use of equity as a constraint rather than an objective in math programming models, incorporation of process equity in operations research models, development of a ``toolbox" of a core set of equity functions of broad applicability to OR/MS, and investigation of how equity can be incorporated into things besides EMS
+		\end{itemize}
+	\end{itemize}
+\item THOUGHTS: the first and third chapters in this section seem like they might be helpful. The first chapter gives two applications and more concretely lays out CBOR. the third chapter talks about equity, and how it may vary depending on whether its an objective function or merely a constraint. They also provide mathematical formulations of equity objectives which is definitely something I would want to take a look at.
+\end{itemize}
+%
+%
+% New Section
+%
+%
+\subsection{Facility Location and Spatial Analysis}
+\begin{itemize}
+\item Since services (and their facilities) have spatial extent, issues of spatial distribution of client populations and proximity of clients to service providers (+ways they are measured and policy implications) are important
+\item ``Spatial Optimization and Geographic Uncertainty: Implications for Sex Offender Management Strategies" related to work on decision models for measuring spatial impact of rigorous enforcement of laws relating to allowed residential locations for sex offenders
+	\begin{itemize}
+	\item authors examine nature of measurement itself in geographic information systems, discuss impact upon residential prescriptions for sex offenders of uncertainty in approximating proximity and physical location within GIS
+	\item four categories of uncertainty: object geometry, data precision, distance measurement, proximity interpretation. authors propose improvement of data/model quality along each dimension, in addition to changing language of statues
+	\item want to ensure laws are designed and enforced effectively + fairly
+	\item THOUGHTS: this sounds like it could be iffy tbh
+	\end{itemize}
+\item ``Locating Neighborhood Parks with a Lexicographic Multiobjective Optimization Method" - spatial decision modeling
+	\begin{itemize}
+	\item authors address issue of identifying and assembling land parcels in urban areas into parks to meet requirements of parkland per resident (and because of documented benefits of parks)
+	\item discrete multi-objective facility location problem, objectives being geographic coverage, level of, and proximity of parks to, positive and negative local externalities, number of beneficiaries, physical accessibility, total cost, subject to limits on total size of park as well as of component parcels
+	\item apply an $\epsilon$-constraints approach as well as a priori lexicographical ordering of decision criteria to measure and control deviation of objective values from best-possible values across various feasible sols.
+	\item applied to urban park planning in Bogota
+	\item show that model instances can be designed with acceptable level of technical difficulty
+	\item solutions generated show variations in performance across multiple objectives, as well as spatial and policy impacts of alternative park infrastructure strategies
+	\end{itemize}
+\item ``Using GIS-Based Models to Protect Children from Lead Exposure" represents strongest link to themes of minority, disadvantaged groups, and service delivery	
+	\begin{itemize}
+	\item significant negative health impacts to children due to lead exposure (primarily due to lead-based paint)
+	\item authors introduce model to measure levels of childhood residential lead exposure
+	\item uses GIS to assemble spatial data on residential parcels, associates parcels with data on risk factors for childhood lead exposure and geocoded blood surveillance data 
+	\item data used in regression model to forecast lead exposure at parcel level
+	\item model has been used by orgs to design localized lead poisoning prevention strategies (targeted blood screening, lead paint abatement and educational programs, community outreach)
+	\end{itemize}
+\item THOUGHTS: I don't know how useful the first chapter in this section may be. The second chapter may be of interest because of the multiple objectives (I don't even know what that would look like!). Third one does not really interest me.
+\end{itemize}
+
+{\huge Facility Location and Spatial Analysis \newline Ch6: Locating Neighborhood Parks with a Lexicographic Multiobjective Optimization Method}
+
+\setcounter{section}{0}
+
+\section{Introduction}
+\begin{itemize}
+\item Lists benefits to parks (better physical \& mental health, quality of life, etc)
+\item Four types of parks: pocket, neighborhood, zonal and metropolitan (based on size and types of activities facilitated within)
+\item pocket parks $ < 1000m^2$, dedicated to passive recreation
+\item neighborhood parks are dedicated to active recreation and community integration
+\item pocket and neighborhood parks only serve one neighborhood
+\item zonal parks - passive and active recreation for several neighborhoods
+\item metro parks ($> 100000m^2$) - passive \& active rec. for the whole city, landscape and environmental benefits too
+\item sports and recreation master plan (2006) - by 2019, city must reach minimum level of neighborhood park area of $2.71m^2$ per inhabitant
+\item Instituto Distrital de Recreacion y Deporte (IDRD) in charge of this project
+\item BUT! locating green areas is complex because need to balance compromise among geographic, social, and economic criteria $\rightarrow$ multiobjective optimization approach!!!
+\item large number of candidate parcels, virtually infinite number of possibilities (every subset is possible solution)
+\item they propose multiobjective facility location model linked to a GIS that interacts with decision makers to determine which parcels should become new parks
+\item proposed location model considers: number of beneficiaries, geographic coverage, sidewalk and road accessibility, connectivity with other facilities, positive \& negative externalities provided by nearby facilities, construction and parcel acquisition cost
+\end{itemize}
+%
+% Section 2: literature review
+%
+\section{Literature Review}
+IDRD problem relates not just to selection of parcels to be turned into parks, but also to the selection and calculation of the evaluation criteria. 
+%
+% 2.1
+%
+\subsection{Criteria for Evaluating the Quality of a Park}
+\begin{itemize}
+\item people value accessibility, usually measured as distance from their home to park
+\item person defined to have access to park if they live within park's service area (within a maximum distance from the park's centroid or boundary)
+\item has been well documented that distance is the main reason for not visiting the nearest park, and that people living close to a park tend to visit it more often
+\item however, service area ignores how individuals reach the park. Some authors have considered the number of sidewalks or roads as a complementary measure of accessibility
+\item number of potential users (number of inhabitants living in park's area of influence) been used as measure of park's quality
+\item authors have proposed index of park service based on the fraction of people within area of analysis that is affected by parks
+\item as park size increases, more people willing to visit
+\item other measures of park quality: available infrastructure (sport facilities, paved trails, lakes), landscape and ecological features, and non-aesthetic attributes (perception of safety)
+\item in Bogota, IDRD planners identified additional quality measures, such as connectivity with existing facilities in city (bus rapid transit - BRT - stations) and externalities provided by nearby facilities (schools, etc).
+\end{itemize}
+%
+% 2.2
+%
+\subsection{Location of New Parks}
+\begin{itemize}
+\item discrete facility location problem! 
+\item literature on locating public facilities is rich and their methodologies have been successfully applied in locating disaster recovery centers, fire stations, park-and-ride facilities, depots in the coffee supply chain, hospital waste management facilities, and healthcare facilities (among others)
+\item Mentions a good overview and introduction of facility location: surveys by Owen and Daskin (1998), Daskin (2008), ReVelle and Eiselt (2005), and ReVelle, Eiselt, \& Daskin (2008). For a survey on multiobjective facility location, the author mentions Farahani et al (2010).
+\item few researchers have dealt with locating new parks. and their applications not helpful for large scale projects
+\end{itemize}
+%
+% Section 3: Evaluation of Candidate Parcels
+%
+\section{Evaluation of Candidate Parcels}
+\begin{itemize}
+\item candidate parcels evaluated through indices comprising info along five axes:
+	\begin{itemize}
+	\item geographical coverage
+	\item number of beneficiaries
+	\item sidewalk and road accessibility
+	\item nearby facilities
+	\item cost
+	\end{itemize}
+\item these critera were agreed upon by consent on meetings with urban planners from IDRD and other metropolitan offices such as Secretaria Distrital de Pleneacion - SDP (metropolitan planning office) and Taller del Espacio Publico (Public Space Committee), following the guidelines of Bogota's strategic master plan for parks
+\item all indices except cost calculated based on service area of candidate parcel
+\item service area calculated using centroid radii or buffer method as a circular area of radius r from the parcel's centroid
+	\begin{itemize}
+	\item THOUGHTS: what this mean?
+	\end{itemize}
+\item the radius of influence ($r$) can be a fixed distance or a function of the parcel's area
+\end{itemize}
+%
+% 3.1
+%
+\subsection{Geographical Coverage}
+\begin{itemize}
+\item calculated as number of blocks in parcel's service area, used as proxy of potential access to the park system
+\item a large index means a service area covering a large number of blocks
+\item this index ignores the density of people living in the service area
+\item mitigates uncertainty related to population growth or changes in urbanization patterns
+\item analysis based solely on number of beneficiaries will suggest building parks in dense areas, ignoring areas under development or likely to experience fast population growth
+\item by covering as many blocks as possible, guarantee access to current and future beneficiaries
+\item counting residential blocks is better than covered area because it avoid affecting index by effect of open spaces with no direct beneficiaries (ie. large industrial facilities, roads)
+\end{itemize}
+%
+% 3.2
+%
+\subsection{Number of Beneficiaries}
+
+
+%
+% Section 4: Optimization Model and Solution Strategy
+%
+\section{Optimization Model and Solution Strategy}
+\subsection{Model}
+\begin{itemize}
+\item $\mathcal{I}$ denotes the set of candidate parcels, partitioned into two sets:
+	\begin{itemize}
+	\item $\mathcal{I_F}$ contains parcels with an area less than or equal to 10000$m^2$ (fixed-size parcels)
+	\item set $\mathcal{I_V}$ contains larger parcels (variable-size parcels because effective park area is yet to be determined)
+	\end{itemize}
+\item model formulation considers set of existing urban facilities $\mathcal{E}$
+	\begin{itemize}
+	\item $\mathcal{E_P}$, the set of facilities with positive externalities
+	\item $\mathcal{E_N}$, the set of facilities with negative externalities
+	\item $\mathcal{E} = \mathcal{E_P} \bigcup \mathcal{E_N}$, $\mathcal{E_P} \bigcap \mathcal{E_N} =  \emptyset$
+	\end{itemize}
+\item circular service area of parcel $i$ is defined by its radius $r_i$ measured from its centroid
+\item let $\mathcal{J}$ be the set of all blocks serviced by at least one candidate parcel, or rather, $\mathcal{J}$ contains all blocks that could potentially benefit from the construction of new parks
+\item the set of all candidate parcels servicing block $j \in \mathcal{J}$ is defined by $\mathcal{W}_j$
+\item candidate parcel $i$ belongs to set $\mathcal{W}_j$ if block $j$ is within $r_i$ from parcel's centroid
+\item $p_i$, the number of beneficiaries from candidate parcel $i$
+\item $v_i$, the accessibility index of candidate $i$
+\item $e_i$, connectivity index of parcel $i$
+\item $c_i^l$, the parcel (lot) acquisition cost
+\item $c_i^b$, the construction cost for candidate parcel $i$
+\item to calculate the proximity externality index, let $d_{ik}$ be the distance between parcel $i$ and facility $k$ $(k \in \mathcal{E})$ and recall $r^e$ is the max radius of influence of the externalities of a given facility
+\item $a_i$, the area in square meters of parcel $i$
+\item $\underline{a}$, the minimum area of parks required to accomplish Bogota's master plan
+\item $\bar{a}$, the maximum area of parks that could be handled by IDRD, it is a proxy of their management and financial capacity during the planning horizon
+\item in case of selecting variable-size parcels, parameters $\underline{s}_i$ and $\bar{s}_i$ $(i \in \mathcal{I_V})$ represent the min and max construction areas for the new park $i$
+\item the model identifies the candidate parcels that should be transformed into parks
+\item binary decision variable $y_i$: takes value of 1 if candidate parcel $i$ is to be transformed into a park, 0 otherwise
+\item for variable-size areas, $x_i$ represents the area of the candidate parcel $i$ that is to be transformed into a park.
+\item binary variable $z_j$ takes the value of 1 if block $j \in \mathcal{J}$  is covered by at least one park, 0 otherwise.
+\item The model is as follows: (and has 6 objective functions) \newline
+\end{itemize} 
+{\large THE MODEL!}
+\begin{equation}
+\textrm{max } f_1 = \sum_{j \in \mathcal{J}} z_j
+\end{equation}
+
+This maximizes the geographical coverage of the parks.
+
+\begin{equation}
+\textrm{max } f_2 = \sum_{i \in \mathcal{I}}  \left( \sum_{\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i  -   \sum_{\{k \in \mathcal{E_N}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i   \right)
+\end{equation}
+
+This maximizes the externality proximity index (the impact from facilities near the park. 
+The left sum inside parenthesis takes all the positive facilities ($k \in \mathcal{E_P}$), and makes sure that the distance from the facility to the park is within the facility's area of influence ($d_{ik} \leq r^e$), and then sums over the value $\left( 1 - \frac{d_{ik}}{r^e} \right)y_i$ which calculates the ratio of distance from park to facility, subtracts it from 1, and then multiplies it by $y_i$, or whether a park is being built there or not. So this calculates all the positive externalities for ONE specific (park) lot, and subtracts from it the negative impact of all the facilities. The sum outside parenthesis just tells us that we need to do this for EVERY candidate lot.
+
+\begin{equation}
+\textrm{max } f_3 = \sum_{i \in \mathcal{I}} p_iy_i
+\end{equation}
+
+This maximizes the number of beneficiaries. 
+
+\begin{equation}
+\textrm{max } f_4 = \sum_{i \in \mathcal{I}} v_iy_i
+\end{equation}
+
+This maximizes the accessibility index
+
+\begin{equation}
+\textrm{max } f_5 = \sum_{i \in \mathcal{I}} e_iy_i
+\end{equation}
+
+This maximizes the connectivity index
+
+\begin{equation}
+\textrm{min } f_6 = \sum_{i \in \mathcal{I}} (c_i^l + c_i^b)y_i
+\end{equation}
+
+This minimizes the total cost. \newline
+
+{\large SUBJECT TO} \newline
+
+\begin{equation}
+z_j \leq \sum_{i \in \mathcal{W}_j} y_i, j \in \mathcal{J}
+\end{equation}
+
+This guarantees that if block $j$ is covered, then at least one candidate parcel covering the block has been selected as a park.
+
+\begin{equation}
+\left|\mathcal{W}_j\right|z_j \geq \sum_{i \in \mathcal{W}_j} y_i, j \in \mathcal{J}
+\end{equation}
+
+If block $j$ is not covered, then none of the candidate parcels serving it should be selected.
+
+\begin{equation}
+\sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i  \geq \underline{a}
+\end{equation}
+
+This just means that the park area should meet the minimum requirements of the master plan.
+
+\begin{equation}
+\sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i  \leq \bar{a}
+\end{equation}
+
+Just sets the upper bound for the previous constraint, which ensures that they do not have more parkland than the IDRD can handle.
+
+\begin{equation}
+\underline{s}_iy_i \leq x_i \leq \bar{s_i}y_i, i \in \mathcal{I_V}
+\end{equation}
+
+The allotted park area should be within the min and max construction size parameters. (size limit on variable size parks)
+
+\begin{equation}
+y_i \in \{0,1\}, i \in \mathcal{I}
+\end{equation}
+
+Is a binary decision variable: 1 if parcel $i$ is selected, 0 otherwise.
+
+\begin{equation}
+z_j \in \{0,1\}, j \in \mathcal{J}
+\end{equation}
+
+Another BDV. If block $j$ is covered by park then 1, otherwise 0.
+
+\begin{equation}
+x_i \geq 0, i \in \mathcal{I_V}
+\end{equation}
+
+Nonnegativity constraint on variable sized park area. \newline \newline
+
+
+Apparently the first objective function and the first set of constraints close resemble a maximal covering model, where the blocks are customers and new parks the facilities (what is a maximal covering model??). Constraints 3 and 4 impose a limit on the number of facilities.
+%
+%
+%
+% DIFFERENT TEXTBOOK NOW
+%
+%
+%
+\newpage
+{\LARGE DIFFERENT BOOK - Introduction to Operations Research}
+\setcounter{section}{0}
+\section{Introduction}
+\subsection{The Origins of Operations Research}
+\begin{itemize}
+\item Because of war effort, need to allocate scarce resources to various military operations and to activities within each operation in effective manner
+\item British and US military asked scientists to do \textit{ research on } (military) \textit{ operations}.
+\item Developed effective methods of using radar (new), research on how to better manage convoy and antisubmarine operations, etc.
+\item Success of OR in the war encouraged interest in non-military applications
+\item Substantial progress was made early in improving the techniques of OR, which led to rapid growth of field
+	\begin{itemize}
+	\item One example is the \textit{simplex method} for solving linear programming problems
+    \item 
+	\end{itemize}
+\end{itemize}
+
+\end{document}
