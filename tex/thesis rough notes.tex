@@ -520,6 +520,46 @@ Nonnegativity constraint on variable sized park area. \newline \newline
 
 
 Apparently the first objective function and the first set of constraints close resemble a maximal covering model, where the blocks are customers and new parks the facilities (what is a maximal covering model??). Constraints 3 and 4 impose a limit on the number of facilities.
+
+%
+% 4.2
+%
+\subsection{Solution Strategy}
+\begin{itemize}
+\item $\epsilon$-constraints approach combined with an a-priori lexicographic ordering of the decision criteria
+\item allows decision makers to interactively incorporate their preferences as long as decision criteria are optimized under lexicographic order
+\item proposed interactive solution narrows the set of possible solutions to only those with a good compromise of objectives
+\item methodology divided into two stages
+	\begin{itemize}
+	\item In first stage, each of the objectives is optimized in isolation, subject to the constraints (henceforth referred as $\Omega$
+	\item the optimal value of each objective function in the first stage is denoted by $f_k^* (k= 1,2, \dots, 6)$
+	\item In the second stage, incorporate a lexicographic ordering of the objectives
+	\item order was established jointly with IDRD planners based on their experience and aligned with the sports and recreation master plan for the city
+	\item planners stated order of objectives as they are presented
+	\item compromise threshold defined for each objective, denoted by ($1-\alpha_k$), where $\alpha_k$ represents the maximum acceptable deterioration of objective $k= 1, 2, \dots, 5$. 
+	\item no compromise threshold assigned to last objective in lexicographic order, as it corresponds to last optimization model to be solved
+	\item cost was defined as last objective as it was implicitly included in two constraints
+	\end{itemize}
+\item second stage proceeds as follows:
+	\begin{itemize}
+	\item we solved a model to optimize the second objective function subject to the set of constraints $\Omega$.
+	\item to consider the compromise threshold of $100(1- \alpha_1)\%$ for $f_1^*$ we add the constraint: $$ \sum_{j \in \mathcal{J}} z_j \geq (1-\alpha_1)f_1^*$$
+	\item this constraint guarantees that the new solution covers at least $100(1-\alpha_1)\%$ of the maximum number of covered blocks given by $f_1^*$.
+	\item next, solve a model to optimize the third objective, considering the set of constraints $\Omega$, the constraint we just added, and this constraint: $$ \sum_{i \in \mathcal{I}}  \left( \sum_{\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i  -   \sum_{\{k \in \mathcal{E_N}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i   \right) \geq (1-\alpha_2)f_2^* $$
+	\item this new constraint guarantees that the new solution reaches at least $100(1-\alpha_2)\%$ of the maximum externality proximity index. this solution also guarantees a minimum level of geographical coverage through the first set of constraints we added
+	\item next, the fourth objective function is optimized subject to the original constraints (omega), the two new constraints and the following constraint: $$ \sum_{i \in \mathcal{I}} p_iy_i \geq (1- \alpha_3)f_3^*$$
+	\item this constraint limits the deterioration of the objective regarding the number of beneficiaries beyond $\alpha_3\%$.
+	\item then, objective five is optimized subject to all the previous constraints plus this one: $$ \sum_{i \in \mathcal{I}} v_iy_i \geq (1 - \alpha_4)f_4^*$$
+	\item this constraint avoids the deterioration of the accessibility index beyond its maximum accepted compromise of $\alpha_4\%$
+	\item the sixth objective is then optimized subject to $\Omega$, the previously added constraints, and this one: $$ \sum_{i \in \mathcal{I}} e_iy_i \geq (1-\alpha_5)f_5^*$$
+	\item this constraint guarantees a solution with at least $100(1-\alpha_5)\%$ of the max connectivity index.
+	\end{itemize}
+\item depending on the quality of the intermediate solution, the planners can change the compromise thresholds for the already optimized objectives
+\item for instance, if the last objective is optimized and the quality of the solution is not deemed satisfactory, the planners can update the values of $\alpha_1$ thorough $\alpha_5$ to try to improve the quality of the current objective compromising the most important ones
+\item Or, the planners may choose to make the compromise thresholds tighter to improve the solution under the light of the most important objectives, sacrificing the quality of the current (less important) objective
+\end{itemize}
+
+
 %
 %
 %

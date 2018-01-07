@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Background Info}{2}{0}{1}
+\beamer@sectionintoc {2}{A Basic Example}{9}{0}{2}
+\beamer@sectionintoc {3}{Complications}{30}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{42}{0}{4}
