@@ -34,6 +34,236 @@
     \node at (\x,\y)[anchor=north west] {\tiny\arabic{mycounter}\addtocounter{mycounter}{1}};
 	
 	
+	},
+	twoparkschosengrid/.pic={
+	\draw[step=1cm,color=gray] (-2,-2) grid (3,3);
+   	\node[fill=cyan] at (-1.5,2.5) {};
+    	\node[fill=green] at (-.5,.5) {};
+     	\node[fill=cyan] at (0.5,2.5) {};
+    	\node[fill=cyan] at (-1.5,2.5) {};
+    	\node[fill=cyan] at (2.5,.5) {};
+    	\node[fill=green] at (1.5,-.5) {};
+    	\node[fill=cyan] at (-1.5,-1.5) {};
+    	\node[fill=orange] at (-1.5,1.5){};
+     	\node[fill=orange] at (-1.5,.5){};
+     	\node[fill=orange] at (-1.5,-.5){};
+     	\node[fill=orange] at (-.5,1.5){};
+     	\node[fill=orange] at (-.5,-.5){};
+     	\node[fill=orange] at (0.5,-.5){};
+      	\node[fill=orange] at (.5,.5){};
+       	\node[fill=orange] at (.5,1.5){};
+       	\node[fill=orange] at (1.5,.5){};
+       	\node[fill=orange] at (.5,-1.5){};
+        	\node[fill=orange] at (1.5,-1.5){};
+         \node[fill=orange] at (2.5,-1.5){};
+         \node[fill=orange] at (2.5,-.5){};
+   
+	\setcounter{mycount}{1}
+	\foreach \y in {+2.6,+1.6,.6,-.4,-1.4}
+  	\foreach \x in {-1.6,-0.6,.4,1.4,2.4}
+    	\node at (\x,\y)[anchor=north west] {\tiny\arabic{mycount}\addtocounter{mycount}{1}};
+	
+	},
+	popgrid/.pic = {
+	\draw[step=1cm,color=gray] (-2,-2) grid (3,3);
+   	\node[fill=cyan] at (-1.5,2.5) {};
+    	\node[fill=cyan] at (-.5,.5) {};
+     	\node[fill=cyan] at (0.5,2.5) {};
+    	\node[fill=cyan] at (-1.5,2.5) {};
+    	\node[fill=cyan] at (2.5,.5) {};
+    	\node[fill=cyan] at (1.5,-.5) {};
+    	\node[fill=cyan] at (-1.5,-1.5) {};
+    	\node at (-1.5,1.5){40};
+     	\node at (-1.5,.5){40};
+     	\node at (-1.5,-.5){40};
+     	\node at (-.5,2.5){200};
+     	\node at (-.5,1.5){100};
+     	\node at (-.5,-.5){50};
+     	\node at (0.5,-.5){130};
+      	\node at (.5,.5){150};
+       	\node at (.5,1.5){150};
+       	\node at (1.5, 1.5){160};
+       	\node at (2.5, 1.5){20};
+       	\node at (2.5,2.5){30};
+       	\node at (1.5,2.5){200};
+       	\node at (1.5,.5){140};
+       	\node at (-.5,-1.5){60};
+       	\node at (.5,-1.5){70};
+        	\node at (1.5,-1.5){80};
+         \node at (2.5,-1.5){40};
+         \node at (2.5,-.5){80};
+   
+	\setcounter{mycount}{1}
+	\foreach \y in {+2.6,+1.6,.6,-.4,-1.4}
+  	\foreach \x in {-1.6,-0.6,.4,1.4,2.4}
+   	\node at (\x,\y)[anchor=north west] {\tiny\arabic{mycount}\addtocounter{mycount}{1}};
+	},
+	bigexample/.pic = {
+		
+	\draw [step=0.5cm, very thin, color=black, solid] (0, 0) grid (7.5, 5);
+	% row 1 pop
+	\node at (0.25,4.75){\footnotesize 50};
+	\node at (0.75,4.75){\footnotesize 55};
+	\node at (1.75,4.75){\footnotesize 40};
+	\node at (2.25,4.75){\footnotesize 60};
+	\node at (2.75,4.75){\footnotesize 85};
+	\node at (3.25,4.75){\footnotesize 65};
+	\node at (3.75,4.75){\footnotesize 120};
+	\node at (4.25,4.75){\footnotesize 105};
+	\node at (4.75,4.75){\footnotesize 95};
+	\node at (5.25,4.75){\footnotesize 85};
+	\node at (6.25,4.75){\footnotesize 65};
+	\node at (6.75,4.75){\footnotesize 45};
+	% row 2 pop
+	\node at (0.75,4.25){\footnotesize 50};
+	\node at (1.25,4.25){\footnotesize 45};
+	\node at (1.75,4.25){\footnotesize 60};
+	\node at (2.25,4.25){\footnotesize 110};
+	\node at (2.75,4.25){\footnotesize 120};
+	\node at (3.25,4.25){\footnotesize 95};
+	\node at (3.75,4.25){\footnotesize 110};
+	\node at (4.75,4.25){\footnotesize 100};
+	\node at (5.25,4.25){\footnotesize 65};
+	\node at (5.75,4.25){\footnotesize 75};
+	\node at (6.25,4.25){\footnotesize 40};
+	\node at (6.75,4.25){\footnotesize 45};
+	\node at (7.25,4.25){\footnotesize 30};
+	% row 3 pop
+	\node at (0.25,3.75){\footnotesize 80};
+	\node at (0.75,3.75){\footnotesize 75};
+	\node at (1.25,3.75){\footnotesize 55};
+	\node at (1.75,3.75){\footnotesize 70};
+	\node at (2.25,3.75){\footnotesize 105};
+	\node at (2.75,3.75){\footnotesize 130};
+	\node at (3.25,3.75){\footnotesize 115};
+	\node at (4.25,3.75){\footnotesize 105};
+	\node at (4.75,3.75){\footnotesize 115};
+	\node at (5.25,3.75){\footnotesize 80};
+	\node at (5.75,3.75){\footnotesize 50};
+	\node at (6.25,3.75){\footnotesize 65};
+	\node at (6.75,3.75){\footnotesize 50};
+	% row 4 pop
+	\node at (0.25,3.25){\footnotesize 165};
+	\node at (1.25,3.25){\footnotesize 65};
+	\node at (2.25,3.25){\footnotesize 65};
+	\node at (2.75,3.25){\footnotesize 80};
+	\node at (3.25,3.25){\footnotesize 95};
+	\node at (3.75,3.25){\footnotesize 110};
+	\node at (4.25,3.25){\footnotesize 105};
+	\node at (5.25,3.25){\footnotesize 70};
+	\node at (5.75,3.25){\footnotesize 55};
+	\node at (6.25,3.25){\footnotesize 45};
+	\node at (7.25,3.25){\footnotesize 25};
+	% row 5 pop
+	\node at (0.25,2.75){\footnotesize 225};
+	\node at (0.75,2.75){\footnotesize 200};
+	\node at (1.25,2.75){\footnotesize 70};
+	\node at (1.75,2.75){\footnotesize 75};
+	\node at (2.25,2.75){\footnotesize 100};
+	\node at (3.25,2.75){\footnotesize 100};
+	\node at (3.75,2.75){\footnotesize 105};
+	\node at (4.25,2.75){\footnotesize 120};
+	\node at (4.75,2.75){\footnotesize 105};
+	\node at (5.25,2.75){\footnotesize 55};
+	\node at (6.25,2.75){\footnotesize 20};
+	\node at (6.75,2.75){\footnotesize 25};
+	\node at (7.25,2.75){\footnotesize 15};
+	% row 6 pop
+	\node at (0.25,2.25){\footnotesize 250};
+	\node at (0.75,2.25){\footnotesize 120};
+	\node at (1.75,2.25){\footnotesize 85};
+	\node at (2.25,2.25){\footnotesize 105};
+	\node at (2.75,2.25){\footnotesize 100};
+	\node at (3.25,2.25){\footnotesize 110};
+	\node at (3.75,2.25){\footnotesize 70};
+	\node at (4.25,2.25){\footnotesize 80};
+	\node at (4.75,2.25){\footnotesize 70};
+	\node at (5.25,2.25){\footnotesize 65};
+	\node at (5.75,2.25){\footnotesize 50};
+	\node at (6.25,2.25){\footnotesize 15};
+	\node at (6.75,2.25){\footnotesize 5};
+	\node at (7.25,2.25){\footnotesize 10};
+	% row 7 pop
+	\node at (0.25,1.75){\footnotesize 200};
+	\node at (0.75,1.75){\footnotesize 100};
+	\node at (1.25,1.75){\footnotesize 180};
+	\node at (1.75,1.75){\footnotesize 155};
+	\node at (2.25,1.75){\footnotesize 125};
+	\node at (2.75,1.75){\footnotesize 105};
+	\node at (3.25,1.75){\footnotesize 80};
+	\node at (4.25,1.75){\footnotesize 95};
+	\node at (4.75,1.75){\footnotesize 75};
+	\node at (5.25,1.75){\footnotesize 40};
+	\node at (5.75,1.75){\footnotesize 45};
+	\node at (6.25,1.75){\footnotesize 35};
+	\node at (7.25,1.75){\footnotesize 15};
+	% row 8 pop
+	\node at (0.25,1.25){\footnotesize 250};
+	\node at (1.75,1.25){\footnotesize 145};
+	\node at (2.75,1.25){\footnotesize 235};
+	\node at (3.25,1.25){\footnotesize 100};
+	\node at (3.75,1.25){\footnotesize 80};
+	\node at (4.25,1.25){\footnotesize 135};
+	\node at (4.75,1.25){\footnotesize 95};
+	\node at (5.25,1.25){\footnotesize 70};
+	\node at (6.25,1.25){\footnotesize 50};
+	\node at (6.75,1.25){\footnotesize 45};
+	\node at (7.25,1.25){\footnotesize 20};
+	% row 9 pop
+	\node at (0.25,0.75){\footnotesize 300};
+	\node at (1.25,0.75){\footnotesize 265};
+	\node at (1.75,0.75){\footnotesize 205};
+	\node at (2.25,0.75){\footnotesize 235};
+	\node at (2.75,0.75){\footnotesize 505};
+	\node at (3.25,0.75){\footnotesize 500};
+	\node at (3.75,0.75){\footnotesize 245};
+	\node at (4.25,0.75){\footnotesize 175};
+	\node at (4.75,0.75){\footnotesize 80};
+	\node at (5.25,0.75){\footnotesize 85};
+	\node at (5.75,0.75){\footnotesize 65};
+	\node at (6.25,0.75){\footnotesize 30};
+	\node at (7.25,0.75){\footnotesize 25};
+	% row 10 pop
+	\node at (0.25,0.25){\footnotesize 305};
+	\node at (0.75,0.25){\footnotesize 255};
+	\node at (1.25,0.25){\footnotesize 275};
+	\node at (1.75,0.25){\footnotesize 215};
+	\node at (2.25,0.25){\footnotesize 225};
+	\node at (2.75,0.25){\footnotesize 400};
+	\node at (3.25,0.25){\footnotesize 405};
+	\node at (3.75,0.25){\footnotesize 410};
+	\node at (4.25,0.25){\footnotesize 500};
+	\node at (4.75,0.25){\footnotesize 305};
+	\node at (5.75,0.25){\footnotesize 45};
+	\node at (6.25,0.25){\footnotesize 50};
+	\node at (6.75,0.25){\footnotesize 40};
+	\node at (7.25,0.25){\footnotesize 30};
+
+	% candidate parcels
+	\filldraw[fill=cyan, draw=black] (7, 4.5) rectangle (7.5, 5);
+	\filldraw[fill=cyan, draw=black] (5.5, 4.5) rectangle (6, 5);
+	\filldraw[fill=cyan, draw=black] (1, 4.5) rectangle (1.5, 5);
+	\filldraw[fill=cyan, draw=black] (0, 4) rectangle (0.5, 4.5);
+	\filldraw[fill=cyan, draw=black] (4, 4) rectangle (4.5, 4.5);
+	\filldraw[fill=cyan, draw=black] (3.5, 3.5) rectangle (4, 4);
+	\filldraw[fill=cyan, draw=black] (7, 3.5) rectangle (7.5, 4);
+	\filldraw[fill=cyan, draw=black] (0.5, 3) rectangle (1, 3.5);
+	\filldraw[fill=cyan, draw=black] (1.5, 3) rectangle (2, 3.5);
+	\filldraw[fill=cyan, draw=black] (4.5, 3) rectangle (5, 3.5);
+	\filldraw[fill=cyan, draw=black] (6.5, 3) rectangle (7, 3.5);
+	\filldraw[fill=cyan, draw=black] (2.5, 2.5) rectangle (3, 3);
+	\filldraw[fill=cyan, draw=black] (5.5, 2.5) rectangle (6, 3);
+	\filldraw[fill=cyan, draw=black] (1, 2) rectangle (1.5, 2.5);
+	\filldraw[fill=cyan, draw=black] (3.5, 1.5) rectangle (4, 2);
+	\filldraw[fill=cyan, draw=black] (6.5, 1.5) rectangle (7, 2);
+	\filldraw[fill=cyan, draw=black] (0.5, 1) rectangle (1, 1.5);
+	\filldraw[fill=cyan, draw=black] (1, 1) rectangle (1.5, 1.5);
+	\filldraw[fill=cyan, draw=black] (2, 1) rectangle (2.5, 1.5);
+	\filldraw[fill=cyan, draw=black] (5.5, 1) rectangle (6, 1.5);
+	\filldraw[fill=cyan, draw=black] (0.5, 0.5) rectangle (1, 1);
+	\filldraw[fill=cyan, draw=black] (6.5, 0.5) rectangle (7, 1);
+	\filldraw[fill=cyan, draw=black] (5, 0) rectangle (5.5, 0.5);
+	
 	}
 }
 
@@ -43,7 +273,7 @@
 
 \maketitle
 
-\begin{abstract}In this paper we do a little bit.  We have yet to look at the real model. For now we have the toy example. Refer to chapter two.
+\begin{abstract}We take a look at the multiobjective facility location problem of park placement in the city of Bogot\'{a}, Colombia. We begin with an introduction to operations research, delving into its development and history, before we move on a to simplified example model. We work up from this example to look at the final model. We then examine more information about multiobjective and facility location problems.
 \end{abstract}
 
 \pagenumbering{roman}
@@ -83,7 +313,7 @@ In the introduction I will explain the history of operations research and how it
 \section{A Simplified Model}
 \subsection{Setting up the Problem}
 
-In this chapter I present a simplified version of the model. We will take a look at some simpler examples and gradually increase the complexity of our example until we arrive at the one presented in the paper. We begin with a $5\times5$ grid, which will represent our simplified fictional city. Each block represents a plot of land, which might either be empty or occupied. If it is occupied, this means that there are people living on the block. Otherwise, the lot is empty and it is a candidate parcel, to potentially be turned into a park. We number each block from one to $25$, and we have colored every candidate parcel cyan. We want to build one park, and so we can choose from amongst all they cyan parcels. This is shown in figure \ref{fig:grid1}. We note that every lot is the same size. We also define the service area of the candidate parcels to consist of all the populated blocks adjacent and diagonal to the candidate parcel. For example, candidate parcel one's service area will consist of the set $\{2,6,7\}$. In other words, if we built a park on candidate parcel one, then the visitors would be from \textbf{only} those three surrounding lots. The first question we are interested in asking then becomes: 
+In this chapter I present a simplified version of the model. We will take a look at some simpler examples and gradually increase the complexity of our example until we arrive at the one presented in the paper. We begin with a $5\times5$ grid, which will represent our simplified fictional city. Each block represents a plot of land, which might either be empty or occupied. If it is occupied, this means that there are people living on the block. Otherwise, the lot is empty and it is a candidate parcel, to potentially be turned into a park. We number each block from one to $25$, and we have colored every candidate parcel cyan. We want to build one park, and so we can choose from amongst all the cyan parcels. This is shown in figure \ref{fig:grid1}. We note that every lot is the same size. We also define the service area of the candidate parcels to consist of all the populated blocks adjacent and diagonal to the candidate parcel. For example, candidate parcel one's service area will consist of the set $\{2,6,7\}$. In other words, if we built a park on candidate parcel one, then the visitors would be from \textbf{only} those three surrounding lots. The first question we are interested in asking then becomes: 
 \begin{center}
 \textbf{Which candidate parcel will maximize the geographical coverage, as measured by the service area of the parcel?}
 \end{center}
@@ -97,64 +327,40 @@ In this chapter I present a simplified version of the model. We will take a look
 \end{figure}
 In this example, it is possible to answer our question after merely observing the grid. Candidate parcel 12 would result in the highest number of lots served with 8. We now move on to defining a certain number of sets and variables so that we can present a mathematical formulation of the problem. \newline 
 	
-	We first let $\mathcal{J}$ be the set of all blocks that would benefit from the construction of a new park. Looking back to figure \ref{fig:grid1}, we see that $\mathcal{J} = \{ 2,4,6,7, \dots, 22, 23, 24, 25\}$. The candidate parcels have not been included in this set, and in this case we note that lot five is not included in $\mathcal{J}$ either because it is outside the service area of every candidate parcel. We also then define the set $\mathcal{I}$ to be the set of candidate parcels. In our case, $\mathcal{I} = \{ 1,3,12,15,19,21\}$. We finally define the set $\mathcal{W}_j$ for $j in \mathcal{J}$, which consists of all the candidate parcels that service block $j$. In our example, $\mathcal{W}_7 = \{1,3,12\}$. \newline
+	We first let $\mathcal{J}$ be the set of all blocks that would benefit from the construction of a new park. Looking back to figure \ref{fig:grid1}, we see that $\mathcal{J} = \{ 2,4,6,7, \dots, 22, 23, 24, 25\}$. The candidate parcels have not been included in this set, and in this case we note that lot five is not included in $\mathcal{J}$ either because it is outside the service area of every candidate parcel. We also then define the set $\mathcal{I}$ to be the set of candidate parcels. In our case, $\mathcal{I} = \{ 1,3,12,15,19,21\}$. We finally define the set $\mathcal{W}_j$ for $j \in \mathcal{J}$, which consists of all the candidate parcels that service block $j$. In our example, $\mathcal{W}_7 = \{1,3,12\}$. \newline
 	
 	We now define $z_j$ as a binary decision variable, taking on the value 1 if block $j \in \mathcal{J}$ is covered by at least one park, and 0 otherwise. So if we decided to build a park on candidate parcel 21, then $z_{16} = z_{17} = z_{22} = 1$, and for every other possible value of $j$ we would have $z_j = 0$. We also define the binary decision variable $y_i$, which will take on value 1 if candidate parcel $i$ is selected to become a park, and 0 otherwise. If we turned candidate parcel 21 into a park, then $y_{21} = 1$. We can now formulate our initial model:
 \begin{align*}
 \textrm{max } f_1 &= \sum_{j \in \mathcal{J}} z_j \\
 \textrm{subject to } z_j &\leq \sum_{i \in \mathcal{W}_j} y_i, j \in \mathcal{J}\\
 \left|\mathcal{W}_j\right|z_j &\geq \sum_{i \in \mathcal{W}_j} y_i, j \in \mathcal{J} \\
+p_{max} &\geq \sum_{i \in \mathcal{I}} y_i \\
 z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{align*}
 
-	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one constraint, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$. An expansion of the model above to include all true constraints would like like so:
+	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in figure \ref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$. An expansion of the model above to include all true constraints would look like so:
 	\newline\newline
  \textbf{Here I was thinking of maybe typing out ALL of the model with all 40 constraints or so}
 	\newline\newline
-	  The last two constraints define our $z_j$ and $y_i$ as binary decision variables.
+	  The next constraints indicates how many parks we would like to build. The variable $p_{max}$, or the maximum allowable amount of parks we want built, is a constant that is decided upon beforehand. In our case, we decided that we wanted to build one park, so $p_{max} = 1$. The last two constraints define our $z_j$ and $y_i$ as binary decision variables.
 
-	As was mentioned earlier, wanting to select only one candidate parcel will result in the selection of candidate parcel 12. What if we wanted to build two parks? Looking at figure \ref{fig:grid2} we see that picking the two green parcels would result in a total coverage area of 13 blocks, which is the maximum in this case with two candidate parcels. 
+	As we realized earlier, wanting to select only one candidate parcel will result in the selection of candidate parcel 12. What if we wanted to build two parks? Looking at figure \ref{fig:grid2} we see that picking the two green parcels would result in a total coverage area of 13 blocks, highlighted in orange, which is the maximum in this case with two candidate parcels. 
 	\begin{figure}
 	\centering
 	\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth}]
 	\label{fig:grid2}
-	\draw[step=1cm,color=gray] (-2,-2) grid (3,3);
-   \node[fill=cyan] at (-1.5,2.5) {};
-    \node[fill=green] at (-.5,.5) {};
-     \node[fill=cyan] at (0.5,2.5) {};
-    \node[fill=cyan] at (-1.5,2.5) {};
-    \node[fill=cyan] at (2.5,.5) {};
-    \node[fill=green] at (1.5,-.5) {};
-    \node[fill=cyan] at (-1.5,-1.5) {};
-    \node[fill=orange] at (-1.5,1.5){};
-     \node[fill=orange] at (-1.5,.5){};
-     \node[fill=orange] at (-1.5,-.5){};
-     \node[fill=orange] at (-.5,1.5){};
-     \node[fill=orange] at (-.5,-.5){};
-     \node[fill=orange] at (0.5,-.5){};
-      \node[fill=orange] at (.5,.5){};
-       \node[fill=orange] at (.5,1.5){};
-       \node[fill=orange] at (1.5,.5){};
-       \node[fill=orange] at (.5,-1.5){};
-        \node[fill=orange] at (1.5,-1.5){};
-         \node[fill=orange] at (2.5,-1.5){};
-         \node[fill=orange] at (2.5,-.5){};
-   
-\setcounter{mycount}{1}
-\foreach \y in {+2.6,+1.6,.6,-.4,-1.4}
-  \foreach \x in {-1.6,-0.6,.4,1.4,2.4}
-    \node at (\x,\y)[anchor=north west] {\tiny\arabic{mycount}\addtocounter{mycount}{1}};
+		\pic{twoparkschosengrid};	
 	\end{tikzpicture}
 	\caption{Picking two candidate parcels to maximize geographical coverage.}
 	\end{figure}
 	
 	
-	We were able to see this result without having to do any calculations because of the simplicity of our model. But this is not always so apparent. We now begin to add layers of complexity to our model.
+	We were able to see this result without having to do any calculations because of the simplicity of our model. But this is not always so apparent. We now begin to change our model and consider other objectives.
 	
-\subsection{Complicating the model}
+\subsection{Changing the Objective}
 
-We were previously only concerned with maximizing the geographical coverage of our model. In real life, prioritizing the geographical coverage of the potential parks serves to spread out the location of the parks and avoids building excessive parks in densely populated areas. It also proactively places in parks that may have yet to be developed or may be susceptible to rapid population growth in the future. However, we do not want to fully neglect the population density of the various city blocks. How does our model change when we add the number of inhabitants in each block? The question we are interested now becomes:
+We were previously only concerned with maximizing the geographical coverage of our model. In real life, prioritizing the geographical coverage of the potential parks serves to spread out the location of the parks and avoids building excessive parks in densely populated areas. It also proactively locates parks in places that may have yet to be developed or may be susceptible to rapid population growth in the future. However, we do not want to fully neglect the population density of the various city blocks. How does our model change when we add the number of inhabitants in each block? The question we are interested in now becomes:
 \begin{center}
 \textbf{How do we maximize the geographical coverage of the parks as well as the number of beneficiaries that would result from the construction of the parks?}
 \end{center}
@@ -164,38 +370,7 @@ We define the number of beneficiaries from a park construction as the sum of the
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth}]
-	\draw[step=1cm,color=gray] (-2,-2) grid (3,3);
-   \node[fill=cyan] at (-1.5,2.5) {};
-    \node[fill=cyan] at (-.5,.5) {};
-     \node[fill=cyan] at (0.5,2.5) {};
-    \node[fill=cyan] at (-1.5,2.5) {};
-    \node[fill=cyan] at (2.5,.5) {};
-    \node[fill=cyan] at (1.5,-.5) {};
-    \node[fill=cyan] at (-1.5,-1.5) {};
-    \node at (-1.5,1.5){40};
-     \node at (-1.5,.5){40};
-     \node at (-1.5,-.5){40};
-     \node at (-.5,2.5){200};
-     \node at (-.5,1.5){100};
-     \node at (-.5,-.5){50};
-     \node at (0.5,-.5){130};
-      \node at (.5,.5){150};
-       \node at (.5,1.5){150};
-       \node at (1.5, 1.5){160};
-       \node at (2.5, 1.5){20};
-       \node at (2.5,2.5){30};
-       \node at (1.5,2.5){200};
-       \node at (1.5,.5){140};
-       \node at (-.5,-1.5){60};
-       \node at (.5,-1.5){70};
-        \node at (1.5,-1.5){80};
-         \node at (2.5,-1.5){40};
-         \node at (2.5,-.5){80};
-   
-\setcounter{mycount}{1}
-\foreach \y in {+2.6,+1.6,.6,-.4,-1.4}
-  \foreach \x in {-1.6,-0.6,.4,1.4,2.4}
-    \node at (\x,\y)[anchor=north west] {\tiny\arabic{mycount}\addtocounter{mycount}{1}};
+		\pic{popgrid};
 	\end{tikzpicture}
 	\caption{City blocks with population numbers.}
 	\label{fig:gridpop}
