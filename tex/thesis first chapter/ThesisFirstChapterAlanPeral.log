@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 MAR 2018 11:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 MAR 2018 16:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -629,7 +629,7 @@ LaTeX Info: Redefining \nameref on input line 273.
 
 
 ABD: EveryShipout initializing macros
-<pomonalogo.pdf, id=59, 464.73625pt x 194.7275pt>
+<pomonalogo.pdf, id=63, 464.73625pt x 194.7275pt>
 File: pomonalogo.pdf Graphic file (type pdf)
  <use pomonalogo.pdf>
 Package pdftex.def Info: pomonalogo.pdf used on input line 275.
@@ -676,43 +676,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 341--342
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 353--416
+Underfull \hbox (badness 10000) in paragraph at lines 353--424
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 353--416
+Underfull \hbox (badness 10000) in paragraph at lines 353--424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--424
 
  []
 
 [6] [7] [8] [9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 504--506
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 507--508
+
+ []
+
+[12]
 Chapter 3.
-[11
-
-]
-Chapter 4.
-[12
-
-]
-Chapter 5.
 [13
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 484.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 484.
+Chapter 4.
+[14
+
+]
+Chapter 5.
+[15
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 531.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 531.
  (./ThesisFirstChapterAlanPeral.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 484.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 484.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 531.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 531.
 Package rerunfilecheck Info: File `ThesisFirstChapterAlanPeral.out' has not cha
 nged.
-(rerunfilecheck)             Checksum: 55AD3E625DDF5EE2BDA4F2EA03E6DF2C;858.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 484.
+(rerunfilecheck)             Checksum: FBCB77C3232250EECF2D3375A16C58B4;925.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 531.
  ) 
 Here is how much of TeX's memory you used:
- 15989 strings out of 492995
- 300756 string characters out of 6132704
- 437922 words of memory out of 5000000
- 19228 multiletter control sequences out of 15000+600000
+ 15993 strings out of 492995
+ 300794 string characters out of 6132704
+ 438922 words of memory out of 5000000
+ 19229 multiletter control sequences out of 15000+600000
  11705 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,13n,69p,1274b,956s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -728,10 +743,10 @@ l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
 ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ThesisFirstChapterAlanPeral.pdf (16 pages, 162579 bytes).
+Output written on ThesisFirstChapterAlanPeral.pdf (18 pages, 166871 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 229 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
