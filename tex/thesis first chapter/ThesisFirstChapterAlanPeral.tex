@@ -3,6 +3,7 @@
 \advisor{Shahriar Shahriari}
 \title{The Parks Location Problem}
 \usepackage{tikz}
+\usepackage{amsmath}
 \newcounter{mycount}
 \newcounter{mycounter}
 
@@ -287,7 +288,17 @@
 \label{Intro}
 \section{What is Operations Research?}
 
-	We begin with a brief history of Operations Research (OR), which arose out of the conflict of World War II. There was a specific need to allocate scarce resources to military operations in an effective manner, and so the British and US militaries had scientists perform \textit{research on} (military) \textit{operations}. In essence, the goal was to make the war machine more efficient, and they succeeded. They developed effective ways to use the new radar technology, as well as came up with better ways to manage convoys and conduct antisubmarine operations [CITE INTRO TO OR BOOK]. 
+	We begin with a brief history of Operations Research (OR), which as a modern discipline has its roots in the Soviet political economy as well as the British war effort of World War II. 
+	
+	[SECTION ABOUT SOVIET UNION + OR]
+	
+	Now, in the year 1934 as Nazi Germany denounced the Treaty of Versailles, Britain sensed the threat and raced to strengthen its defenses. By the following year, radar had been developed and was capable of effectively detecting enemy aircraft, although its utility was stringent on its ability for integration with the existing defense systems: ground observers, interceptor aircraft, and antiaircraft artillery positions. The first task of the newly formed operational research group was to use scientific, rigorous processes to develop a system for the incorporation of radar into existing infrastructure, which was far from the more well-defined mathematical processes that exist today. However, this integrated radar-based air defense system increased the probability of intercepting an enemy aircraft by a factor of ten [CITE HISTORY OF OR IN US MILITARY BOOK]. 
+	
+	 Soon, the usage of OR spread to investigate other problems, and in 1940 was even called upon to influence high-level strategic policy, when the French requested additional RAF fighter support. Churchill was inclined to acquiesce to the request, but an OR team showed that sending more RAF fighters would weaken Britain beyond recovery in the face of a German attempt to invade Britain [CITE HISTORY OF OR IN US MILITARY]. Churchill was convinced by their presentation, and so he did not send the additional aircraft, preserving the pilots and aircrafts for the Battle of Britain instead. This decision, along with the incorporation of radar, contributed significantly to Britain's victory in the Battle of Britain [CITE HISTORY OF OR IN US MILITARY]. 
+	Another significant accomplishment of OR analysts involved the work of deciding upon depth charge settings for bombs. Their work in this field led to an immediate improvement on aerial attacks of German submarines, with estimates of the increased efficiency ranging from 400 to 700 percent [CITE HISTORY OF OR IN US MILITARY]. Other work included reducing the number of artillery rounds required to down one German aircraft  from twenty thousand in the summer of 1941 to merely four thousand the following year [CITE HISTORY OF OR IN US MILITARY].
+	From the British, this discipline spread to the Americans, where it was also used in the war effort. [TALK MORE ABOUT 'MURICA HERE!].
+	
+	There was a specific need to allocate scarce resources to military operations in an effective manner, and so the British and US militaries had scientists perform \textit{research on} (military) \textit{operations}. In essence, the goal was to make the war machine more efficient, and they succeeded. They developed effective ways to use the new radar technology, as well as came up with better ways to manage convoys and conduct antisubmarine operations [CITE INTRO TO OR BOOK]. 
 	
 	The success that OR saw in the war then encouraged interest in non-military applications of the field.
 % more intro shit
@@ -339,10 +350,68 @@ z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{align*}
 
-	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in figure \ref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$. An expansion of the model above to include all true constraints would look like so:
-	\newline\newline
- \textbf{Here I was thinking of maybe typing out ALL of the model with all 40 constraints or so}
-	\newline\newline
+	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in figure \ref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$. 
+\newline\newline We can see an expansion of the model above to include all true constraints in Figure \ref{expandedmodel}. \\ \\
+	\begin{figure}
+	\caption{Fully expanded model}
+	\label{expandedmodel}
+	\begin{center}
+		\begin{align*}
+		\textrm{max } f_1 &= z_2 + z_4 + z_6 + z_7 + z_8 + z_9 + z_{10} + z_{11} + z_{13} + z_{14} \\
+		&+ z_{16} + z_{17} + z_{18} + z_{20} + z_{22} + z_{23} + z_{24} + z_{25}
+		\end{align*}
+	\end{center}
+	\begin{equation*}
+	\begin{aligned}[c]
+	\textrm{subject to } z_2 &\leq y_1 + y_3 \\
+	z_4 &\leq y_3\\
+	z_6 &\leq y_1 + y_{12}\\
+	z_7 &\leq y_1 + y_3 +y_{12}\\
+	z_8 &\leq y_3 + y_{12} \\
+	z_9 &\leq  y_3 + y_{15} \\
+	z_{10} &\leq y_{15} \\
+	z_{11} &\leq y_{12} \\
+	z_{13} &\leq y_{12} + y_{19} \\
+	z_{14} &\leq y_{15} + y_{19} \\
+	z_{16} &\leq y_{12} + y_{21} \\
+	z_{17} &\leq y_{12} + y_{21} \\
+	z_{18} &\leq y_{12} + y_{19} \\
+	z_{20} &\leq y_{15} + y_{19} \\
+	z_{22} &\leq y_{21} \\
+	z_{23} &\leq y_{19} \\
+	z_{24} &\leq y_{19} \\
+	z_{25} &\leq y_{19} 
+	\end{aligned}
+	\qquad \qquad \qquad
+	\begin{aligned}[c]
+	|W_2|z_2 &\geq y_1 + y_3 \\
+	|W_4|z_4 &\geq y_3 \\
+	|W_6|z_6 &\geq y_1 + y_{12} \\
+	|W_7|z_7 &\geq y_1 + y_3 + y_{12} \\
+	|W_8|z_8 &\geq y_3 + y_{12} \\
+	|W_9|z_9 &\geq y_3 + y_{15} \\
+	|W_{10}|z_{10}&\geq y_{15} \\
+	|W_{11}|z_{11}&\geq y_{12} \\
+	|W_{13}|z_{13}&\geq y_{12} + y_{19} \\
+	|W_{14}|z_{14}&\geq y_{15} + y_{19} \\
+	|W_{16}|z_{16}&\geq y_{12} + y_{21} \\
+	|W_{17}|z_{17}&\geq y_{12} + y_{21} \\
+	|W_{18}|z_{18}&\geq y_{12} + y_{19} \\
+	|W_{20}|z_{20}&\geq y_{15} + y_{19} \\
+	|W_{22}|z_{22}&\geq y_{21} \\
+	|W_{23}|z_{23}&\geq y_{19} \\
+	|W_{24}|z_{24}&\geq y_{19} \\
+	|W_{25}|z_{25}&\geq y_{19}
+	\end{aligned}
+	\end{equation*}
+	\begin{center}
+	\begin{align*}
+	z_2, z_4, z_6, z_7, z_8, z_9, z_{10}, z_{11}, z_{12}, z_{13}, z_{14}, \\
+	z_{16}, z_{17}, z_{18}, z_{20}, z_{22}, z_{23}, z_{24}, z_{25} \in \{0,1\} \\
+	y_1,y_3,y_{12},y_{15},y_{19},y_{21} \in \{0,1\}
+	\end{align*}
+	\end{center}
+	\end{figure}
 	  The next constraints indicates how many parks we would like to build. The variable $p_{max}$, or the maximum allowable amount of parks we want built, is a constant that is decided upon beforehand. In our case, we decided that we wanted to build one park, so $p_{max} = 1$. The last two constraints define our $z_j$ and $y_i$ as binary decision variables.
 
 	As we realized earlier, wanting to select only one candidate parcel will result in the selection of candidate parcel 12. What if we wanted to build two parks? Looking at figure \ref{fig:grid2} we see that picking the two green parcels would result in a total coverage area of 13 blocks, highlighted in orange, which is the maximum in this case with two candidate parcels. 
