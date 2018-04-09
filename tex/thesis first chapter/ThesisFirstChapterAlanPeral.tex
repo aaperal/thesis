@@ -5,7 +5,7 @@
 \usepackage{tikz}
 \usepackage{amsmath}
  
- \theoremstyle{definition}
+\theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 
 \newcounter{mycount}
@@ -314,7 +314,7 @@
 
 In the introduction I will explain the history of operations research and how it tends to be most utilized in the private sector. I will detail the development of (and necessity for) community-based operations research, and then explain that I will be examining a particular case study: the problem of developing new public parks in Bogot\'a, Colombia. I will perhaps provide a literature review here, a roadmap of what I will cover in the rest of the thesis, and anything else that may fit and come to mind later.
 
-\section{An Introduction to the Parks Location Problem}
+\section{An Introduction to the Parks Location Problem} \label{intro-parks-problem}
 
 	In urban areas and large cities, the presence of public parks, green spaces, and other recreational facilities has been associated with a significant improvement in quality of life, mental health, and general wellbeing [CITE SOURCE]. Knowing this, the city of Bogot\'{a} (Colombia), one of the largest cities in Latin America with a population of about eight million that is expected to reach ten million by 2025, has implemented a number of changes that include the recovery of public spaces and the improvement of public parks [CITE THE SOURCE]. 
 	
@@ -324,11 +324,22 @@ In the introduction I will explain the history of operations research and how it
 % you should close a chapter before beginning a new one!
 \end{chapter}
 
+%
+%
+% Chapter 2
+%
+%
 \begin{chapter}{A Look at the Model}
-\section{A Simplified Model}
 In this chapter I present a simplified version of the model. We will take a look at some simpler examples and gradually increase the complexity of our example until we arrive at the one presented in the paper. 
-
-\subsection{Setting up the Problem}
+%
+% 2.1
+%
+\section{A Simplified Model} 
+We first look at a model that has been adapted from a real model developed by researchers working in Bogot\'{a}. This simpler version of the model will help us understand the more complex project and can serve as a learning tool to both introduce the concept of multiobjective optimization and community based operations research.
+%
+% 2.1.1
+%
+\subsection{Setting up the Problem} \label{setting-up-problem}
 
 We begin with a $5\times5$ grid, which will represent our simplified fictional city. Each block represents a plot of land, which might either be empty or occupied. If it is occupied, this means that there are people living on the block. Otherwise, the lot is empty and it is a candidate parcel, to potentially be turned into a park. We number each block from one to $25$, and we have colored every candidate parcel cyan. We want to build one park, and so we can choose from amongst all the cyan parcels. This is shown in Figure \ref{fig:grid1}. We note that every lot is the same size. We also define the service area of the candidate parcels to consist of all the populated blocks adjacent and diagonal to the candidate parcel. For example, candidate parcel one's service area will consist of the set $\{2,6,7\}$. In other words, if we built a park on candidate parcel one, then the visitors would be from \textbf{only} those three surrounding lots. The first question we are interested in asking then becomes: 
 \begin{center}
@@ -356,7 +367,7 @@ z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{align*}
 
-	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in figure \ref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$, meaning that each constraint must be repeated $|\mathcal{J}|$ times. \\ \\
+	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in Figure \ref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$, meaning that each constraint must be repeated $|\mathcal{J}|$ times. \\ \\
 	\begin{figure}
 	\centering
 	\caption{Fully expanded model}
@@ -624,6 +635,10 @@ We now turn our attention to the real model used in Bogot\'{a}.
 \section{The Real Model}
 The model proposed by the researchers in Bogot\'{a} linked to a geographic information system (GIS) that would allow decision makers to interact with it to determine which candidate parcels become new parks. In this section we do not discuss any technical considerations but rather present the model in its entirety. \\
 
+%
+% 2.3.1
+%
+\subsection{Objective Functions and Constraints}
 When considering candidate parcels for selection there are several aspects we are interested in:
 \begin{itemize}
 \item geographical coverage 
@@ -634,11 +649,14 @@ When considering candidate parcels for selection there are several aspects we ar
 \end{itemize}
 
 We have already interacted with the first two concerns, but in a real life scenario we must change how we define a candidate parcel's service area, thus affecting how we calculate these items as well. How do we define the service area then? One way is to draw a circular area of some radius from the parcel's centroid, which is essentially the center of mass of an object, as seen in Figure \ref{centroid} (we can pretend that the shape is a cardboard outline of a candidate parcel). The radius from which the circular area is made can either be a fixed distance or it can be a function of the candidate parcel's area. That way, smaller parcels will have smaller service areas and larger parcels will similarly have bigger service areas. Using this new idea of the service area we can calculate the geographical coverage and the number of beneficiaries as before. 
+
 \begin{figure}
+\centering
 \includegraphics{centroid}
-\caption{The centroid}
+\caption[The centroid.]{The centroid. \footnotemark}
 \label{centroid}
 \end{figure}
+\footnotetext{Image taken from MathIsFun.com.}
 
 Continuing with the new indices we have the accessibility index which is based on the density of sidewalks and roads that make a certain parcel accessible. Given some candidate parcel's service area, the accessibility index is calculated as the total length of sidewalks and roads per square meter. This accessibility is then normalized by dividing it by the accessibility index of the whole area of analysis, which means that a parcel with an accessibility index greater than one is relatively more accessible than the other parcels. Connectivity is an index that measures the connectedness between the candidate parcel and existing nearby facilities, which we can classify into one of two groups: negative and positive facilities\footnote{While I will hereafter refer to facilities that may have perceived negative/positive effects for parks as ``negative/positive facilities", this is by no means a condemnation of any urban facility (except for prisons, we should abolish those).}. So called negative facilities  are ones that could potentially harm the perceived benefits of a park, like morgues and prisons, while positive facilities could be seen to increase the perceived benefits of a park, such as schools and recreational centers. The connectivity index is calculated by subtracting the number of negative facilities from the number of positive facilities within the parcel's service area. So an index greater than zero indicates that a park is expected to capture some extra benefits from the surrounding facilities. This index is purely a count, since there is no information that indicates the relative importance of the externalities provided by each facility, but it could be modified if such information were to become available by including a weight to reflect the importance of the effect of each facility. \\
 
@@ -671,8 +689,8 @@ We now move onto the third objective function, where we try to maximize the numb
 \begin{equation} \label{objective-3}
 \textrm{max } f_3 = \sum_{i \in \mathcal{I}} p_iy_i
 \end{equation}
-For a refresher on what this means feel free to turn back to Section \ref{changing-objective}. \\
-
+For a refresher on what this means feel free to turn back to Section \ref{changing-objective}. \\ \\
+%
 We now turn to the accessibility index, which is given by:
 \begin{equation} \label{objective-4}
 \textrm{max } f_4 = \sum_{i \in \mathcal{I}} v_iy_i
@@ -689,9 +707,76 @@ We can now finally consider the most important objective, where we consider the 
 \begin{equation} \label{objective-6}
 \textrm{min } f_6 = \sum_{i \in \mathcal{I}} (c_i^l + c_i^b)y_i
 \end{equation}
-We have two variables to consider here. The first one, $c_i^l$, indicates the parcel (or lot, hence the $l$) acquisition cost. The second one, $c_i^b$, indicates the cost of building (hence the $b$) a park on parcel $i$. These two variables are measured using real estate appraisals for the former, and material cost, park amenities and design, operations, and other administrative duties. Thankfully, this was ranked as the least important objective to fulfill. Saving money is clearly not the goal here, but if we could be given the choice between building two otherwise identical parks, we might as well choose the less expensive one. Thus it is included as an objective to optimize, but clearly it is not the priority.
+We have two variables to consider here. The first one, $c_i^l$, indicates the parcel (or lot, hence the $l$) acquisition cost. The second one, $c_i^b$, indicates the cost of building (hence the $b$) a park on parcel $i$. These two variables are measured using real estate appraisals for the former, and material cost, park amenities and design, operations, and other administrative duties. Thankfully, this was ranked as the least important objective to fulfill. Saving money is clearly not the goal here, but if we could be given the choice between building two otherwise identical parks, we might as well choose the less expensive one. Thus it is included as an objective to optimize, but clearly it is not the priority. \\
 
+We can now begin to consider what sorts of constraints we might be bounded by. We will first present the constraints that we had already tackled in our simpler model.
+\begin{equation} \label{constraint-7}
+z_j \leq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J}
+\end{equation}
+%
+\begin{equation} \label{constrain-8}
+\left|\mathcal{W}_j\right|z_j \geq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J}
+\end{equation}
 
+These constraints guarantee that if a block $j$ is covered, then some parcel covering the block has been selected, and conversely, if block $j$ is not covered, then none of the parcels servicing it should be selected. As a quick refresher, the set $\mathcal{J}$ consists of all the blocks that could benefit from the construction of a park, $z_j$ is a binary valuable indicating whether block $j$ is being serviced or not, and the set $W_j$ is the set of $i$ that could service block $j$. For a more in-depth explanation, please refer back to Section \ref{setting-up-problem}. \\
+
+This next constraint indicates that total new park area should meet a minimum requirement.
+\begin{equation} \label{constraint-9}
+\sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i  \geq \underline{a}
+\end{equation}
+We note that with this constraint, two new sets are introduced: $\mathcal{I_F}$ and $\mathcal{I_V}$. The set $\mathcal{I_F}$ contains the candidate parcels with an area less than or equal to $10000m^2$ (fixed-sized parcels, hence the $\mathcal{F}$ subscript). The other set contains larger parcels, which are referred to as variable-size parcels because the resulting parks built on these candidate parcels may not cover the entire area of the parcel (they might be smaller than the parcel). We note that the union of these two sets is $\mathcal{I}$, our original set. In other words, $\mathcal{I_F} \cup \mathcal{I_V} = \mathcal{I}.$
+The variable $a_i$ denotes the area (in square meters) of parcel $i$. Since fixed-size parcels will cover the entire area of their parcel, then we can calculate the area for these resulting parks directly by using the parcel area. For variable sized parcels, however, we let $x_i$ represent the area of candidate parcel $i$ that is to be turned into a park. The variable $\underline{a}$ denotes the minimum requirement for park area as defined by Bogot\'{a}'s recreational master plan (for a reminder of this plan, turn back to Section \ref{intro-parks-problem}). \\
+
+On the other hand, we also do not want to build too many parks, because then the IDRD (Recreation and Sports Institute) might be overwhelmed and incapable of administering the excess of parks. Thus, we also implement an upper bound on the amount of parkland we want built:
+\begin{equation} \label{constraint-10}
+\sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i  \leq \bar{a}
+\end{equation}
+We note this constraint is almost identical to the previous one, with $\bar{a}$ denoting the upper bound for parkland to be built. \\ \\
+%
+The next constraint puts a size limit on the parks built on variable sized parcels.
+\begin{equation} \label{constraint-11}
+\underline{s}_iy_i \leq x_i \leq \bar{s_i}y_i \;, \quad i \in \mathcal{I_V}
+\end{equation}
+The variables $\underline{s}_i$ and $\bar{s_i}$ denote the minimum and maximum construction size parameters for the allotted park area in variable sized parcels. \\ \\
+%
+We return to familiar constraints, with:
+\begin{equation} \label{constraint-12}
+y_i \in \{0,1\} \; , \quad i \in \mathcal{I} 
+\end{equation}
+%
+\begin{equation} \label{constraint-13}
+z_j \in \{0,1\} \; , \quad j \in \mathcal{J} 
+\end{equation}
+These constraints define our variables to be binary, as discussed in our simpler model. \\ \\
+%
+Finally, our last constraint indicates that a variable sized park area cannot be negative (what is negative area?).
+\begin{equation}
+x_i \geq 0, i \in \mathcal{I_V}
+\end{equation}
+
+Put together, the grand model looks like this: 
+
+\begin{figure}
+\begin{gather*}
+\textrm{max } f_1 = \sum_{j \in \mathcal{J}} z_j \\
+\textrm{max } f_2 = \sum_{i \in \mathcal{I}}  \left( \sum_{\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i  -   \sum_{\{k \in \mathcal{E_N}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i   \right) \\
+\textrm{max } f_3 = \sum_{i \in \mathcal{I}} p_iy_i \\
+\textrm{max } f_4 = \sum_{i \in \mathcal{I}} v_iy_i \\
+\textrm{max } f_5 = \sum_{i \in \mathcal{I}} e_iy_i \\
+\textrm{min } f_6 = \sum_{i \in \mathcal{I}} (c_i^l + c_i^b)y_i \\
+\textrm{subject to } z_j \leq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J} \\
+\left|\mathcal{W}_j\right|z_j \geq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J} \\
+\sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i \geq \underline{a} \\
+\sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i \leq \bar{a} \\
+\underline{s}_iy_i \leq  x_i \leq \bar{s_i}y_i \;, \quad i \in \mathcal{I_V} \\
+y_i \in \{0,1\} \; , \quad i \in \mathcal{I} \\
+z_j \in \{0,1\} \; , \quad j \in \mathcal{J} \\
+x_i \geq 0 \; , \quad\quad\;\;\; i \in \mathcal{I_V} \\
+\end{gather*}
+\caption{The grand model}
+\label{real-model}
+\end{figure}
+The one striking difference from the real model compared to our simplified model is that there is no value of $p_{max}$ in the real model. The reason for this is that we are not actually limiting the number of parks to be built, as in our simplified model, but the total area of parkland instead. 
 \end{chapter}
 
 \begin{chapter}{Multiobjective Facility Location Problems}
