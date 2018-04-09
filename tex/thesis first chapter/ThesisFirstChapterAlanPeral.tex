@@ -79,12 +79,12 @@
     	\node[fill=cyan] at (1.5,-.5) {};
     	\node[fill=cyan] at (-1.5,-1.5) {};
     	\node at (-1.5,1.5){50};
-     	\node at (-1.5,.5){45};
-     	\node at (-1.5,-.5){40};
+     	\node at (-1.5,.5){40};
+     	\node at (-1.5,-.5){35};
      	\node at (-.5,2.5){200};
      	\node at (-.5,1.5){100};
      	\node at (-.5,-.5){50};
-     	\node at (0.5,-.5){130};
+     	\node at (0.5,-.5){140};
       	\node at (.5,.5){150};
        	\node at (.5,1.5){150};
        	\node at (1.5, 1.5){160};
@@ -94,8 +94,8 @@
        	\node at (1.5,.5){140};
        	\node at (-.5,-1.5){60};
        	\node at (.5,-1.5){95};
-        	\node at (1.5,-1.5){80};
-         \node at (2.5,-1.5){55};
+        	\node at (1.5,-1.5){85};
+         \node at (2.5,-1.5){60};
          \node at (2.5,-.5){90};
    
 	\setcounter{mycount}{1}
@@ -104,7 +104,7 @@
    	\node at (\x,\y)[anchor=north west] {\tiny\arabic{mycount}\addtocounter{mycount}{1}};
 	},
 	bigexample/.pic = {
-		
+	
 	\draw [step=0.5cm, very thin, color=black, solid] (0, 0) grid (7.5, 5);
 	% row 1 pop
 	\node at (0.25,4.75){\footnotesize 50};
@@ -113,8 +113,8 @@
 	\node at (2.25,4.75){\footnotesize 60};
 	\node at (2.75,4.75){\footnotesize 85};
 	\node at (3.25,4.75){\footnotesize 65};
-	\node at (3.75,4.75){\footnotesize 120};
-	\node at (4.25,4.75){\footnotesize 105};
+	\node at (3.75,4.75){\scriptsize 120};
+	\node at (4.25,4.75){\scriptsize 105};
 	\node at (4.75,4.75){\footnotesize 95};
 	\node at (5.25,4.75){\footnotesize 85};
 	\node at (6.25,4.75){\footnotesize 65};
@@ -123,11 +123,11 @@
 	\node at (0.75,4.25){\footnotesize 50};
 	\node at (1.25,4.25){\footnotesize 45};
 	\node at (1.75,4.25){\footnotesize 60};
-	\node at (2.25,4.25){\footnotesize 110};
-	\node at (2.75,4.25){\footnotesize 120};
+	\node at (2.25,4.25){\scriptsize 110};
+	\node at (2.75,4.25){\scriptsize 120};
 	\node at (3.25,4.25){\footnotesize 95};
-	\node at (3.75,4.25){\footnotesize 110};
-	\node at (4.75,4.25){\footnotesize 100};
+	\node at (3.75,4.25){\scriptsize 110};
+	\node at (4.75,4.25){\scriptsize 100};
 	\node at (5.25,4.25){\footnotesize 65};
 	\node at (5.75,4.25){\footnotesize 75};
 	\node at (6.25,4.25){\footnotesize 40};
@@ -138,48 +138,48 @@
 	\node at (0.75,3.75){\footnotesize 75};
 	\node at (1.25,3.75){\footnotesize 55};
 	\node at (1.75,3.75){\footnotesize 70};
-	\node at (2.25,3.75){\footnotesize 105};
-	\node at (2.75,3.75){\footnotesize 130};
-	\node at (3.25,3.75){\footnotesize 115};
-	\node at (4.25,3.75){\footnotesize 105};
-	\node at (4.75,3.75){\footnotesize 115};
+	\node at (2.25,3.75){\scriptsize 105};
+	\node at (2.75,3.75){\scriptsize 130};
+	\node at (3.25,3.75){\scriptsize 115};
+	\node at (4.25,3.75){\scriptsize 105};
+	\node at (4.75,3.75){\scriptsize 115};
 	\node at (5.25,3.75){\footnotesize 80};
 	\node at (5.75,3.75){\footnotesize 50};
 	\node at (6.25,3.75){\footnotesize 65};
 	\node at (6.75,3.75){\footnotesize 50};
 	% row 4 pop
-	\node at (0.25,3.25){\footnotesize 165};
+	\node at (0.25,3.25){\scriptsize 165};
 	\node at (1.25,3.25){\footnotesize 65};
 	\node at (2.25,3.25){\footnotesize 65};
 	\node at (2.75,3.25){\footnotesize 80};
 	\node at (3.25,3.25){\footnotesize 95};
-	\node at (3.75,3.25){\footnotesize 110};
-	\node at (4.25,3.25){\footnotesize 105};
+	\node at (3.75,3.25){\scriptsize 110};
+	\node at (4.25,3.25){\scriptsize 105};
 	\node at (5.25,3.25){\footnotesize 70};
 	\node at (5.75,3.25){\footnotesize 55};
 	\node at (6.25,3.25){\footnotesize 45};
 	\node at (7.25,3.25){\footnotesize 25};
 	% row 5 pop
-	\node at (0.25,2.75){\footnotesize 225};
-	\node at (0.75,2.75){\footnotesize 200};
+	\node at (0.25,2.75){\scriptsize 225};
+	\node at (0.75,2.75){\scriptsize 200};
 	\node at (1.25,2.75){\footnotesize 70};
 	\node at (1.75,2.75){\footnotesize 75};
-	\node at (2.25,2.75){\footnotesize 100};
-	\node at (3.25,2.75){\footnotesize 100};
-	\node at (3.75,2.75){\footnotesize 105};
-	\node at (4.25,2.75){\footnotesize 120};
-	\node at (4.75,2.75){\footnotesize 105};
+	\node at (2.25,2.75){\scriptsize 100};
+	\node at (3.25,2.75){\scriptsize 100};
+	\node at (3.75,2.75){\scriptsize 105};
+	\node at (4.25,2.75){\scriptsize 120};
+	\node at (4.75,2.75){\scriptsize 105};
 	\node at (5.25,2.75){\footnotesize 55};
 	\node at (6.25,2.75){\footnotesize 20};
 	\node at (6.75,2.75){\footnotesize 25};
 	\node at (7.25,2.75){\footnotesize 15};
 	% row 6 pop
-	\node at (0.25,2.25){\footnotesize 250};
-	\node at (0.75,2.25){\footnotesize 120};
+	\node at (0.25,2.25){\scriptsize 250};
+	\node at (0.75,2.25){\scriptsize 120};
 	\node at (1.75,2.25){\footnotesize 85};
-	\node at (2.25,2.25){\footnotesize 105};
-	\node at (2.75,2.25){\footnotesize 100};
-	\node at (3.25,2.25){\footnotesize 110};
+	\node at (2.25,2.25){\scriptsize 105};
+	\node at (2.75,2.25){\scriptsize 100};
+	\node at (3.25,2.25){\scriptsize 110};
 	\node at (3.75,2.25){\footnotesize 70};
 	\node at (4.25,2.25){\footnotesize 80};
 	\node at (4.75,2.25){\footnotesize 70};
@@ -189,12 +189,12 @@
 	\node at (6.75,2.25){\footnotesize 5};
 	\node at (7.25,2.25){\footnotesize 10};
 	% row 7 pop
-	\node at (0.25,1.75){\footnotesize 200};
-	\node at (0.75,1.75){\footnotesize 100};
-	\node at (1.25,1.75){\footnotesize 180};
-	\node at (1.75,1.75){\footnotesize 155};
-	\node at (2.25,1.75){\footnotesize 125};
-	\node at (2.75,1.75){\footnotesize 105};
+	\node at (0.25,1.75){\scriptsize 200};
+	\node at (0.75,1.75){\scriptsize 100};
+	\node at (1.25,1.75){\scriptsize 180};
+	\node at (1.75,1.75){\scriptsize 155};
+	\node at (2.25,1.75){\scriptsize 125};
+	\node at (2.75,1.75){\scriptsize 105};
 	\node at (3.25,1.75){\footnotesize 80};
 	\node at (4.25,1.75){\footnotesize 95};
 	\node at (4.75,1.75){\footnotesize 75};
@@ -203,42 +203,42 @@
 	\node at (6.25,1.75){\footnotesize 35};
 	\node at (7.25,1.75){\footnotesize 15};
 	% row 8 pop
-	\node at (0.25,1.25){\footnotesize 250};
-	\node at (1.75,1.25){\footnotesize 145};
-	\node at (2.75,1.25){\footnotesize 235};
-	\node at (3.25,1.25){\footnotesize 100};
+	\node at (0.25,1.25){\scriptsize 250};
+	\node at (1.75,1.25){\scriptsize 145};
+	\node at (2.75,1.25){\scriptsize 235};
+	\node at (3.25,1.25){\scriptsize 100};
 	\node at (3.75,1.25){\footnotesize 80};
-	\node at (4.25,1.25){\footnotesize 135};
+	\node at (4.25,1.25){\scriptsize 135};
 	\node at (4.75,1.25){\footnotesize 95};
 	\node at (5.25,1.25){\footnotesize 70};
 	\node at (6.25,1.25){\footnotesize 50};
 	\node at (6.75,1.25){\footnotesize 45};
 	\node at (7.25,1.25){\footnotesize 20};
 	% row 9 pop
-	\node at (0.25,0.75){\footnotesize 300};
-	\node at (1.25,0.75){\footnotesize 265};
-	\node at (1.75,0.75){\footnotesize 205};
-	\node at (2.25,0.75){\footnotesize 235};
-	\node at (2.75,0.75){\footnotesize 505};
-	\node at (3.25,0.75){\footnotesize 500};
-	\node at (3.75,0.75){\footnotesize 245};
-	\node at (4.25,0.75){\footnotesize 175};
+	\node at (0.25,0.75){\scriptsize 300};
+	\node at (1.25,0.75){\scriptsize 265};
+	\node at (1.75,0.75){\scriptsize 205};
+	\node at (2.25,0.75){\scriptsize 235};
+	\node at (2.75,0.75){\scriptsize 505};
+	\node at (3.25,0.75){\scriptsize 500};
+	\node at (3.75,0.75){\scriptsize 245};
+	\node at (4.25,0.75){\scriptsize 175};
 	\node at (4.75,0.75){\footnotesize 80};
 	\node at (5.25,0.75){\footnotesize 85};
 	\node at (5.75,0.75){\footnotesize 65};
 	\node at (6.25,0.75){\footnotesize 30};
 	\node at (7.25,0.75){\footnotesize 25};
 	% row 10 pop
-	\node at (0.25,0.25){\footnotesize 305};
-	\node at (0.75,0.25){\footnotesize 255};
-	\node at (1.25,0.25){\footnotesize 275};
-	\node at (1.75,0.25){\footnotesize 215};
-	\node at (2.25,0.25){\footnotesize 225};
-	\node at (2.75,0.25){\footnotesize 400};
-	\node at (3.25,0.25){\footnotesize 405};
-	\node at (3.75,0.25){\footnotesize 410};
-	\node at (4.25,0.25){\footnotesize 500};
-	\node at (4.75,0.25){\footnotesize 305};
+	\node at (0.25,0.25){\scriptsize 305};
+	\node at (0.75,0.25){\scriptsize 255};
+	\node at (1.25,0.25){\scriptsize 275};
+	\node at (1.75,0.25){\scriptsize 215};
+	\node at (2.25,0.25){\scriptsize 225};
+	\node at (2.75,0.25){\scriptsize 400};
+	\node at (3.25,0.25){\scriptsize 405};
+	\node at (3.75,0.25){\scriptsize 410};
+	\node at (4.25,0.25){\scriptsize 500};
+	\node at (4.75,0.25){\scriptsize 305};
 	\node at (5.75,0.25){\footnotesize 45};
 	\node at (6.25,0.25){\footnotesize 50};
 	\node at (6.75,0.25){\footnotesize 40};
@@ -430,8 +430,10 @@ y_i &\in \{0,1\}, i \in \mathcal{I}
 	
 	
 	We were able to see this result without having to do any calculations because of the simplicity of our model. But this is not always so apparent. We now begin to alter our model and consider other objectives.
-	
-\subsection{Changing the Objective}
+%
+% 2.1.2
+%	
+\subsection{Changing the Objective} \label{changing-objective}
 
 We were previously only concerned with maximizing the geographical coverage of our model. In real life, prioritizing the geographical coverage of the potential parks serves to spread out the location of the parks and avoids building excessive parks in densely populated areas. It also proactively locates parks in places that may have yet to be developed or may be susceptible to rapid population growth in the future. However, we do not want to fully neglect the population density of the various city blocks. How does our model change when we add the number of inhabitants in each block? The question we are interested in now becomes:
 \begin{center}
@@ -449,9 +451,9 @@ We define the number of beneficiaries from a park construction as the sum of the
 	\label{fig:gridpop}
 	\end{figure}
 	
-	We now turn to Figure \ref{fig:gridpop} to see an updated version of our model city. The residential blocks have been updated with a number that indicates the number of people living in that city block. This allows us to calculate the number of beneficiaries that would result from the construction of a park on any candidate parcel. Building a park on candidate parcel 21, for example, would result in 150 beneficiaries. We define one additional variable.
+	We now turn to Figure \ref{fig:gridpop} to see an updated version of our model city. The residential blocks have been updated with a number that indicates the number of people living in that city block. This allows us to calculate the number of beneficiaries that would result from the construction of a park on any candidate parcel. Building a park on candidate parcel 21, for example, would result in 145 beneficiaries. We define one additional variable.
 	
-	Let $p_i$ be the number of beneficiaries resulting from building a park on candidate parcel $i$. In the example of parcel 21, we would have $p_{21} = 150$. We can now update our model:
+	Let $p_i$ be the number of beneficiaries resulting from building a park on candidate parcel $i$. In the example of parcel 21, we would have $p_{21} = 145$. We can now update our model:
 
 \begin{align*}
 \textrm{max } f_1 &= \sum_{j \in \mathcal{J}} z_j \\
@@ -466,7 +468,7 @@ y_i &\in \{0,1\}, i \in \mathcal{I}
 	Our model now has two objective functions. The first objective $f_1$ still seeks to maximize the geographical coverage of the parks. The second objective $f_3$ seeks to maximize the number of beneficiaries. But how do we maximize two things at the same time? We cannot guarantee that there will be a solution that maximizes the number of beneficiaries and the geographical coverage simultaneously. If we consider individual parcels, we notice that candidate parcel 3 serves the most amount of people, with $f_3 = 810$. However, candidate parcel 12 still has the most expansive geographical coverage, with $f_1 = 8$. How do we reconcile these two solutions?
 %
 %
-% section 2.2 - A solution strategy
+% section 2.2 
 %
 %
 \section{A Solution Strategy}
@@ -474,7 +476,7 @@ y_i &\in \{0,1\}, i \in \mathcal{I}
 	Because we are now trying to optimize multiple objectives, our question turns into a multiobjective optimization problem. We will present one possible way to solve these types of problems, borrowing the method used by the researchers from Bogot\'{a}. They implemented a lexicographic ordering of the objectives, which in practice meant that they ranked their objectives in accordance with their priorities. These priorities are reflected by the subscripts of the objective functions. Geographical coverage was deemed the most important criterion, which is why it is labeled $f_1$. Maximizing the number of beneficiaries was likewise deemed the third-most important criterion, so it is accordingly labeled $f_3$. For our model these are the only ones that we are concerned with, but it could work with any number of objective functions (for example, six). \\
 	The solution strategy is composed of two main parts. The first part is concerned with setting a benchmark for each objective function. The second part is about compromising to find a best possible solution. We will go over both parts in great detail.
 %
-% 2.2.1 solving in isolation
+% 2.2.1 
 %	
 \subsection{Solving in Isolation}
 
@@ -552,34 +554,33 @@ z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{align*}
 
-To recap, in this linear program we try to optimize for the number of beneficiaries while ensuring that our geographical coverage does not drop below a certain percentage. And in fact, the solutions will change depending on what value for $\alpha_1$ we decide to use. So how can we decide what value of $\alpha_1$ will yield an ideal solution, and in general, how can we decide what values for any $\alpha_k$ to use? This is where automation will come in handy. Since it may not be particularly evident which value of $\alpha_1$ will be the most optimal, we can employ a computer program to try many different values of $\alpha_1$ for us. I devised a program to carry out precisely this task, and in Table \ref{alpha-table-1} we can see the result of running this program. The table has four columns corresponding to the compromise threshold, the maximum allowable deterioration, the number of beneficiaries served (the value solved for $f_3$), and the number of blocks served in the solution (the value for $f_1$). We note that the last two columns have percentage values in parenthesis. These figures express the solution as a percentage of the optimal solutions $f_k^*$ solved in isolation ($810$ for beneficiaries and $8$ for geographic coverage). In our case of the small $5 \times 5$ town, we notice that there seem to be a set of three different, optimal solutions. When dealing with multiple objectives, however, our definition of optimal becomes a little bit muddled. Looking at the chart, we first note that the program tells us that if we relax the constraint on geographic coverage only a little bit by letting $\alpha_1 = 0.1$, the best solution is still to optimize the geographic coverage fully. This then results in $715$ people being served by that selected candidate parcel. However, if we relax our constraint a little bit more and let $\alpha_1 = 0.15$, our solution changes. The number of blocks served drops to $7$, which is not as good as our previous solution, but now the number of people served by the potential park jumps to $740$. Relaxing the geographic constraint a significantly higher amount by letting $\alpha_1 = 0.4$ then results in another decrease in blocks serviced with five, but it has a corresponding jump of people serviced to $810$, which is the maximum amount of people we could service by building one park. With this set of solutions, it seems to be the case that as we decrease our expectations of how many blocks we should service, we are able to service more people. \\
+To recap, in this linear program we try to optimize for the number of beneficiaries while ensuring that our geographical coverage does not drop below a certain percentage. And in fact, the solutions will change depending on what value for $\alpha_1$ we decide to use. So how can we decide what value of $\alpha_1$ will yield an ideal solution, and in general, how can we decide what values for any $\alpha_k$ to use? This is where automation will come in handy. Since it may not be particularly evident which value of $\alpha_1$ will be the most optimal, we can employ a computer program to try many different values of $\alpha_1$ for us. I devised a program to carry out precisely this task, and in Table \ref{alpha-table-1} we can see the result of running this program. The table has four columns corresponding to the maximum allowable deterioration, the compromise threshold, the number of blocks served in the solution (the value for $f_1$), and  the number of beneficiaries served (the value solved for $f_3$). We note that the last two columns have percentage values in parenthesis. These figures express the solution as a percentage of the optimal solutions $f_k^*$ solved in isolation ($8$ for geographic coverage and $810$ for beneficiaries). In our case of the small $5 \times 5$ town, we notice that there seem to be a set of three different, optimal solutions. When dealing with multiple objectives, however, our definition of optimal becomes a little bit muddled. Looking at the chart, we first note that the program tells us that if we relax the constraint on geographic coverage only a little bit by letting $\alpha_1 = 0.1$, the best solution is still to optimize the geographic coverage fully. This then results in $715$ people being served by that selected candidate parcel. However, if we relax our constraint a little bit more and let $\alpha_1 = 0.15$, our solution changes. The number of blocks served drops to $7$, which is not as good as our previous solution, but now the number of people served by the potential park jumps to $760$. Relaxing the geographic constraint a significantly higher amount by letting $\alpha_1 = 0.4$ then results in another decrease in blocks serviced with five, but it has a corresponding jump of people serviced to $810$, which is the maximum amount of people we could service by building one park. With this set of solutions, it seems to be the case that as we decrease our expectations of how many blocks we should service, we are able to service more people. \\
 
 \begin{table}[]
 \centering
 \hspace*{-1.9cm}\begin{tabular}{llll}
 \hline
-$(1-\alpha_1)$ & \begin{tabular}[c]{@{}l@{}}Allowable \\ deterioration ($\alpha_1$) \end{tabular} & \# beneficiaries served (\% of max) & \# blocks served (\% of max) \\ \hline
-0.9   & 0.1                                                                                    & 715 (88.3)                  & 8 (100)                    \\
-0.85  & 0.15                                                                                    & 740 (91.4)                  & 7 (87.5)                    \\
-0.8   & 0.2                                                                                    & 740 (91.4)                  & 7 (87.5)                    \\
-0.75  & 0.25                                                                                    & 740 (91.4)                  & 7 (87.5)                    \\
-0.7   & 0.3                                                                                    & 740 (91.4)                  & 7 (87.5)                    \\
-0.65  & 0.35                                                                                    & 740 (91.4)                  & 7 (87.5)                    \\
-0.6   & 0.4                                                                                    & 810 (100)                  & 5 (62.5)                    \\
-0.55  & 0.45                                                                                    & 810 (100)                   & 5 (62.5)                    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Allowable \\ deterioration ($\alpha_1$) \end{tabular} & $(1-\alpha_1)$ & \# blocks served (\% of max) & \# beneficiaries served (\% of max)  \\ \hline
+0.10   & 0.90                                                                                                     & 8 (100)       & 715 (88.3)              \\
+0.15  & 0.85                                                                                                     & 7 (87.5)     & 760 (93.8)                \\
+0.20  & 0.80                                                                                                    & 7 (87.5)          & 760 (93.8)            \\
+0.25  & 0.75                                                                                                     & 7 (87.5)          & 760 (93.8)           \\
+0.30   & 0.70                                                                                                    & 7 (87.5)             & 760 (93.8)         \\
+0.35  & 0.65                                                                                                 & 7 (87.5)             & 760 (93.8)            \\
+0.40   & 0.60                                                                                                   & 5 (62.5)           & 810 (100)            \\
+0.45  & 0.55                                                                                                      & 5 (62.5)       & 810 (100)              \\ \hline
 \end{tabular}
 \caption{How changing the value of $\alpha_1$ changes the optimal solution}
 \label{alpha-table-1}
 \end{table}
 
-Since we don't actually have any more objective functions, then stage two of the process is over. We have no other function to repeat it for, and we cannot add $f_3$ as a constraint to a new linear program because we would have no new objective function to optimize. We run into another problem, however, as there seems to be no clear best solution out of the ones given. No one solution is better than the others in every single way, as there is always some tradeoff. This is where domain specific knowledge influences our decision, and it is ideal to consult the urban planners and other interested parties to see which solution is ideal to them. What is more valuable? Having one potential park serve $25$ people extra, or having a potential park service one more block? Do we want to serve as many people as possible at significant cost to the geographic coverage? It's quite hard to say, and often, there won't always be a clear-cut solution to multiobjective problems. What we can do is present a series of ideal solutions, and leave the experts and involved parties to pick the best one in accordance with their experience and criteria for selection.
+Since we don't actually have any more objective functions, then stage two of the process is over. We have no other function to repeat it for, and we cannot add $f_3$ as a constraint to a new linear program because we would have no new objective function to optimize. We run into another problem, however, as there seems to be no clear best solution out of the ones given. No one solution is better than the others in every single way, as there is always some tradeoff. This is where domain specific knowledge influences our decision, and it is ideal to consult the urban planners and other interested parties to see which solution is ideal to them. What is more valuable? Having one potential park serve $45$ more people at the cost of one less block of coverage, or having a potential park serve $95$ more people at the cost of three less blocks of coverage? Do we want to serve as large a geographic area as possible at significant cost to the number of beneficiaries served? It's quite hard to say, and often, there won't always be a clear-cut solution to multiobjective problems. What we can do is present a series of ideal solutions, and leave the experts and involved parties to pick the best one in accordance with their experience and criteria for selection.
 %
-%
+% 2.2.3 
 %
 \subsection{A More Complicated Example}
 
-With our previous example, we were only looking at a small town with $25$ total blocks, and a small number of candidate parcels. It turned out to be a very simple problem to eye-ball, and it was feasible to calculate the geographic coverage and population totals for every single candidate parcel and compare them that way. But we know that towns may be much much bigger. So what if we wanted to look at a bigger area of land? Perhaps a part of a town, or a city district? It would be near impossible to brute force our solutions for much bigger plots of land. This is where the program I designed comes into play, and it can solve much more difficult problems. Consider Figure \ref{bigexample}
-
+With our previous example, we were only looking at a small town with $25$ total blocks, and a small number of candidate parcels. It turned out to be a very feasible problem to eye-ball, and it was possible to calculate the geographic coverage and population totals for every single candidate parcel and compare them that way. But we know that towns may be much much bigger. So what if we wanted to look at a bigger area of land? Perhaps a specific section of a town, or a city district? It would be near impossible to brute force our solutions for much bigger plots of land. This is where the program I designed comes into play, and it can solve much more difficult problems. Consider Figure \ref{bigexample}, which we note is a much bigger example than our initial problem, and which has numerous candidate parcels to be considered. Now it is still possible to calculate the necessary information for each candidate parcel, given that there are only twenty-three of them, but it might be extremely difficult to decide on the best selection of parcels to optimize our objectives. \\
 
 \begin{figure}
 \centering
@@ -589,10 +590,106 @@ With our previous example, we were only looking at a small town with $25$ total 
   \pic{bigexample};
 \end{tikzpicture}
 \end{figure}
+
+Instead, by automating our solution strategy, we are able to quickly find a solution for any value of $\alpha_k$, the maximum allowable deterioration rate for an objective. In fact, the program performs both steps of the solution strategy, first by solving the corresponding linear program for each objective in isolation and then carrying out the incremental constraint addition for each corresponding objective. Returning to Figure \ref{bigexample}, by solving for the objectives in isolation we find out that when we are only able to build five parks we can at most serve 40 blocks, or alternately, at most serve 6690 beneficiaries. That is, $f_1^* = 40$ and $f_3^* = 6690$, as defined earlier. \\
+
+It is also possible to calculate solutions within a given interval of $\alpha_k$ with any desired step amount. For example, in Table \ref{alpha-table-2} we present the range of solutions (at five percent intervals) that allows up to $45\%$ deterioration of $\alpha_1$. We note that allowing for no deterioration whatsoever of the first objective results in only just under $70\%$ of the optimal number of beneficiaries being served by our park selection, which may not necessarily be the best solution. We also see that allowing for $45\%$ deterioration of the first objective results in the maximum number of beneficiaries served, and the increased deterioration of the first objective corresponds to the optimization of the other objective.\\
+
+\begin{table}[]
+\centering
+\hspace*{-1.9cm}\begin{tabular}{llll}
+\hline
+ \begin{tabular}[c]{@{}l@{}}Allowable \\ deterioration ($\alpha_1$) \end{tabular} & $(1-\alpha_1)$  & \# blocks served (\% of max) & \# beneficiaries served (\% of max) \\ \hline
+0.00   & 1.00                                                                                                       & 40 (100)         & 4605.0 (68.8)           \\
+0.05 &  0.95                                                                                               & 38 (95.0)                    & 5805.0 (86.8)        \\
+0.10 &  0.90                                                                                                 & 37 (92.5)                    & 5855 (87.5)     \\
+  0.15 & 0.85                                                                                                 & 35 (87.5)                 & 6035 (90.2)        \\
+ 0.20  & 0.80                                                                                            & 33 (82.5)                      & 6345 (94.8)       \\
+ 0.25  &  0.75                                                                                            & 30 (75.0)                      & 6395 (95.6)     \\
+ 0.30 & 0.70                                                                                           & 28 (70.0)                         & 6575 (98.2)    \\
+ 0.35   & 0.65                                                                                               & 28 (70.0)                & 6575 (98.2)        \\
+ 0.40   & 0.60                                                                                       & 25 (62.5)                         & 6640 (99.3)        \\
+ 0.45   & 0.55                                                                                            & 22 (55.0)                      & 6690 (100)       \\ \hline
+\end{tabular}
+\caption{A Range of Solutions for Deteriorations of the First Objective}
+\label{alpha-table-2}
+\end{table}
+
+Looking at the rest of the solutions, it seems again that there is no clear-cut optimal solution out of all the provided solutions. We could eliminate some solutions, perhaps, like the ones corresponding to $\alpha_1 = 0.0$ and $\alpha_1 = 0.45$, because we note that the solution corresponding to $\alpha_1 = 0.05$ has little drop off in the number of blocks served while largely incrementing the number of beneficiaries served, with the reverse being true for $\alpha_1 = 0.40$ as it relates to $\alpha_1 = 0.45$. In loose terms, we like losing a little in one area while gaining a lot in another. Beyond that, however, it becomes a little more difficult and subjective to choose which solution is the best. How much more important is the geographic coverage than the number of beneficiaries resulting from the construction of our parks? To an eye unfamiliar with the situation, it might look like the solutions corresponding to $\alpha_1 = 0.10$ and $\alpha_1 = 0.15$ are possibly the best, because they optimize for both objectives quite nicely, but since we do not know if we should give both objectives equal importance, it is difficult to say for sure. Subjectivity plays a big role in deciding which solution to pick! \\
+
+We now turn our attention to the real model used in Bogot\'{a}.
 %
 % 2.3 the real model
 %
 \section{The Real Model}
+The model proposed by the researchers in Bogot\'{a} linked to a geographic information system (GIS) that would allow decision makers to interact with it to determine which candidate parcels become new parks. In this section we do not discuss any technical considerations but rather present the model in its entirety. \\
+
+When considering candidate parcels for selection there are several aspects we are interested in:
+\begin{itemize}
+\item geographical coverage 
+\item number of beneficiaries
+\item sidewalk and road accessibility
+\item nearby facilities
+\item cost 
+\end{itemize}
+
+We have already interacted with the first two concerns, but in a real life scenario we must change how we define a candidate parcel's service area, thus affecting how we calculate these items as well. How do we define the service area then? One way is to draw a circular area of some radius from the parcel's centroid, which is essentially the center of mass of an object, as seen in Figure \ref{centroid} (we can pretend that the shape is a cardboard outline of a candidate parcel). The radius from which the circular area is made can either be a fixed distance or it can be a function of the candidate parcel's area. That way, smaller parcels will have smaller service areas and larger parcels will similarly have bigger service areas. Using this new idea of the service area we can calculate the geographical coverage and the number of beneficiaries as before. 
+\begin{figure}
+\includegraphics{centroid}
+\caption{The centroid}
+\label{centroid}
+\end{figure}
+
+Continuing with the new indices we have the accessibility index which is based on the density of sidewalks and roads that make a certain parcel accessible. Given some candidate parcel's service area, the accessibility index is calculated as the total length of sidewalks and roads per square meter. This accessibility is then normalized by dividing it by the accessibility index of the whole area of analysis, which means that a parcel with an accessibility index greater than one is relatively more accessible than the other parcels. Connectivity is an index that measures the connectedness between the candidate parcel and existing nearby facilities, which we can classify into one of two groups: negative and positive facilities\footnote{While I will hereafter refer to facilities that may have perceived negative/positive effects for parks as ``negative/positive facilities", this is by no means a condemnation of any urban facility (except for prisons, we should abolish those).}. So called negative facilities  are ones that could potentially harm the perceived benefits of a park, like morgues and prisons, while positive facilities could be seen to increase the perceived benefits of a park, such as schools and recreational centers. The connectivity index is calculated by subtracting the number of negative facilities from the number of positive facilities within the parcel's service area. So an index greater than zero indicates that a park is expected to capture some extra benefits from the surrounding facilities. This index is purely a count, since there is no information that indicates the relative importance of the externalities provided by each facility, but it could be modified if such information were to become available by including a weight to reflect the importance of the effect of each facility. \\
+
+There is also another aspect of considering nearby facilities which includes weighing them by their proximity. This perspective assumes that the impact of these facilities reduces as their distance from the parcel increases. The closer a facility is to a parcel, then the more it will affect it. As with the previous connectivity index, we subtract the negative facilities from the positive ones. Finally, the cost takes into consideration the potential cost of parcel acquisition as well as the construction costs of the park. This first component is estimated according to real estate appraisals while the second component is calculated based on construction materials, proposed park amenities, park design, operations, and further administrative obligations. \\
+
+While it may not be immediately clear, these considerations are actually going to be the optimization objectives. The decision makers also ranked them in order of importance (a key component of the solution strategy), with the final order being the following:
+\begin{enumerate}
+\item Maximizing the geographic coverage
+\item Maximizing the weighted proximity index
+\item Maximizing the number of beneficiaries
+\item Maximizing the accessibility index
+\item Maximizing the connectivity index
+\item Minimizing the cost
+\end{enumerate}
+We will explore and further explain the mathematical formulations of the six objective functions in order to understand what is happening and then we will proceed to walk through the constraints so we can get a better picture of the entire model. \\
+
+The goal of maximizing the geographic coverage is not too different than the one we presented in our simpler models. In fact, the only difference is that the definition of the service area has changed, as previously discussed. So for the real model we will still have the following as our objective function for the geographic coverage: 
+\begin{equation} \label{objective-1}
+\textrm{max } f_1 = \sum_{j \in \mathcal{J}} z_j
+\end{equation}
+
+We move onto the second objective function which concerns the weighted proximity index. I will first present the mathematical formulation and then we walk through every component of it.
+\begin{equation} \label{objective-2}
+\textrm{max } f_2 = \sum_{i \in \mathcal{I}}  \left( \sum_{\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i  -   \sum_{\{k \in \mathcal{E_N}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i   \right)
+\end{equation}
+
+Clearly, there is a lot here for us to unpack. What is this objective function attempting to quantify? We are actually trying to measure the externality proximity index, or the impact (positive or negative) of facilities near the park. As described earlier, the further a facility is from a park the less of an effect it will have on said park. So a school across the street from a park will have a much greater impact on the park than a morgue a couple of blocks over. How does this function measure these things? We start by looking at the first term within the parenthesis of the function: $\sum_{\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i$. We start off by defining what certain sets mean. The set $\mathcal{I}$ is the set of all candidate parcels. The set $\mathcal{E}$ defines the set of all urban facilities in the area of analysis (in the town, or region we are considering for this model). Thus, the set $\mathcal{E_P}$ refers to the set of facilities that would have positive effect on a park. The variable $d_{ik}$ refers to the distance from the centroid of candidate parcel $i$ to the facility $k$. The variable $r^e$ defines the maximum distance of effect for any facility. Thus, the term $ \left( 1-\frac{d_{ik}}{r^e} \right) y_i$ indicates as an index the effect from a facility on candidate parcel $i$. We note that the conditions under the summation symbol, $\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}$ indicate that we are only considering the positive facilities for this term, and only those whose distance to the centroid of the park is within their area of effect. Thus, the term $\sum_{\{k \in \mathcal{E_P}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i$ indicates that we are measuring the effect of positive facilities on a candidate parcel. Similarly, the term being subtracted, $ \sum_{\{k \in \mathcal{E_N}: d_{ik} \leq r^e  \}} \left( 1-\frac{d_{ik}}{r^e} \right) y_i  $, indicates the effect of negative facilities on a candidate parcel. We note that in this term, we are considering facilities $k \in \mathcal{E_N}$, where $\mathcal{E_N}$ is the set of facilities with negative effect on parks. Thus, subtracting these two terms gives us an index of how positively or negatively affected a park is by the surrounding facilities. Finally, the final summation symbol indicates that we repeat this process for every single candidate parcel. And since we are trying to maximize this objective function, it means that we want to select parcels who will benefit the most from the surrounding facilities' presence. \\
+
+We now move onto the third objective function, where we try to maximize the number of beneficiaries. Again, this is the same as in our model:
+\begin{equation} \label{objective-3}
+\textrm{max } f_3 = \sum_{i \in \mathcal{I}} p_iy_i
+\end{equation}
+For a refresher on what this means feel free to turn back to Section \ref{changing-objective}. \\
+
+We now turn to the accessibility index, which is given by:
+\begin{equation} \label{objective-4}
+\textrm{max } f_4 = \sum_{i \in \mathcal{I}} v_iy_i
+\end{equation}
+In this objective function, the variable $v_i$ represent the accessibility index of candidate parcel $i$. As discussed earlier, this is calculated by measuring the total length of sidewalks and roads within the service area of a candidate parcel, and then dividing this measure by the total length of sidewalks and roads over the \textit{entire} area of analysis (the town, city neighborhood, etc). An index greater than one indicates a candidate parcel that is relatively more accessible than the rest.  This is a figure that is calculated for all the candidate parcels, and is something we also try to maximize, because the more accessible a park is, the easier it is for people to go to it! \\
+
+We now consider the connectivity index, which is expressed formulaically as:
+\begin{equation} \label{objective-5}
+\textrm{max } f_5 = \sum_{i \in \mathcal{I}} e_iy_i
+\end{equation}
+In this objective function, $e_i$ denotes the connectivity index of parcel $i$. How is this calculated? By looking at the service area of a candidate parcel, we can determine all of the facilities within the service area that may have an impact (positive or negative) on the park. We then take all of the positive facilities within the service area of a parcel and subtract from this number the quantity of negative facilities. So for example, if there are five positive facilities and 3 negative facilities within a parcel's service area, then it would have a connectivity index of two. An index greater than zero might indicate that the park is expected to capture some extra benefits from the surrounding facilities. In fact, this index is related to the weighted proximity index but is slightly different, as it does not take into account the proximity of the facilities and ranks them all as equal, regardless of distance. \\
+
+We can now finally consider the most important objective, where we consider the effect of park-building on our budget\footnote{This is a joke.}. In this objective function, we wish to minimize the costs of our operations:
+\begin{equation} \label{objective-6}
+\textrm{min } f_6 = \sum_{i \in \mathcal{I}} (c_i^l + c_i^b)y_i
+\end{equation}
+We have two variables to consider here. The first one, $c_i^l$, indicates the parcel (or lot, hence the $l$) acquisition cost. The second one, $c_i^b$, indicates the cost of building (hence the $b$) a park on parcel $i$. These two variables are measured using real estate appraisals for the former, and material cost, park amenities and design, operations, and other administrative duties. Thankfully, this was ranked as the least important objective to fulfill. Saving money is clearly not the goal here, but if we could be given the choice between building two otherwise identical parks, we might as well choose the less expensive one. Thus it is included as an objective to optimize, but clearly it is not the priority.
 
 
 \end{chapter}
