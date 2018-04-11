@@ -1,11 +1,7 @@
 import math
 import pulp
 import re
-
-def generateGrid(n, m, popArray):
-	if (n * m != len(popArray)):
-		return "ERROR: invalid input arguments"
-
+import ast
 
 
 # Returns true if two blocks x,y are adjacent
@@ -16,13 +12,13 @@ def generateGrid(n, m, popArray):
 # considered proximal. However, it can be changed to other
 # positive integers to simulate the larger area of effect
 # of bigger candidate parcels.
-def is_adjacent(x, y, n, m, adjacent_dist = 1):
-	block_one_row = math.ceil(x/m)
-	block_one_col = x % m
+def is_adjacent(block_one, block_two, n, m, adjacent_dist = 1):
+	block_one_row = math.ceil(block_one/m)
+	block_one_col = block_one % m
 	if block_one_col == 0:
 		block_one_col = m
-	block_two_row = math.ceil(y/m)
-	block_two_col = y % m
+	block_two_row = math.ceil(block_two/m)
+	block_two_col = block_two % m
 	if block_two_col == 0:
 		block_two_col = m
 	return (math.fabs(block_one_row - block_two_row) <= adjacent_dist and math.fabs(block_one_col - block_two_col) <= adjacent_dist)
@@ -82,23 +78,10 @@ def generate_set_j_no_string(candidate_parcels, n, m, pop_dict):
 	#print(set_j)
 	return sorted(set_j), pop_sum
 
-def generate_set_j(candidate_parcels, n, m):
-	lots = range(1, n*m+1)
-	set_j = []
-
-	for i in candidate_parcels:
-		for j in [x for x in lots if x not in candidate_parcels]:
-			if is_adjacent(i,j,n,m):
-				if ('z' + str(j)) not in set_j:
-					set_j.append('z' + str(j))
-	#print(set_j)
-	return set_j
-
 #
 # Method to generate the sets W_j, for j in J
 #
 def generate_sets_w(candidate_parcels, n, m, benefitting_sets):
-	
 	list_of_w_sets = {}
 	w_j = []
 
@@ -147,7 +130,7 @@ def solveLP(obj_function, obj_string,
 	park_location_model += pulp.lpSum([vars_y[y] for y in candidate_parcels]) <= max_parks, "Can only build {0} park(s)".format(max_parks)
 
 
-	# attempt to add some constraints
+	# add some constraints
 	for key, val in vars_z.items():
 		num = extract_num(key)
 		y_constraints = sets_w[num]
@@ -171,7 +154,7 @@ def solveLP(obj_function, obj_string,
 		park_location_model += condition_one, label_one
 		park_location_model += condition_two, label_two
 
-	# Add extra constrain which will be the deterioration for an objective
+	# Add extra constraint which will be the deterioration for an objective
 	if extra_constraint is not None: 
 		park_location_model += extra_constraint , "Objective function deterioration"
 
@@ -245,11 +228,11 @@ def place_parks(candidate_parcels, n, m, max_parks, population, lower = 10,
 
 	
 
-	for i in range(lower, upper, step):
+	for i in range(lower, upper+step, step):
 		# maximum acceptable deterioration amount
 		det_amount = i / 100
 		deterioration = LP1.objective >= (1 - det_amount) * LP1_obj_value
-		# SOLVING BOTH THINGIES! SO EXCITING
+		# solving both objectives
 		print("Solving both objective functions\n-------------------")
 		print("Acceptable deterioration value: {0}%".format(i))
 		LP3 = solveLP(pop_objective, 
@@ -264,15 +247,24 @@ def extract_num(letters):
 	return (int(num[0]))
 
 #print(generate_sets_w([1,3,12,15,19,21],5,5))
-lower = int(input("Enter the lower acceptable deterioration amount (to allow for only 10 percent deterioration, enter 10):"))
-upper = int(input("Enter the upper acceptable deterioration amount (to allow for only 90 percent deterioration, enter 90):"))
-step = int(input("Enter the step value (to jump by 5 percent enter 5):"))
+lower = int(input("Enter the lower acceptable deterioration amount (to allow for only 10 percent deterioration, enter 10): "))
+upper = int(input("Enter the upper acceptable deterioration amount (to allow for only 90 percent deterioration, enter 90): "))
+step = int(input("Enter the step value (to jump by 5 percent enter 5): "))
+num_rows = int(input("Enter the number of rows in your model town: "))
+num_cols = int(input("Enter the number of columns in your model town: "))
+max_parks = int(input("Enter the maximim number of parks you wish to build: "))
+candidates = ast.literal_eval(input("Enter a list denoting the indices of the candidate parcels: "))
+pop_dict = ast.literal_eval(input("Enter a python dictionary denoting the population number for every block. (With 2 blocks only for example, if block 1 has 50 people living on it and block 2 is a candidate parcel, enter only {1:50}): "))
 
-candidates = [3,12,15,16,24,38,45,47,49,55,59,66,72,78,98,104,107,108,110,117,122,134,146]
-pop_dict = {1:50, 2:55, 4:45, 5:60, 6:85, 7:65, 8:120, 9:105, 10:95, 11:85, 13:65, 14:45, 17:50, 18:45, 19:60, 20:110, 21:120, 22:95, 23:110, 25:100, 26:65, 27:75, 28:40, 29:45, 30:30, 31:80, 32:75, 33:55, 34:70, 35:105, 36:130, 37:115, 39:105, 40:115, 41:80, 42:50, 43:65, 44:50, 46:165, 48:65, 50:65, 51:80, 52:95, 53:110, 54:105, 56:70, 57:55, 58:45, 60:25, 61:225, 62:200, 63:70, 64:75, 65:100, 67:100, 68:105, 69:120, 70:105, 71:55, 73:20, 74:25, 75:15, 76:250, 77:120, 79:85, 80:105, 81:100, 82:110, 83:70, 84:80, 85:70, 86:65, 87:50, 88:15, 89:5, 90:10, 91:200, 92:100, 93:180, 94:155, 95:125, 96:105, 97:80, 99:95, 100:75, 101:40, 102:45, 103:35, 105:15, 106:250, 109:145, 111:235, 112:100, 113:80, 114:135, 115:95, 116:70, 118:50, 119:45, 120:20, 121:300, 123:265, 124:205, 125:235, 126:505, 127:500, 128:245, 129:175, 130:80, 131:85, 132:65, 133:60, 135:25, 136:305, 137:255, 138:275, 139:215, 140:225, 141:400, 142:405, 143:410, 144:500, 145:305, 147:75, 148:50, 149:40, 150:30}
+
+#candidates = [3,12,15,16,24,38,45,47,49,55,59,66,72,78,98,104,107,108,110,117,122,134,146]
+#pop_dict = {1:50, 2:55, 4:45, 5:60, 6:85, 7:65, 8:120, 9:105, 10:95, 11:85, 13:65, 14:45, 17:50, 18:45, 19:60, 20:110, 21:120, 22:95, 23:110, 25:100, 26:65, 27:75, 28:40, 29:45, 30:30, 31:80, 32:75, 33:55, 34:70, 35:105, 36:130, 37:115, 39:105, 40:115, 41:80, 42:50, 43:65, 44:50, 46:165, 48:65, 50:65, 51:80, 52:95, 53:110, 54:105, 56:70, 57:55, 58:45, 60:25, 61:225, 62:200, 63:70, 64:75, 65:100, 67:100, 68:105, 69:120, 70:105, 71:55, 73:20, 74:25, 75:15, 76:250, 77:120, 79:85, 80:105, 81:100, 82:110, 83:70, 84:80, 85:70, 86:65, 87:50, 88:15, 89:5, 90:10, 91:200, 92:100, 93:180, 94:155, 95:125, 96:105, 97:80, 99:95, 100:75, 101:40, 102:45, 103:35, 105:15, 106:250, 109:145, 111:235, 112:100, 113:80, 114:135, 115:95, 116:70, 118:50, 119:45, 120:20, 121:300, 123:265, 124:205, 125:235, 126:505, 127:500, 128:245, 129:175, 130:80, 131:85, 132:65, 133:60, 135:25, 136:305, 137:255, 138:275, 139:215, 140:225, 141:400, 142:405, 143:410, 144:500, 145:305, 147:75, 148:50, 149:40, 150:30}
+#num_rows = 10
+#num_cols = 15
+#max_parks = 5
 #candidates = [1,3,12,15,19,21]
 #pop_dict = {1:0, 2:200, 3:0, 4:200, 5:30, 6:50, 7:100, 8:150, 9:160, 10:20, 11:40, 12:0, 13:150, 14:140, 15:0, 16:35, 17:50, 18:140, 19:0, 20:90, 21:0, 22:60, 23:95, 24:85, 25:60}
 #place_parks(candidates,5,5,1, pop_dict, lower, upper, step)
-place_parks(candidates, 10, 15, 5, pop_dict, lower, upper, step)
+place_parks(candidates, num_rows, num_cols, max_parks, pop_dict, lower, upper, step)
 
 print('hello')				

@@ -334,7 +334,7 @@ Objective_function_deterioration: z1 + z10 + z101 + z102 + z103 + z105 + z106
  + z54 + z56 + z57 + z58 + z60 + z61 + z62 + z63 + z64 + z65 + z67 + z69 + z70
  + z71 + z73 + z74 + z75 + z77 + z79 + z8 + z80 + z81 + z82 + z83 + z84 + z86
  + z87 + z88 + z89 + z9 + z90 + z91 + z92 + z93 + z94 + z95 + z96 + z97 + z99
- >= 22
+ >= 38
 Binaries
 y104
 y107

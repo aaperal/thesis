@@ -711,9 +711,36 @@ Cambridge University Press 1973
 \item Generating Pareto set allows Decision Maker (DM) to make informed decision by seeing wide range of options
 \item utopian solution is the solution that is optimal for all objectives
 \item DEFINITION: ``a solution belongs to the Pareto set if there is no other solutionthat can improve at least one of the objectives without degradation any other objective" (p85)
-\item ``a decision vector $\bar{u} = [u_1, u_2, \dots u_n]^t$ is said to \textit{Pareto-dominate} the decision vector $\bar{v} = [v_1,v_2, \dots, v_n]^t$, in a minimization context, if and only if for all $i \in \{1,\dots,N\}, f_i(\bar{U}) \leq f_i(\bar{v})$, and there exists a $j\in\{1,\dots,N\}: f_j(\bar{u}) < f_j(\bar{v})$." (p85)
-\item a solution is Pareto optimal iff there does not exist another solution that dominates it.
+\item ``a decision vector $\bar{u} = [u_1, u_2, \dots u_n]^t$ is said to \textit{Pareto-dominate} the decision vector $\bar{v} = [v_1,v_2, \dots, v_n]^t$, in a minimization context, if and only if for all $i \in \{1,\dots,N\}, f_i(\bar{U}) \leq f_i(\bar{v})$, and there exists a $j\in\{1,\dots,N\}: f_j(\bar{u}) < f_j(\bar{v})$." (p85) ($f_i$ denotes the objective function)
+\item a solution is Pareto optimal iff there does not exist another solution that dominates it, which means that a solution $\overrightarrow{a}$ is pareto optimal if it cannot be improved in one of the objectives without adversely affecting at least one other objective. 
+\item generally impossible to come up with analytical expression of the pareto front
+\item solution approaches for solving multiobjective problems:
+	\begin{itemize}
+	\item converting MO problem into SO problem (assume a priori information from the DM)
+	\item second class of techniques geared towards direct determination of Pareto frontier by optimizing all the objectives separately
+	\end{itemize}
+\item Classical methods: consist of converting MO problem into SO problem by either aggregating objective functions or optimizing one objective and treating other as constraints (this is similar to what we did but not QUITE THE SAME!)
+\item weighted aggregation!! converts MO problem into an SO problem by applying a function operator to the objective vector, a simple + popular function being a linear combination of objectives: Minimize $Z = \Sigma_{j=1}^N w_jf_j(\overrightarrow{x})$ with $w_j \geq 0$ and $\Sigma_{j=1}^N w_j = 1$. the weights ($w_j$) can indicate relative importance that DM attaches to objective $j$ and must be specified beforehand. But this method yields one result that largely depends on the selection of the weights, and without prior information, the selection of the weights can be problematic.
+\item Goal programming (a variation of the above!) seeks to minimize deviation from prespecified goals. Minimize $Z = \Sigma_{j=1}^N w_j |f_j(\overrightarrow{x})- T_j|$, where $T_j$ represents the target or goal set by the DM for the $j$th objective function, and $w_j$ are the priorities. but you still need a priori information.
+\item $\epsilon$-Constraint approach (this is what we did)! this is computationally intensive, but a simple technique
+\item for all these solutions to generated front while locally non-dominated is not necessarily globally non-dominated
+\item Intelligent techniques: geared towards direct generation of pareto front by simultaneously optimizing the individual objectives
+\item Evolutionary computing emulates biological evolution process; a population of individuals representing different solutions is evolving to find optimal solutions; fittest individuals chosen, mutation and crossover operations applied, yielding a new generation offspring.
+\item genetic algorithms, evolutionary algorithms, evolutionary strategies
+\item non-pareto-based approach: vector evaluated genetic algorithm (VEGA)
+\item pareto-based approaches: 
+\item multi objective genetic algorithm: fitness value of an individual is proportional to the number of other individuals it dominates
+\item non-dominated sorting genetic algorithm (NSGA): layered classification technique. non-dominated individuals are assigned the same fitness value and sharing is applied in decision variable space
+\item Niched Pareto Genetic Algorithm (NPGA): two individuals are compared with respect to a comparison set; when one candidate dominated by set while other is not, latter is selected. If neither or both are dominated, fitness sharing used to decide selection.
+\item Strength Pareto Evolutionary Algorithm (SPEA) uses external archive to maintain non-dominated solutions found during the evolution.
+\item Multi Objective Particle Swarm Optimization (MOPSO)
+\item Modern methods allow concurrent exploration of Pareto front, can thus generate multiple solutions in a single run. main drawback is performance degradation as number of objectives increases, since there does not exist computationally efficient methods to perform pareto ranking.
 \end{itemize}
+Citation info: \\
+Title: Pareto Multi Objective Optimization \\
+Authors: Patrick Ngatchou, Anahita Zarei, M.A. El-Sharkawi \\
+2005
+
 
 
 \end{document}

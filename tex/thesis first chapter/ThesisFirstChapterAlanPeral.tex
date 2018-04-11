@@ -3,8 +3,21 @@
 \advisor{Shahriar Shahriari}
 \title{The Parks Location Problem}
 \usepackage{tikz}
+\usepackage{listings}
+
+\renewcommand\lstlistingname{Function}
+\renewcommand\lstlistlistingname{Software and Functions}
+
 \usepackage{amsmath}
- 
+
+\usepackage{hyperref}
+\hypersetup{
+ 	colorlinks = true,
+	linkcolor = blue,
+	urlcolor = magenta,
+	citecolor = black,
+	linktoc = page
+ }
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 
@@ -275,53 +288,111 @@
 
 
 \begin{document}
+\lstset{
+	literate={``}{\textquotedblleft}1,
+    	deletestring=[b]",
+    	showstringspaces=false,
+	belowcaptionskip = 15pt,
+	belowskip = 15pt
+}
+
 
 \maketitle
 
-\begin{abstract}We take a look at the multiobjective facility location problem of park placement in the city of Bogot\'{a}, Colombia. We begin with an introduction to operations research, delving into its development and history, before we move on a to simplified example model. We work up from this example to look at the final model. We then examine more information about multiobjective and facility location problems.
+\begin{abstract}We take a look at the multiobjective facility location problem of park placement in the city of Bogot\'{a}, Colombia. We begin with an introduction to operations research, explore the notion of community based operations research and multiobjective optimization problems, and then introduce a simplified model based on our real scenario. We work up from this example to construct our final model. We then examine the computer program I developed to solve our mathematical model.
 \end{abstract}
 
 \pagenumbering{roman}
 \tableofcontents
+\lstlistoflistings
 
 \newpage
 \pagenumbering{arabic}
 % this is how you begin a chapter:
 % the label is so that you can refer to it later
-\begin{chapter}{Introduction}
-\label{Intro}
-\section{What is Operations Research?}
+\begin{chapter}{Introduction} \label{intro}
 
-	We begin with a brief history of Operations Research (OR), which as a modern discipline has its roots in the Soviet political economy as well as the British war effort of World War II. 
-	
-	[SECTION ABOUT SOVIET UNION + OR]
-	
-	Now, in the year 1934 as Nazi Germany denounced the Treaty of Versailles, Britain sensed the threat and raced to strengthen its defenses. By the following year, radar had been developed and was capable of effectively detecting enemy aircraft, although its utility was stringent on its ability for integration with the existing defense systems: ground observers, interceptor aircraft, and antiaircraft artillery positions. The first task of the newly formed operational research group was to use scientific, rigorous processes to develop a system for the incorporation of radar into existing infrastructure, which was far from the more well-defined mathematical processes that exist today. However, this integrated radar-based air defense system increased the probability of intercepting an enemy aircraft by a factor of ten [CITE HISTORY OF OR IN US MILITARY BOOK]. 
-	
-	 Soon, the usage of OR spread to investigate other problems, and in 1940 was even called upon to influence high-level strategic policy, when the French requested additional RAF fighter support. Churchill was inclined to acquiesce to the request, but an OR team showed that sending more RAF fighters would weaken Britain beyond recovery in the face of a German attempt to invade Britain [CITE HISTORY OF OR IN US MILITARY]. Churchill was convinced by their presentation, and so he did not send the additional aircraft, preserving the pilots and aircrafts for the Battle of Britain instead. This decision, along with the incorporation of radar, contributed significantly to Britain's victory in the Battle of Britain [CITE HISTORY OF OR IN US MILITARY]. 
-	Another significant accomplishment of OR analysts involved the work of deciding upon depth charge settings for bombs. Their work in this field led to an immediate improvement on aerial attacks of German submarines, with estimates of the increased efficiency ranging from 400 to 700 percent [CITE HISTORY OF OR IN US MILITARY]. Other work included reducing the number of artillery rounds required to down one German aircraft  from twenty thousand in the summer of 1941 to merely four thousand the following year [CITE HISTORY OF OR IN US MILITARY].
-	From the British, this discipline spread to the Americans, where it was also used in the war effort. [TALK MORE ABOUT 'MURICA HERE!].
-	
-	There was a specific need to allocate scarce resources to military operations in an effective manner, and so the British and US militaries had scientists perform \textit{research on} (military) \textit{operations}. In essence, the goal was to make the war machine more efficient, and they succeeded. They developed effective ways to use the new radar technology, as well as came up with better ways to manage convoys and conduct antisubmarine operations [CITE INTRO TO OR BOOK]. 
-	
-	The success that OR saw in the war then encouraged interest in non-military applications of the field.
-% more intro shit
-	A cursory glance at a variety of introductory textbooks will reveal that there is a certain focus on private sector applications of the field [Should probably cite this claim]. These applications tend to be primarily concerned with profit maximization and other aspects of running a business. While these problems provide for some interesting mathematical formulations, the field's ability to 
-	
-	There is a subfield of the discipline called Community-Based Operations Research, which seeks to shift the focus of OR from profit maximization or cost-reduction to improving the quality of life within a community. One of the main advocates of the field and of this lens that focuses on people as opposed to money is Michael P. Johnson, who compiled a textbook containing a variety of case studies that can constitute ``Community-Based Operations Research." 
-	
-	One of these case studies presented is the problem of park location in Bogot\'{a}, Colombia.
+%
+% 1.1
+%
+\section{The Parks Location Problem} \label{intro-parks-problem}
 
-In the introduction I will explain the history of operations research and how it tends to be most utilized in the private sector. I will detail the development of (and necessity for) community-based operations research, and then explain that I will be examining a particular case study: the problem of developing new public parks in Bogot\'a, Colombia. I will perhaps provide a literature review here, a roadmap of what I will cover in the rest of the thesis, and anything else that may fit and come to mind later.
-
-\section{An Introduction to the Parks Location Problem} \label{intro-parks-problem}
-
-	In urban areas and large cities, the presence of public parks, green spaces, and other recreational facilities has been associated with a significant improvement in quality of life, mental health, and general wellbeing [CITE SOURCE]. Knowing this, the city of Bogot\'{a} (Colombia), one of the largest cities in Latin America with a population of about eight million that is expected to reach ten million by 2025, has implemented a number of changes that include the recovery of public spaces and the improvement of public parks [CITE THE SOURCE]. 
+	In urban areas and large cities, the presence of public parks, green spaces, and other recreational facilities has been associated with a significant improvement in quality of life, mental health, and general wellbeing \cite{bogota}. Knowing this, the city of Bogot\'{a} (Colombia), one of the largest cities in Latin America with a population of about eight million that is expected to reach ten million by 2025, has implemented a number of changes that include the recovery of public spaces and the improvement of public parks \cite{bogota}. 
 	
 	In 2006, the mayor and city council of Bogot\'{a} threw their support behind a sports and recreation master plan for the city. This plan indicated that by 2019 the city must reach a minimum level of $2.71$  $\textrm{m}^2$ of neighborhood park area per resident. It then became the \textit{Instituto Distrital de Recreaci\'{o}n y Deporte} (IDRD), or Recreation and Sports Institute of Bogot\'{a}'s job to implement the master plan. As such, the IDRD was faced with a monumental challenge: they had to execute the construction of numerous new parks and revitalize dilapidated public spaces in a manner that balanced the differing geographic, social, and economic needs of the city. 
 	
-	Because of the many needs they had to consider and due to the nature of the problem, this problem was then modeled in such a way that it became a multiobjective facility location problem, which we will examine in further detail at a later point. For now we begin to consider the model.
-% you should close a chapter before beginning a new one!
+	Their task turned out to be well-suited to modeling techniques, particularly as an optimization problem in the vein of operations research problems. Due to the many requirements of the project and the nature of the problem, this problem was an ideal candidate to tackle with one of the many optimization techniques existing in operations research.
+%
+% 1.2
+%
+\section{What is Operations Research?}
+
+We begin with a brief history of Operations Research (OR), which is fundamentally the science of decision making. With this more informal perspective, we can deduce that OR has existed in some way, shape, or form for as long as humans have had to make decisions. As a modern discipline, however, OR has its roots in the Soviet political economy as well as the British war effort of World War II \cite{or-timeline}.
+%
+% 1.2.1
+%
+\subsection{The Soviet Political Economy}
+	In February of 1921, the Bolsheviks established the State General Planning Commission (Gosplan for short) and set out to implement a unified economic plan for the national economy \cite{socialist-planning}. This generally marks the beginning of the Soviet experiment in central planning of the economy.  In 1928, L.P. Yushkov described what became a central problem of theory of the optimally functioning socialist economy. He was interested in creating a system of planning that would provide the `semi-automatic optimality' of the development of the national economy, combining optimal national economic development with maximal operational independence for the separate parts of the economic system \cite{planning-problems}. 
+	
+	The Gosplan also developed a Five-Year Plan, adopted in 1929, to help chart the course for the economy. For various reasons, including in part the ambitious goals set by their plan, the next five years were dominated by crisis, and it wasn't until after this period that they achieved a more stable economic system \cite{socialist-planning}. However, by the time the Great Depression in the United States was in full swing, the Soviet economy was in much better shape, growing healthily and retaining its stability. In fact, the Soviet economy had a remarkable number of achievements: it vastly increased the output of key industrial sectors (like oil and steel), it produced the huge number of weapons necessary to win World War II, it provided full employment, it produced the world's first earth satellite, and it invested heavily in human capital \cite{socialist-planning}.
+	
+	The relevance of the Soviet economy with respect to Operations Research can be established by realizing that in planning the central economy, the Soviet researchers were faced with (essentially) a giant optimization problem. They had millions of outputs (raw materials), and had to optimize for the production of an incredibly high number of outputs (consumer goods). This was an incredibly difficult task and influenced the use and development of operations research in the Soviet Union.
+	
+	In 1939, the Russian mathematician and economist Leonid V. Kantorovich published \textit{Mathematical Methods of Organization and Planning Production} in which he mathematically described a production assignment problem that was the first instantiation of a liner program \cite{or-timeline}. He proposed a computational procedure to solve the problem, and mentioned that this structure could be used to tackle problems in oil refining, utilization of fuel types, minimization of scrap, construction planning, the distribution of freight over a network, and the optimal distribution of arable land to different crops. Kantorovich established himself as a pioneer in the theory and use of linear programming.\\
+%
+% 1.2.2
+%
+\subsection{The Research of Military Operations}	
+	Now, in the year 1934 as Nazi Germany denounced the Treaty of Versailles, Britain sensed the threat and raced to strengthen its defenses. By the following year, radar had been developed and was capable of effectively detecting enemy aircraft, although its utility was stringent on its ability for integration with the existing defense systems: ground observers, interceptor aircraft, and antiaircraft artillery positions. The first task of the newly formed operational research group was to use scientific, rigorous processes to develop a system for the incorporation of radar into existing infrastructure, which was far from the more well-defined mathematical processes that exist today. However, this integrated radar-based air defense system increased the probability of intercepting an enemy aircraft by a factor of ten \cite{us-army}.	
+	
+	 Soon, the usage of OR spread to investigate other problems, and in 1940 was even called upon to influence high-level strategic policy when the French requested additional RAF fighter support. Churchill was inclined to acquiesce to the request, but an OR team showed that sending more RAF fighters would weaken Britain beyond recovery in the face of a German attempt to invade Britain \cite{us-army}. Churchill was convinced by their presentation, and so he did not send the additional aircraft, preserving the pilots and aircrafts for the Battle of Britain instead. This decision, along with the incorporation of radar, contributed significantly to Britain's victory in the Battle of Britain \cite{us-army}. 
+	
+	Another significant accomplishment of OR analysts involved the work of deciding upon depth charge settings for bombs. Their work in this field led to an immediate improvement on aerial attacks of German submarines, with estimates of the increased efficiency ranging from 400 to 700 percent \cite{us-army}. Other work included reducing the number of artillery rounds required to down one German aircraft  from twenty thousand in the summer of 1941 to merely four thousand the following year \cite{us-army}.
+	From the British, this discipline spread to the Americans, where it was also used in the war effort.
+	
+	This specific need to allocate scarce resources to military operations in an effective manner became so advantageous that the British and US militaries both adopted the process of performing \textit{research on} (military) \textit{operations}. In essence, the goal was to make the war machine more efficient, and they succeeded. They developed effective ways to use the new radar technology and came up with better ways to manage convoys and conduct antisubmarine operations \cite{intro-or}.	
+	
+	The success that OR saw in the war then encouraged interest in non-military applications of the field, and over the course of many years, OR became an indispensable tool for any major enterprise. Today, problems in OR range from production planning, to logistics and distribution of goods, to call center management, to portfolio optimization, and more \cite{community-or}.
+% more intro shit
+
+	A cursory glance at a variety of introductory textbooks will reveal that there is a certain focus on private sector applications of the field \cite{community-or}. These applications tend to be primarily concerned with profit maximization and other aspects of running a business. While these problems can provide for some interesting mathematical formulations, the field's full range of capabilities is not adequately reflected in these industry-centric perspectives.
+	
+	There is a subfield of the discipline called Community Based Operations Research, which seeks to shift the focus of OR from profit maximization or cost-reduction to improving the quality of life within a community. One of the advocates of the field and of this lens that focuses on people as opposed to money is Michael P. Johnson, who compiled a textbook containing a variety of case studies that can constitute ``Community-Based Operations Research." 
+	
+	One of these case studies presented is the problem of park location in Bogot\'{a}, Colombia. But before we delve more into it, we will explore the idea of Community Based Operations Research.
+
+%
+% 1.3
+%	
+\section{Community Based Operations Research}
+As previously mentioned, Community Based Operations Research (CBOR) is a subfield of OR that seeks to center human experiences. This is an important position for the field to take, considering that much of our lives are defined by things provided by not-for-profit means, such as education, public safety, human and social services, community and economic development, and environmental conservation and preservation. Michael P. Johnson notes, ``We refer to OR/MS applications that address provision of goods and services, or prescribe social policy actions, for which stakeholders are defined, in a spatial or social sense, as localized, or who are considered disadvantaged or underserved, or for which issues of equity or social influence are important considerations, as examples of \textit{community-based operations research}" \cite{community-or}. Instead of furthering inequality by helping maximize a corporation's profits, it is possible for OR to be applied to local community issues or other larger problems in a way that benefits exploited and disenfranchised groups of people. 
+
+	The arguments in favor of CBOR, in fact, concern both scholarship and the possibility of (generally speaking) improving lives. There is a vital importance of space, place, and community in policy design and service delivery that CBOR seeks to address. Furthermore, CBOR centers disadvantaged, underrepresented, or underserved populations, seeking to engage them as equal partners in joint projects and allowing them the agency and autonomy to determine their own path forward. Lastly, the international and transnational applications of these methods extend beyond the use of traditional models in a US-based context, increasing their importance and significance substantially.
+	
+	It turns out that the methods used in CBOR vary widely, ranging from more traditional instances of prescriptive math models to combinations of qualitative and quantitative methods that may have a lot of common ground with disciplines such as urban development and public health, among others. CBOR is a cross-disciplinary field with many future avenues for research and with many fundamental questions about it that have yet to be addressed. For example, is there a way to practice OR that balances quantitative approaches dominant in US-style practice with more critical and subjective approaches to decision modeling, accommodating qualitative and mixed-methods? Is ``rigorous" OR compatible with our values of social change and justice? Is there a theory of CBOR to be developed? Can CBOR research ever hope to be represented in the most prestigious research journals to influence the understanding of CBOR within the larger OR discipline? \cite{community-or} And in fact, do some of these questions even matter?
+	
+	Historically, there have been three trends in OR that have precipitated major disagreements regarding the role of OR in society \cite{community-or}. The first trend concerned the public service oriented OR  of the 1960s. In 1966, for example, MIT held the Operations Research in Public Affairs Program, which as the name implies was oriented towards public service projects. The second trend occurred with the institutionalization of OR within private-sector companies, and so OR transitioned from a transformational technology to one increasingly focused on mathematical analysis and incremental gains in efficiency. The third trend encompassed societal disenchantment with quantitative methods that promised much but delivered little (especially considering the Vietnam War and the social unrest of the times). Some of these trends were embodied in the long-ongoing disagreements between US-style operations researchers and UK-style researchers, with the US-style being defined by a mathemtical and problem-focused approach while the UK style approach was more critical and closely examined the roles of power, class, and community in defining problems amenable to OR methods \cite{community-or}.
+
+	In summation, there is a lot of aspects about CBOR that still need to be defined, and unfortunately it still has a long way to go before it is truly respected as a field, but it could stand to fundamentally change the way we consider optimization problems in certain areas.
+%
+% 1.4
+%
+\section{Multiobjective Optimization Problems}
+As the name implies, multiobjective optimization problems differ from single objective optimization problems in the number of objectives that are being optimized. In business, management, engineering, and (especially) community-oriented problems, there can be multiple conflicting objectives that need to be satisfied. Traditionally, such problems have been tackled by converting all objectives into a single objective function through the aggregation of the objectives into a weighted function \cite{pareto-mo}. Another way that multiobjective optimization problems have been typically tackled is by transforming all but one objective into constraints, and then optimizing one lone objective. 
+
+	These types of approaches have limitations. They require \textit{a priori\footnote{adj. theoretically-deduced, not proceeding from observation or experience.}} knowledge about the importance of the objectives as well as limit the objectives when they are turned into constraints. The aggregated function approach also only leads to one solution, which you then have no easy way of comparing it to other potential solutions. Furthermore, the trade-offs between the objectives cannot be easily quantified, and a solution may not be attainable at all. These limitations make it very difficult to apply these methods in more complex systems, especially because we are dealing with multiobjective problems.
+	
+	Generally speaking, multiobjective problems tend to be much harder to solve than single objective problems because multiobjective problems do not have one, unique solution. Instead, there exists a set of acceptable trade-off optimal solutions which is called the Pareto front \cite{pareto-mo}. In many multiobjective problems, we will be working with people who have domain specific knowledge and who will be better positioned to make choices about the final solution. These people are referred to as the decision makers (because their input is invaluable in the model formulation process). When the decision makers have access to the Pareto set of solutions, it allows them to see a wide range of options and make informed decisions \cite{pareto-mo}. 
+	
+	A modern approach to generating the Pareto front involves the use of evolutionary computing, which emulates the biological evolution process, where survival of the fittest (solution) is the law of the land \cite{pareto-mo}. There are a variety of algorithms that utilize this framework: the multiobjective genetic algorithm, the Non-dominated Sorting Genetic Algorithm, the Niched Pareto Genetic Algorithm, the Strength Pareto Evolutionary Algorithm, and the Multi Objective Particle Swarm Optimization, among others. These modern methods allow for the concurrent exploration of the Pareto front, and can therefore generate multiple solutions in a single run-through. The performance of these algorithms does degrade as the number of objectives increases, however, since there do not exist computationally efficient methods to perform pareto ranking \cite{pareto-mo}. 
+	
+	For our purposes, we utilize the $\epsilon$-constraints approach, which we will describe in detail in \autoref{solution-strat}. Compared to the evolutionary based algorithms, this is a relatively simple technique, but it is computationally intensive as well. With this information in hand we are now ready to dive into our problem.
+%
+% 1.5
+%
+\section{Road Map}
+In the next chapter we will begin to talk about the park location formulation with more depth and clarity. We will make some simplifying assumptions and construct a less complicated model, building it up as we progress and constructing a more robust model. We will then move onto the real world scenario, explaining any new concerns that arise and examining how these are incorporated into the model. The third chapter will be more technical as we delve into the Python program I have coded to solve our simplified versions of the model.
+	% you should close a chapter before beginning a new one!
 \end{chapter}
 
 %
@@ -341,7 +412,7 @@ We first look at a model that has been adapted from a real model developed by re
 %
 \subsection{Setting up the Problem} \label{setting-up-problem}
 
-We begin with a $5\times5$ grid, which will represent our simplified fictional city. Each block represents a plot of land, which might either be empty or occupied. If it is occupied, this means that there are people living on the block. Otherwise, the lot is empty and it is a candidate parcel, to potentially be turned into a park. We number each block from one to $25$, and we have colored every candidate parcel cyan. We want to build one park, and so we can choose from amongst all the cyan parcels. This is shown in Figure \ref{fig:grid1}. We note that every lot is the same size. We also define the service area of the candidate parcels to consist of all the populated blocks adjacent and diagonal to the candidate parcel. For example, candidate parcel one's service area will consist of the set $\{2,6,7\}$. In other words, if we built a park on candidate parcel one, then the visitors would be from \textbf{only} those three surrounding lots. The first question we are interested in asking then becomes: 
+We begin with a $5\times5$ grid, which will represent our simplified fictional city. Each block represents a plot of land, which might either be empty or occupied. If it is occupied, this means that there are people living on the block. Otherwise, the lot is empty and it is a candidate parcel, to potentially be turned into a park. We number each block from one to $25$, and we have colored every candidate parcel cyan. We want to build one park, and so we can choose from amongst all the cyan parcels. This is shown in \autoref{fig:grid1}. We note that every lot is the same size. We also define the service area of the candidate parcels to consist of all the populated blocks adjacent and diagonal to the candidate parcel. For example, candidate parcel one's service area will consist of the set $\{2,6,7\}$. In other words, if we built a park on candidate parcel one, then the visitors would be from \textbf{only} those three surrounding lots. The first question we are interested in asking then becomes: 
 \begin{center}
 \textbf{Which candidate parcel will maximize the geographical coverage, as measured by the service area of the parcel?}
 \end{center}
@@ -355,7 +426,7 @@ We begin with a $5\times5$ grid, which will represent our simplified fictional c
 \end{figure}
 In this example, it is possible to answer our question after merely observing the grid. Candidate parcel 12 would result in the highest number of lots served with 8. We now move on to defining a certain number of sets and variables so that we can present a mathematical formulation of the problem. \newline 
 	
-	We first let $\mathcal{J}$ be the set of all blocks that would benefit from the construction of a new park. Looking back to Figure \ref{fig:grid1}, we see that $\mathcal{J} = \{ 2,4,6,7, \dots, 22, 23, 24, 25\}$. The candidate parcels have not been included in this set, and in this case we note that lot five is not included in $\mathcal{J}$ either because it is outside the service area of every candidate parcel. We also then define the set $\mathcal{I}$ to be the set of candidate parcels. In our case, $\mathcal{I} = \{ 1,3,12,15,19,21\}$. We finally define the set $\mathcal{W}_j$ for $j \in \mathcal{J}$, which consists of all the candidate parcels that service block $j$. In our example, $\mathcal{W}_7 = \{1,3,12\}$. \newline
+	We first let $\mathcal{J}$ be the set of all blocks that would benefit from the construction of a new park. Looking back to \autoref{fig:grid1}, we see that $\mathcal{J} = \{ 2,4,6,7, \dots, 22, 23, 24, 25\}$. The candidate parcels have not been included in this set, and in this case we note that lot five is not included in $\mathcal{J}$ either because it is outside the service area of every candidate parcel. We also then define the set $\mathcal{I}$ to be the set of candidate parcels. In our case, $\mathcal{I} = \{ 1,3,12,15,19,21\}$. We finally define the set $\mathcal{W}_j$ for $j \in \mathcal{J}$, which consists of all the candidate parcels that service block $j$. In our example, $\mathcal{W}_7 = \{1,3,12\}$. \newline
 	
 	We now define $z_j$ as a binary decision variable, taking on the value 1 if block $j \in \mathcal{J}$ is covered by at least one park, and 0 otherwise. So if we decided to build a park on candidate parcel 21, then $z_{16} = z_{17} = z_{22} = 1$, and for every other possible value of $j$ we would have $z_j = 0$. We also define the binary decision variable $y_i$, which will take on value 1 if candidate parcel $i$ is selected to become a park, and 0 otherwise. If we turned candidate parcel 21 into a park, then $y_{21} = 1$. We can now formulate our initial model:
 \begin{align*}
@@ -367,7 +438,7 @@ z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{align*}
 
-	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in Figure \ref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$, meaning that each constraint must be repeated $|\mathcal{J}|$ times. \\ \\
+	Our objective function seeks to maximize the geographical coverage of the potential parks to be built. The first constraint guarantees that if block $j$ is covered, then at least one parcel servicing it has been selected as a park. So if block 2 is covered in \autoref{fig:grid1}, then either candidate parcel 1 or candidate parcel 3 should have been selected to become a park. Conversely, the second constraint guarantees that if block $j$ is not covered, then none of the candidate parcels servicing it should be selected as parks. While I have referred to these first two constraints as being one individual constraint each, the observation can be made that they must be satisfied for all values of $j \in \mathcal{J}$, meaning that each constraint must be repeated $|\mathcal{J}|$ times. \\ \\
 	\begin{figure}
 	\centering
 	\caption{Fully expanded model}
@@ -428,8 +499,8 @@ y_i &\in \{0,1\}, i \in \mathcal{I}
 	\end{align*}
 	\end{figure}
 	  The next constraint indicates how many parks we would like to build. The variable $p_{max}$, or the maximum allowable amount of parks we want built, is a constant that is decided upon beforehand. In our case, we decided that we wanted to build one park, so $p_{max} = 1$. We can think of this constraint as a simpler way to encode a budget into our model. Making the simplifying assumption that building a park on any lot will cost the same amount allows us to include this constraint in consideration of our budget. Should our budget change, we can just as easily change the value of $p_{max}$. The last two constraints define our $z_j$ and $y_i$ as binary decision variables.
-	  \newline\newline We can see an expansion of the model above to include all true constraints in Figure \ref{expandedmodel}. \\ \\
-	As we realized earlier, wanting to select only one candidate parcel will result in the selection of candidate parcel 12. What if we wanted to build two parks? Looking at Figure \ref{fig-grid2} we see that picking the two green parcels would result in a total coverage area of 13 blocks, highlighted in orange, which is the maximum in this case with two candidate parcels. 
+	  \newline\newline We can see an expansion of the model above to include all true constraints in \autoref{expandedmodel}. \\ \\
+	As we realized earlier, wanting to select only one candidate parcel will result in the selection of candidate parcel 12. What if we wanted to build two parks? Looking at \autoref{fig-grid2} we see that picking the two green parcels would result in a total coverage area of 13 blocks, highlighted in orange, which is the maximum in this case with two candidate parcels. 
 	\begin{figure}
 	\centering
 	\begin{tikzpicture}[every node/.style={minimum size=1cm-\pgflinewidth}]
@@ -462,7 +533,7 @@ We define the number of beneficiaries from a park construction as the sum of the
 	\label{fig:gridpop}
 	\end{figure}
 	
-	We now turn to Figure \ref{fig:gridpop} to see an updated version of our model city. The residential blocks have been updated with a number that indicates the number of people living in that city block. This allows us to calculate the number of beneficiaries that would result from the construction of a park on any candidate parcel. Building a park on candidate parcel 21, for example, would result in 145 beneficiaries. We define one additional variable.
+	We now turn to \autoref{fig:gridpop} to see an updated version of our model city. The residential blocks have been updated with a number that indicates the number of people living in that city block. This allows us to calculate the number of beneficiaries that would result from the construction of a park on any candidate parcel. Building a park on candidate parcel 21, for example, would result in 145 beneficiaries. We define one additional variable.
 	
 	Let $p_i$ be the number of beneficiaries resulting from building a park on candidate parcel $i$. In the example of parcel 21, we would have $p_{21} = 145$. We can now update our model:
 
@@ -482,7 +553,7 @@ y_i &\in \{0,1\}, i \in \mathcal{I}
 % section 2.2 
 %
 %
-\section{A Solution Strategy}
+\section{A Solution Strategy} \label{solution-strat}
 
 	Because we are now trying to optimize multiple objectives, our question turns into a multiobjective optimization problem. We will present one possible way to solve these types of problems, borrowing the method used by the researchers from Bogot\'{a}. They implemented a lexicographic ordering of the objectives, which in practice meant that they ranked their objectives in accordance with their priorities. These priorities are reflected by the subscripts of the objective functions. Geographical coverage was deemed the most important criterion, which is why it is labeled $f_1$. Maximizing the number of beneficiaries was likewise deemed the third-most important criterion, so it is accordingly labeled $f_3$. For our model these are the only ones that we are concerned with, but it could work with any number of objective functions (for example, six). \\
 	The solution strategy is composed of two main parts. The first part is concerned with setting a benchmark for each objective function. The second part is about compromising to find a best possible solution. We will go over both parts in great detail.
@@ -521,7 +592,7 @@ z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{aligned}
 \end{equation*}
-Splitting our original multiobjective problem into multiple linear programs in this manner allows us to reduce our initial complicated problem into multiple, familiar, subproblems. We then solve each individual linear program, and we get the best possible result for each objective. Referring back to Figure \ref{fig:gridpop}, we again see that the first linear program will give us the result $f_1 = 8$, because that is the maximum geographical coverage possible. The second linear program will give us the result $f_3 = 810$, because as we established earlier, this is the maximum amount of beneficiaries served by any one candidate parcel. We will henceforth refer to these optimal values solved in isolation as $f_1^*$ and $f_3^*$, with $f_1^* = 8$ and $f_3^* = 810$ as stated. \\
+Splitting our original multiobjective problem into multiple linear programs in this manner allows us to reduce our initial complicated problem into multiple, familiar, subproblems. We then solve each individual linear program, and we get the best possible result for each objective. Referring back to \autoref{fig:gridpop}, we again see that the first linear program will give us the result $f_1 = 8$, because that is the maximum geographical coverage possible. The second linear program will give us the result $f_3 = 810$, because as we established earlier, this is the maximum amount of beneficiaries served by any one candidate parcel. We will henceforth refer to these optimal values solved in isolation as $f_1^*$ and $f_3^*$, with $f_1^* = 8$ and $f_3^* = 810$ as stated. \\
 
 Performing this process, however, brings us no closer to finding a suitable solution for both objective functions simultaneously, because as we saw, each	optimal solution for the linear programs results in different candidate parcels being picked (parcels twelve and three, respectively). What we have now, though, are figures that serve as an upper bound and a benchmark for our multiobjective problem. We know that, given no other considerations, when we want to build one park we can serve at most eight lots. Similarly, we know that when only considering the amount of people living in surrounding lots, we can serve at most 810 of them by building one park. In a problem that seeks to simultaneously maximize both of these figures, we can do no better than the individual optimal solutions we found. \\
 
@@ -565,7 +636,7 @@ z_j &\in \{0,1\}, j \in \mathcal{J} \\
 y_i &\in \{0,1\}, i \in \mathcal{I}
 \end{align*}
 
-To recap, in this linear program we try to optimize for the number of beneficiaries while ensuring that our geographical coverage does not drop below a certain percentage. And in fact, the solutions will change depending on what value for $\alpha_1$ we decide to use. So how can we decide what value of $\alpha_1$ will yield an ideal solution, and in general, how can we decide what values for any $\alpha_k$ to use? This is where automation will come in handy. Since it may not be particularly evident which value of $\alpha_1$ will be the most optimal, we can employ a computer program to try many different values of $\alpha_1$ for us. I devised a program to carry out precisely this task, and in Table \ref{alpha-table-1} we can see the result of running this program. The table has four columns corresponding to the maximum allowable deterioration, the compromise threshold, the number of blocks served in the solution (the value for $f_1$), and  the number of beneficiaries served (the value solved for $f_3$). We note that the last two columns have percentage values in parenthesis. These figures express the solution as a percentage of the optimal solutions $f_k^*$ solved in isolation ($8$ for geographic coverage and $810$ for beneficiaries). In our case of the small $5 \times 5$ town, we notice that there seem to be a set of three different, optimal solutions. When dealing with multiple objectives, however, our definition of optimal becomes a little bit muddled. Looking at the chart, we first note that the program tells us that if we relax the constraint on geographic coverage only a little bit by letting $\alpha_1 = 0.1$, the best solution is still to optimize the geographic coverage fully. This then results in $715$ people being served by that selected candidate parcel. However, if we relax our constraint a little bit more and let $\alpha_1 = 0.15$, our solution changes. The number of blocks served drops to $7$, which is not as good as our previous solution, but now the number of people served by the potential park jumps to $760$. Relaxing the geographic constraint a significantly higher amount by letting $\alpha_1 = 0.4$ then results in another decrease in blocks serviced with five, but it has a corresponding jump of people serviced to $810$, which is the maximum amount of people we could service by building one park. With this set of solutions, it seems to be the case that as we decrease our expectations of how many blocks we should service, we are able to service more people. \\
+To recap, in this linear program we try to optimize for the number of beneficiaries while ensuring that our geographical coverage does not drop below a certain percentage. And in fact, the solutions will change depending on what value for $\alpha_1$ we decide to use. So how can we decide what value of $\alpha_1$ will yield an ideal solution, and in general, how can we decide what values for any $\alpha_k$ to use? This is where automation will come in handy. Since it may not be particularly evident which value of $\alpha_1$ will be the most optimal, we can employ a computer program to try many different values of $\alpha_1$ for us. I devised a program to carry out precisely this task, and in \autoref{alpha-table-1} we can see the result of running this program. The table has four columns corresponding to the maximum allowable deterioration, the compromise threshold, the number of blocks served in the solution (the value for $f_1$), and  the number of beneficiaries served (the value solved for $f_3$). We note that the last two columns have percentage values in parenthesis. These figures express the solution as a percentage of the optimal solutions $f_k^*$ solved in isolation ($8$ for geographic coverage and $810$ for beneficiaries). In our case of the small $5 \times 5$ town, we notice that there seem to be a set of three different, optimal solutions. When dealing with multiple objectives, however, our definition of optimal becomes a little bit muddled. Looking at the chart, we first note that the program tells us that if we relax the constraint on geographic coverage only a little bit by letting $\alpha_1 = 0.1$, the best solution is still to optimize the geographic coverage fully. This then results in $715$ people being served by that selected candidate parcel. However, if we relax our constraint a little bit more and let $\alpha_1 = 0.15$, our solution changes. The number of blocks served drops to $7$, which is not as good as our previous solution, but now the number of people served by the potential park jumps to $760$. Relaxing the geographic constraint a significantly higher amount by letting $\alpha_1 = 0.4$ then results in another decrease in blocks serviced with five, but it has a corresponding jump of people serviced to $810$, which is the maximum amount of people we could service by building one park. With this set of solutions, it seems to be the case that as we decrease our expectations of how many blocks we should service, we are able to service more people. \\
 
 \begin{table}[]
 \centering
@@ -589,9 +660,9 @@ Since we don't actually have any more objective functions, then stage two of the
 %
 % 2.2.3 
 %
-\subsection{A More Complicated Example}
+\subsection{A More Complicated Example} \label{complicated-model}
 
-With our previous example, we were only looking at a small town with $25$ total blocks, and a small number of candidate parcels. It turned out to be a very feasible problem to eye-ball, and it was possible to calculate the geographic coverage and population totals for every single candidate parcel and compare them that way. But we know that towns may be much much bigger. So what if we wanted to look at a bigger area of land? Perhaps a specific section of a town, or a city district? It would be near impossible to brute force our solutions for much bigger plots of land. This is where the program I designed comes into play, and it can solve much more difficult problems. Consider Figure \ref{bigexample}, which we note is a much bigger example than our initial problem, and which has numerous candidate parcels to be considered. Now it is still possible to calculate the necessary information for each candidate parcel, given that there are only twenty-three of them, but it might be extremely difficult to decide on the best selection of parcels to optimize our objectives. \\
+With our previous example, we were only looking at a small town with $25$ total blocks, and a small number of candidate parcels. It turned out to be a very feasible problem to eye-ball, and it was possible to calculate the geographic coverage and population totals for every single candidate parcel and compare them that way. But we know that towns may be much much bigger. So what if we wanted to look at a bigger area of land? Perhaps a specific section of a town, or a city district? It would be near impossible to brute force our solutions for much bigger plots of land. This is where the program I designed comes into play, and it can solve much more difficult problems. Consider \autoref{bigexample}, which we note is a much bigger example than our initial problem, and which has numerous candidate parcels to be considered. Now it is still possible to calculate the necessary information for each candidate parcel, given that there are only twenty-three of them, but it might be extremely difficult to decide on the best selection of parcels to optimize our objectives. \\
 
 \begin{figure}
 \centering
@@ -602,9 +673,9 @@ With our previous example, we were only looking at a small town with $25$ total 
 \end{tikzpicture}
 \end{figure}
 
-Instead, by automating our solution strategy, we are able to quickly find a solution for any value of $\alpha_k$, the maximum allowable deterioration rate for an objective. In fact, the program performs both steps of the solution strategy, first by solving the corresponding linear program for each objective in isolation and then carrying out the incremental constraint addition for each corresponding objective. Returning to Figure \ref{bigexample}, by solving for the objectives in isolation we find out that when we are only able to build five parks we can at most serve 40 blocks, or alternately, at most serve 6690 beneficiaries. That is, $f_1^* = 40$ and $f_3^* = 6690$, as defined earlier. \\
+Instead, by automating our solution strategy, we are able to quickly find a solution for any value of $\alpha_k$, the maximum allowable deterioration rate for an objective. In fact, the program performs both steps of the solution strategy, first by solving the corresponding linear program for each objective in isolation and then carrying out the incremental constraint addition for each corresponding objective. Returning to \autoref{bigexample}, by solving for the objectives in isolation we find out that when we are only able to build five parks we can at most serve 40 blocks, or alternately, at most serve 6690 beneficiaries. That is, $f_1^* = 40$ and $f_3^* = 6690$, as defined earlier. \\
 
-It is also possible to calculate solutions within a given interval of $\alpha_k$ with any desired step amount. For example, in Table \ref{alpha-table-2} we present the range of solutions (at five percent intervals) that allows up to $45\%$ deterioration of $\alpha_1$. We note that allowing for no deterioration whatsoever of the first objective results in only just under $70\%$ of the optimal number of beneficiaries being served by our park selection, which may not necessarily be the best solution. We also see that allowing for $45\%$ deterioration of the first objective results in the maximum number of beneficiaries served, and the increased deterioration of the first objective corresponds to the optimization of the other objective.\\
+It is also possible to calculate solutions within a given interval of $\alpha_k$ with any desired step amount. For example, in \autoref{alpha-table-2} we present the range of solutions (at five percent intervals) that allows up to $45\%$ deterioration of $\alpha_1$. We note that allowing for no deterioration whatsoever of the first objective results in only just under $70\%$ of the optimal number of beneficiaries being served by our park selection, which may not necessarily be the best solution. We also see that allowing for $45\%$ deterioration of the first objective results in the maximum number of beneficiaries served, and the increased deterioration of the first objective corresponds to the optimization of the other objective.\\
 
 \begin{table}[]
 \centering
@@ -638,7 +709,7 @@ The model proposed by the researchers in Bogot\'{a} linked to a geographic infor
 %
 % 2.3.1
 %
-\subsection{Objective Functions and Constraints}
+\subsection{Objective Functions}
 When considering candidate parcels for selection there are several aspects we are interested in:
 \begin{itemize}
 \item geographical coverage 
@@ -648,7 +719,7 @@ When considering candidate parcels for selection there are several aspects we ar
 \item cost 
 \end{itemize}
 
-We have already interacted with the first two concerns, but in a real life scenario we must change how we define a candidate parcel's service area, thus affecting how we calculate these items as well. How do we define the service area then? One way is to draw a circular area of some radius from the parcel's centroid, which is essentially the center of mass of an object, as seen in Figure \ref{centroid} (we can pretend that the shape is a cardboard outline of a candidate parcel). The radius from which the circular area is made can either be a fixed distance or it can be a function of the candidate parcel's area. That way, smaller parcels will have smaller service areas and larger parcels will similarly have bigger service areas. Using this new idea of the service area we can calculate the geographical coverage and the number of beneficiaries as before. 
+We have already interacted with the first two concerns, but in a real life scenario we must change how we define a candidate parcel's service area, thus affecting how we calculate these items as well. How do we define the service area then? One way is to draw a circular area of some radius from the parcel's centroid, which is essentially the center of mass of an object, as seen in \autoref{centroid} (we can pretend that the shape is a cardboard outline of a candidate parcel). The radius from which the circular area is made can either be a fixed distance or it can be a function of the candidate parcel's area. That way, smaller parcels will have smaller service areas and larger parcels will similarly have bigger service areas. Using this new idea of the service area we can calculate the geographical coverage and the number of beneficiaries as before. 
 
 \begin{figure}
 \centering
@@ -689,7 +760,7 @@ We now move onto the third objective function, where we try to maximize the numb
 \begin{equation} \label{objective-3}
 \textrm{max } f_3 = \sum_{i \in \mathcal{I}} p_iy_i
 \end{equation}
-For a refresher on what this means feel free to turn back to Section \ref{changing-objective}. \\ \\
+For a refresher on what this means feel free to turn back to \autoref{changing-objective}. \\ \\
 %
 We now turn to the accessibility index, which is given by:
 \begin{equation} \label{objective-4}
@@ -703,12 +774,16 @@ We now consider the connectivity index, which is expressed formulaically as:
 \end{equation}
 In this objective function, $e_i$ denotes the connectivity index of parcel $i$. How is this calculated? By looking at the service area of a candidate parcel, we can determine all of the facilities within the service area that may have an impact (positive or negative) on the park. We then take all of the positive facilities within the service area of a parcel and subtract from this number the quantity of negative facilities. So for example, if there are five positive facilities and 3 negative facilities within a parcel's service area, then it would have a connectivity index of two. An index greater than zero might indicate that the park is expected to capture some extra benefits from the surrounding facilities. In fact, this index is related to the weighted proximity index but is slightly different, as it does not take into account the proximity of the facilities and ranks them all as equal, regardless of distance. \\
 
-We can now finally consider the most important objective, where we consider the effect of park-building on our budget\footnote{This is a joke.}. In this objective function, we wish to minimize the costs of our operations:
+We can now finally consider the most important objective\footnote{This is a joke.}, where we consider the effect of park-building on our budget. In this objective function, we wish to minimize the costs of our operations:
 \begin{equation} \label{objective-6}
 \textrm{min } f_6 = \sum_{i \in \mathcal{I}} (c_i^l + c_i^b)y_i
 \end{equation}
 We have two variables to consider here. The first one, $c_i^l$, indicates the parcel (or lot, hence the $l$) acquisition cost. The second one, $c_i^b$, indicates the cost of building (hence the $b$) a park on parcel $i$. These two variables are measured using real estate appraisals for the former, and material cost, park amenities and design, operations, and other administrative duties. Thankfully, this was ranked as the least important objective to fulfill. Saving money is clearly not the goal here, but if we could be given the choice between building two otherwise identical parks, we might as well choose the less expensive one. Thus it is included as an objective to optimize, but clearly it is not the priority. \\
 
+%
+% 2.3.2
+%
+\subsection{Constraints}
 We can now begin to consider what sorts of constraints we might be bounded by. We will first present the constraints that we had already tackled in our simpler model.
 \begin{equation} \label{constraint-7}
 z_j \leq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J}
@@ -718,14 +793,14 @@ z_j \leq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J}
 \left|\mathcal{W}_j\right|z_j \geq \sum_{i \in \mathcal{W}_j} y_i \; , \quad j \in \mathcal{J}
 \end{equation}
 
-These constraints guarantee that if a block $j$ is covered, then some parcel covering the block has been selected, and conversely, if block $j$ is not covered, then none of the parcels servicing it should be selected. As a quick refresher, the set $\mathcal{J}$ consists of all the blocks that could benefit from the construction of a park, $z_j$ is a binary valuable indicating whether block $j$ is being serviced or not, and the set $W_j$ is the set of $i$ that could service block $j$. For a more in-depth explanation, please refer back to Section \ref{setting-up-problem}. \\
+These constraints guarantee that if a block $j$ is covered, then some parcel covering the block has been selected, and conversely, if block $j$ is not covered, then none of the parcels servicing it should be selected. As a quick refresher, the set $\mathcal{J}$ consists of all the blocks that could benefit from the construction of a park, $z_j$ is a binary valuable indicating whether block $j$ is being serviced or not, and the set $W_j$ is the set of $i$ that could service block $j$. For a more in-depth explanation, please refer back to \autoref{setting-up-problem}. \\
 
 This next constraint indicates that total new park area should meet a minimum requirement.
 \begin{equation} \label{constraint-9}
 \sum_{i \in \mathcal{I_F}} a_iy_i + \sum_{i \in \mathcal{I_V}} x_i  \geq \underline{a}
 \end{equation}
 We note that with this constraint, two new sets are introduced: $\mathcal{I_F}$ and $\mathcal{I_V}$. The set $\mathcal{I_F}$ contains the candidate parcels with an area less than or equal to $10000m^2$ (fixed-sized parcels, hence the $\mathcal{F}$ subscript). The other set contains larger parcels, which are referred to as variable-size parcels because the resulting parks built on these candidate parcels may not cover the entire area of the parcel (they might be smaller than the parcel). We note that the union of these two sets is $\mathcal{I}$, our original set. In other words, $\mathcal{I_F} \cup \mathcal{I_V} = \mathcal{I}.$
-The variable $a_i$ denotes the area (in square meters) of parcel $i$. Since fixed-size parcels will cover the entire area of their parcel, then we can calculate the area for these resulting parks directly by using the parcel area. For variable sized parcels, however, we let $x_i$ represent the area of candidate parcel $i$ that is to be turned into a park. The variable $\underline{a}$ denotes the minimum requirement for park area as defined by Bogot\'{a}'s recreational master plan (for a reminder of this plan, turn back to Section \ref{intro-parks-problem}). \\
+The variable $a_i$ denotes the area (in square meters) of parcel $i$. Since fixed-size parcels will cover the entire area of their parcel, then we can calculate the area for these resulting parks directly by using the parcel area. For variable sized parcels, however, we let $x_i$ represent the area of candidate parcel $i$ that is to be turned into a park. The variable $\underline{a}$ denotes the minimum requirement for park area as defined by Bogot\'{a}'s recreational master plan (for a reminder of this plan, turn back to \autoref{intro-parks-problem}). \\
 
 On the other hand, we also do not want to build too many parks, because then the IDRD (Recreation and Sports Institute) might be overwhelmed and incapable of administering the excess of parks. Thus, we also implement an upper bound on the amount of parkland we want built:
 \begin{equation} \label{constraint-10}
@@ -779,19 +854,263 @@ x_i \geq 0 \; , \quad\quad\;\;\; i \in \mathcal{I_V} \\
 The one striking difference from the real model compared to our simplified model is that there is no value of $p_{max}$ in the real model. The reason for this is that we are not actually limiting the number of parks to be built, as in our simplified model, but the total area of parkland instead. 
 \end{chapter}
 
-\begin{chapter}{Multiobjective Facility Location Problems}
-\section{What?}
-Here we will look at the general class of Multiobjective facility location problems, which is the class of problems that contains the main model/problem I will be looking at for my thesis. 
+
+%
+%
+% Chapter 3
+%
+%
+\begin{chapter}{Software and Functions}
+We now look at the code that accomplishes what I described in our simplified model in \autoref{complicated-model}. We go through it part by part to understand some of the inner workings. Some previous knowledge of programming and Python (version 3.6.5) is assumed. 
+
+%
+% 3.1
+%
+\section{Programming the Model}
+We first take a look at the modules and helper functions that will help us construct and solve our models. \\
+\begin{lstlisting}[language = Python, caption = Utilized Python Modules]
+import math
+import pulp
+import re
+import ast
+\end{lstlisting}
+The \textbf{math} module provides access to mathematical functions. Check \href{https://docs.python.org/3/library/math.html}{Python 3.6.5 Documentation} for further information. The \textbf{PuLP} module is a free open source software written in Python and is used to describe optimization problems as mathematical models. It can call numerous external LP solvers and then uses Python commands to describe and display solutions. For more information on this module and for installation procedures turn to the \href{https://pythonhosted.org/PuLP/}{PuLP 1.6.0 Documentation}. The \textbf{re} module provides regular expression matching operations. For more information about this module, refer to the \href{https://docs.python.org/3/library/re.html}{Python 3.6.5 Documentation} as well. We use the \textbf{ast} module to help us evaluate strings containing Python literal structures. Once again, refer to the \href{https://docs.python.org/3/library/ast.html}{Python 3.6.5 Documentation} for more information.\\
+In particular, I chose the \textbf{PuLP} library for this project because of its relative ease of use and for its ability to display the formulated linear programs as well as the solutions. We can now move onto more solid chunks of code.\\
+\begin{lstlisting}[language = Python, caption = Tells us if two blocks are bordering each other (a proxy for the service area measurement)., xleftmargin = -40pt]
+def is_adjacent(block_one, block_two, n, m, adjacent_dist = 1):
+	block_one_row = math.ceil(block_one/m)
+	block_one_col = block_one % m
+	if block_one_col == 0:
+		block_one_col = m
+	block_two_row = math.ceil(block_two/m)
+	block_two_col = block_two % m
+	if block_two_col == 0:
+		block_two_col = m
+	return (math.fabs(block_one_row - block_two_row) 
+	<= adjacent_dist and math.fabs(block_one_col - block_two_col) 
+	<= adjacent_dist)
+	
+	
+\end{lstlisting} 
+
+
+This chunk of code takes in several parameters with the aim of determining whether two blocks are adjacent (within their service area), and returns a Boolean (\verb-True- if it's adjacent, \verb-False- if not). It takes the indices of any two blocks, \verb-block_one- and \verb-block_two-, the dimensions of our $\verb-n- \times \verb-m-$ town, and if we wished to we could change the default service area of our parcels from the one to some other value for \verb-adjacent_dist-. Then, based on the given indices of the two blocks, it determines the corresponding row and column for each one by using the town dimensions. It then checks that the two blocks are adjacent by checking that they are at most one row and one column away from each other. Note once again that we can change the the value of \verb-adjacent_dist- to simulate parcels with larger service areas. We express this as a function because we will need to check if two blocks are adjacent to each other numerous times. \\ \\
+%
+\begin{lstlisting}[language = Python, xleftmargin= -40pt,  caption = Generates the set $\mathcal{J}.$]
+def generate_set_j_no_string(candidate_parcels, n, m, pop_dict):
+	lots = range(1, (n*m)+1)
+	set_j = []
+	pop_sum = {}
+
+	for i in candidate_parcels:
+		for j in [x for x in lots 
+		if x not in candidate_parcels]:
+			if is_adjacent(i,j,n,m):
+				if i in pop_sum:
+					pop_sum[i] = 
+					pop_sum[i] + pop_dict[j]
+				else:
+					pop_sum[i] = pop_dict[j]
+				if j not in set_j:
+					set_j.append(j)
+	return sorted(set_j), pop_sum
+\end{lstlisting}
+This chunk serves to generate the set $\mathcal{J}$ as well as count the number of beneficiaries that would result from the construction of a park on candidate parcel $i$. It takes as parameters the list of candidate parcels, the dimensions of our model town, and the dictionary that links the blocks to the number of people living on that block. You will note that \verb-pop_sum- is a dictionary with key corresponding to candidate parcel $i$ and whose value stores the number of beneficiaries resulting from the construction of a park on parcel $i$. What we end up doing is that for every candidate parcel, we check \textit{every single lot} that is not a candidate parcel to check whether it is adjacent or not. 
+
+	This is but a na\"{i}ve solution, and it ends up checking a lot of unnecessary lots for adjacency, especially when \verb-adjacent_list = 1- (because when we are only checking for bordering lots, we can have at most eight lots bordering a given lot, but we end up checking every single lot - which could very well be a hundred or so). While we are doing this, however, we also construct the dictionary of candidate parcels and their beneficiaries, as previously mentioned. The time complexity of this algorithm ends up being roughly $O(n^2 \cdot m)$, where $m$ is the number of candidate parcels, and $n$ is the longer dimension of our town. This is due to the set-up of the two for-loops. This function returns the sorted set $\mathcal{J}$ as well as our number of beneficiaries dictionary.\\ \\
+%
+\begin{lstlisting}[language = Python, caption = Generates the sets $\mathcal{W}_j$ for all $j \in \mathcal{J}$.]
+def generate_sets_w(candidate_parcels, n, m, benefitting_sets):
+	list_of_w_sets = {}
+	w_j = []
+
+	for j in benefitting_sets:
+		for i in candidate_parcels:
+			if is_adjacent(i,j,n,m):
+				if i not in w_j:
+					w_j.append(i)
+		list_of_w_sets[j] = w_j[:]
+		w_j.clear()
+	return list_of_w_sets
+\end{lstlisting}
+This function serves to define the sets $\mathcal{W}_j$, which will contain for a $j \in \mathcal{J}$ all the candidate parcels that serve that block $j$. The outer loop iterates over the lots that could benefit from the construction of a new park (the lots that are in some park's service area), and checks if any candidate parcel is adjacent to them. If so, it adds the candidate parcel to its corresponding $\mathcal{W}_j$ set. It then returns a dictionary, where the key is the lot $j$ and the corresponding value is a list of all the candidate parcels that serve block $j$. \\ \\
+
+\begin{lstlisting}[language = Python, caption = {Appends letter to strings, lists, or dictionaries.}]
+def append_letter(letter, num):
+	if type(num) is list:
+		appended = []
+		for n in num:
+			appended.append(letter + str(n))
+		return appended
+	elif type(num) is dict:
+		appended = {}
+		for key, val in num.items():
+			appended[letter + str(key)] = val	
+		return appended
+	return letter + str(num)
+\end{lstlisting}
+This helper function simply allows us to append a character to a string, list, or dictionary. If the parameter in \verb-num- is a list or a dictionary, the function will append our given \verb-letter- to every element in the list/dictionary. Otherwise, it will just append the \verb-letter- to the given string. \\ \\
+
+\begin{lstlisting}[language = Python, caption = Helper function using regex]
+def extract_num(letters):
+	num = (re.search(`\d+', letters))
+	return (int(num[0]))
+\end{lstlisting}
+This smaller function returns the first match of any integer in a string. In other words, it returns the first integer it comes across in a string. So if the input was `1xzr', this function would return 1. We now move onto the meatier part of our program.\\ \\
+
+\begin{lstlisting}[language = Python, caption = Constructs and solves our linear programs., xleftmargin = -50pt]
+def solveLP(obj_function, obj_string, 
+	candidate_parcels, vars_z, vars_y, 
+	max_parks, sets_w, extra_constraint = None):
+
+	# Initialize park location problem
+	park_location_model = pulp.LpProblem(
+	``Park Location Model: {0}".format(obj_string), pulp.LpMaximize)
+	# Add objective function
+	park_location_model += obj_function , obj_string
+
+	# Add constraint on maximum number of parks built
+	park_location_model += pulp.lpSum(
+	[vars_y[y] for y in candidate_parcels]) <= 
+	max_parks, ``Can only build {0} park(s)".format(max_parks)
+
+
+	# add constraints
+	for key, val in vars_z.items():
+		num = extract_num(key)
+		y_constraints = sets_w[num]
+
+
+		lp_sum = pulp.lpSum([vars_y[y] for y in y_constraints])
+
+ 		# these are the conditions of the form
+		# z_j <= sum (y_i) for i in W_j
+		# followed by the label
+		condition_one = lp_sum >= val
+		label_one = ``If lot {0} is serviced at 
+		least one park is built".format(num)
+
+		# these are the conditions of the form 
+		# |W_j| * z_j >= sum(y_i) for i in W_j
+		# followed by the label
+		condition_two = len(y_constraints) * val >= lp_sum
+		label_two = ``If a park serving lot {0} is 
+		picked then lot {1} must be serviced".format(num,num)
+
+		# adding both conditions to the model
+		park_location_model += condition_one, label_one
+		park_location_model += condition_two, label_two
+
+	# Add extra constraint which will be the 
+	# deterioration for an objective
+	if extra_constraint is not None: 
+		park_location_model += extra_constraint , 
+		``Objective function deterioration"
+
+	# The problem data is written to an .lp file
+	park_location_model.writeLP(``Model-{0}.lp".format(obj_string))
+
+	# The problem is solved using PuLP's choice of Solver
+	park_location_model.solve()
+
+	# The status of the solution is printed to the screen
+	print (``Status: ", pulp.LpStatus[park_location_model.status])
+
+	blocks_served = 0
+	# Each of the variables is printed with its resolved optimum value
+	for v in park_location_model.variables():
+		print (v.name, ``=", v.varValue)
+		if v.name.startswith(`z'):
+			blocks_served += v.varValue
+
+	print (``Number of blocks served: {0} ".format(blocks_served))
+
+
+	# The optimised objective function value is printed to the screen
+	print (``{0} = ".format(obj_string), 
+	pulp.value(park_location_model.objective))
+
+	return park_location_model	
+\end{lstlisting}
+
+\indent	I have included comments in this larger chunk to make it slightly easier to understand. This function takes the parameter \verb-obj_function-, which is the objective function that we are trying to optimize, as well as \verb-obj_string-, which is a short text description of our objective function. It also takes in the set of candidate parcels, the binary variables $z_j$ denoted \verb-vars_z-, the binary variables $y_i$ denoted \verb-vars_y-, and the maximum number of parks we want to build, \verb-max_parks-. When we are in the second stage of our solution strategy, it also takes in \verb-extra_constraint- which is the objective function that we add as a constraint with some compromise threshold, as previously described.
+
+This chunk of code uses \textbf{PuLP} to formulate a mathematical model. It adds the objective function and then the constraint, along with descriptions of them, to our \textbf{PuLP} model. It also outputs the linear program into a file with a \verb-.lp- extension that can be opened in a text editor, so we can verify what our linear program was. It also solves the model, and prints the status of the solution (whether it is optimal or not) to the console. It also then prints out each variable with its corresponding final value in the optimal solution. It then returns this model with all the corresponding information about the optimal solution. \\ \\
+
+\begin{lstlisting}[language = Python, caption = Runs the solution strategy and prints out solutions for many different values of $\alpha_k$., xleftmargin = -50pt]
+def place_parks(candidate_parcels, n, m, max_parks, 
+	population, lower = 10, upper = 15, step = 5):
+
+	set_j, pop_sum = 
+	generate_set_j_no_string(candidate_parcels, n, m, population)
+	sets_w = generate_sets_w(candidate_parcels, n, m, set_j)
+	set_j = append_letter(`z', set_j)
+	
+	# forms dictionary of number and variable pairs
+	set_i_dict = {}
+	for i in candidate_parcels:
+		set_i_dict[i] = append_letter(`y', i) 
+
+	# form the variables in the objective function
+	vars_z = {}
+	vars_y = {}
+	for z in set_j:
+		vars_z[z] = pulp.LpVariable(
+		z, lowBound = 0, upBound = 1, cat = `Integer')
+	for key, val in set_i_dict.items():
+		vars_y[key] = pulp.LpVariable(
+		val, lowBound = 0, upBound = 1, cat = `Integer')
+
+	# putting together the first objective function which
+    	# maximizes geographical service area of candidate parcels
+	block_objective = ``"
+	for key, val in vars_z.items():
+		block_objective += val
+
+	# population objective function
+	pop_objective = pulp.lpSum(
+	vars_y[y] * pop_sum[y] for y in candidate_parcels)
+
+	# Setting up LP and solving it for servie area objective
+	print(``Solving in isolation for service area objective function\n")
+	LP1 = solveLP(block_objective, 
+		``Maximum number of blocks serviced", candidate_parcels, 
+		vars_z, vars_y, max_parks, sets_w)
+
+	LP1_obj_value = pulp.value(LP1.objective)
+
+	# Setting up new LP and solving it for population objective
+	print(``Solving in isolation for population objective function\n")
+	LP2 = solveLP(pop_objective, 
+		``Maximum number of beneficiaries", candidate_parcels, 
+		vars_z, vars_y, max_parks, sets_w)
+
+	for i in range(lower, upper, step):
+		# maximum acceptable deterioration amount
+		det_amount = i / 100
+		deterioration = LP1.objective >= 
+		(1 - det_amount) * LP1_obj_value
+		
+		# solving both objectives
+		print(``Solving both objective functions\n")
+		print(``Acceptable deterioration value: {0}%".format(i))
+		LP3 = solveLP(pop_objective, 
+			``Maximizing beneficiaries 
+			considering blocks serviced", 
+			candidate_parcels, vars_z, vars_y, 
+			max_parks, sets_w, deterioration)
+\end{lstlisting}
+	I again have included comments to facilitate the understanding of this chunk of code. This function takes in several parameters. It takes in the set (list) of candidate parcels, the dimensions of our model town, and the maximum number of parks we wish to build. It also requires a variable \verb-population-, which is the population dictionary with block indices as keys and the population living on that block as the value pairing. 
+	
+	The variables \verb-lower-, \verb-upper-, and \verb-step- are all concerned with our model variable of $\alpha_k$. The variable \verb-lower- is concerned with the minimum allowable deterioration we decide to try. It is given as a percentage in our program, so it would range from 0 to some value less than 100. Similarly, \verb-upper- is the maximum allowable deterioration decided upon by the decision maker. It must be greater than \verb-lower-. Finally, \verb-step- denotes the intervals at which we wish to try values of $\alpha_k$. For example, if we let $\verb-lower- = 0$, $\verb-upper- =20$, and $\verb-step-=5$, then for the second stage of our solution strategy (optimizing with the added objective constraint), it will solve our model for $\alpha_k = 0,5,10,15,20$. We can then have a better idea of what our options are, and potentially hone in on an optimal answer. 
+	
+	You'll note that the first few lines in this function are dedicated to generating the necessary sets in a way that we can work with. We generate our set $\mathcal{J}$, the necessary $\mathcal{W}_j$ sets, and we also establish a link between the indices $i$ and their corresponding $y_i$ variable. In the variables \verb-vars_z- and \verb-vars_y- we form the corresponding \verb-pulp.LpVariable- for each set of variables $z_j$ and $y_i$. We then set up our two objective functions and solve the linear programs in isolation (step one of our solution strategy). Afterwards, we use the variables \verb-lower-, \verb-upper-, and \verb-step- to perform the second stage of our solution strategy and attempt to find an optimal solution. \\ \\ \\
+
+	We have now presented our problem, worked through increasingly complicated models, and explored the technical aspects of our work. We can now conclude this exercise, hoping that Operations Research will continue to find even greater application as a tool for demanding equity and bringing about meaningful social change, even if it does so in seemingly unimpressive ways -- like optimizing the placement of public parks in a city. With that being said: if you have been, thanks for listening!
 \end{chapter}
 
-\begin{chapter}{Discrete Facility Location Problems}
-\section{What? pt. II}
-The problem I will be examining also falls under this category. I am not sure how much this would vary from the previous chapter. But if it turns out there is a significant difference between both types of problems, it might be helpful to provide a dedicated chapter for both. Maybe the only difference is that the other class of problems has many objective functions.
-\end{chapter}
-
-\begin{chapter}{Applications}
-If I have time to apply what I have learned to another problem, maybe this will go here. But this may be a bit ambitious. Stay tuned.
-\end{chapter}
+\bibliographystyle{ieeetr}
+\bibliography{final-bib}
 
 \end{document}
 
