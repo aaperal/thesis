@@ -17,5 +17,5 @@
 \contentsline {section}{\numberline {2.3}The Real Model}{24}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Objective Functions}{24}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Constraints}{30}{subsection.2.3.2}
-\contentsline {chapter}{\numberline {3}Software and Functions}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Programming the Model}{33}{section.3.1}
+\contentsline {chapter}{\numberline {3}Software and Functions}{34}{chapter.3}
+\contentsline {section}{\numberline {3.1}Programming the Model}{34}{section.3.1}

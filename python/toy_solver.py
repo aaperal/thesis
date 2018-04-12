@@ -75,7 +75,6 @@ def generate_set_j_no_string(candidate_parcels, n, m, pop_dict):
 					pop_sum[i] = pop_dict[j]
 				if j not in set_j:
 					set_j.append(j)
-	#print(set_j)
 	return sorted(set_j), pop_sum
 
 #
@@ -86,7 +85,6 @@ def generate_sets_w(candidate_parcels, n, m, benefitting_sets):
 	w_j = []
 
 	for j in benefitting_sets:
-		#w_j.append('w'+ str(j))
 		for i in candidate_parcels:
 			if is_adjacent(i,j,n,m):
 				if i not in w_j:
@@ -95,8 +93,6 @@ def generate_sets_w(candidate_parcels, n, m, benefitting_sets):
 		w_j.clear()
 
 	return list_of_w_sets
-	#for s in list_of_w_sets:
-	#	print(*s)
 
 #
 # If num is a list of numbers
@@ -266,5 +262,3 @@ pop_dict = ast.literal_eval(input("Enter a python dictionary denoting the popula
 #pop_dict = {1:0, 2:200, 3:0, 4:200, 5:30, 6:50, 7:100, 8:150, 9:160, 10:20, 11:40, 12:0, 13:150, 14:140, 15:0, 16:35, 17:50, 18:140, 19:0, 20:90, 21:0, 22:60, 23:95, 24:85, 25:60}
 #place_parks(candidates,5,5,1, pop_dict, lower, upper, step)
 place_parks(candidates, num_rows, num_cols, max_parks, pop_dict, lower, upper, step)
-
-print('hello')				
