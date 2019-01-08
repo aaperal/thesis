@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{The Problem}{2}{0}{1}
-\beamer@sectionintoc {2}{The Groundwork}{17}{0}{2}
-\beamer@sectionintoc {3}{The Model}{28}{0}{3}
-\beamer@sectionintoc {4}{The Solution Strategy}{62}{0}{4}
-\beamer@sectionintoc {5}{The Conclusion}{88}{0}{5}
-\beamer@sectionintoc {6}{The End}{96}{0}{6}
